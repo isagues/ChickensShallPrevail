@@ -1,0 +1,4 @@
+repository "TP-PIPO@PIPO@cloud"
+  path "/"
+    br "/main"
+    co "/main"
