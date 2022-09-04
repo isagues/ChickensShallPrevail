@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // AL momento de creacion de la bala, si no existen los componentes los agrega
-[RequireComponent(typeof(Rigidbody), typeof(Collider))]
+[RequireComponent(typeof(Rigidbody), typeof(Collider), typeof(IAutoMove))]
 public class Bullet: MonoBehaviour, IBullet
 {
     public int Damage => _damage;
@@ -10,14 +10,13 @@ public class Bullet: MonoBehaviour, IBullet
     
     public float LifeTime => _lifeTime;
     [SerializeField] private float _lifeTime = 5;
-    
-    public float Speed => _speed;
-    [SerializeField] private float _speed = 5;
 
     public Rigidbody Rigidbody => _rigidBody;
     [SerializeField] private Rigidbody _rigidBody;
     public Collider Collider => _collider;
     [SerializeField] private Collider _collider;
+    public IAutoMove AutoMove => _autoMoveController;
+    [SerializeReference] private IAutoMove _autoMoveController;
 
     [SerializeField] private List<int> layerTarget;
 
@@ -25,6 +24,7 @@ public class Bullet: MonoBehaviour, IBullet
     {
         _rigidBody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
+        _autoMoveController = GetComponent<IAutoMove>();
 
         _collider.isTrigger = true;
         _rigidBody.useGravity = false;
@@ -32,7 +32,6 @@ public class Bullet: MonoBehaviour, IBullet
         _rigidBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
     }
 
-    public void Travel() => transform.Translate(Vector3.forward * (Time.deltaTime * _speed));
     public void OnTriggerEnter(Collider otherCollider)
     {
         if (!layerTarget.Contains(otherCollider.gameObject.layer)) return;
@@ -43,11 +42,12 @@ public class Bullet: MonoBehaviour, IBullet
         
         Destroy(this.gameObject);
     }
+
     private void Update()
     {
         _lifeTime -= Time.deltaTime;
         if(_lifeTime <= 0) Destroy(this.gameObject);
         
-        Travel();
+        _autoMoveController.Travel();
     }
 }

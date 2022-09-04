@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7291628517856155307}
   - component: {fileID: 597696086744648217}
   - component: {fileID: 2515451593919331210}
+  - component: {fileID: -1646006873129873358}
   m_Layer: 0
   m_Name: TurretBullet
   m_TagString: Untagged
@@ -127,7 +128,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 10
   _lifeTime: 5
-  _speed: 5
   _rigidBody: {fileID: 0}
   _collider: {fileID: 0}
   layerTarget: 
+--- !u!114 &-1646006873129873358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3799596945384122088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a71f2af0dafb433cb7869162ddfd1266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5

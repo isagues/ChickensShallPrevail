@@ -1,7 +1,7 @@
     using System;
     using UnityEngine;
 
-    public class LifeController:MonoBehaviour, IDamageable
+    public class LifeController: MonoBehaviour, IDamageable
     {
         public float MaxLife => _maxLife;
         [SerializeField] private float _maxLife = 100;
