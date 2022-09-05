@@ -8,6 +8,7 @@ public class Turret : MonoBehaviour, ITurret
     
     [SerializeField] protected GameObject _bulletPrefab;
     private IDamageable _damageable;
+    private Collider _collider;
     
     private float nextShotTime = 0;
     [SerializeField] private float period;
@@ -15,17 +16,20 @@ public class Turret : MonoBehaviour, ITurret
     #region ACCESORS
     public GameObject BulletPrefab => _bulletPrefab;
     public IDamageable Damageable => _damageable;
+    public Collider Collider => _collider;
     #endregion
     
     public virtual void Attack()
     {
-        var bullet = Instantiate(_bulletPrefab, transform.position + Vector3.forward * 5, transform.rotation);
+        float height = _collider.bounds.size.y / 4;
+        var bullet = Instantiate(_bulletPrefab, transform.position + Vector3.up * height, transform.rotation);
         bullet.name = "Bala Turret";
     }
 
     private void Start()
     {
         _damageable = GetComponent<IDamageable>();
+        _collider = GetComponent<Collider>();
     }
 
     private void Update()

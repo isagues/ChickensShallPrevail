@@ -7,4 +7,6 @@ public interface IEnemy
     Rigidbody Rigidbody { get; }
     
     Collider Collider { get; }
+    
+    IDamageable Damageable { get; }
 }

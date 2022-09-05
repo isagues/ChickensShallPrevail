@@ -6,11 +6,9 @@ public class LifeController: MonoBehaviour, IDamageable
     public float MaxLife => _maxLife;
     [SerializeField] private float _maxLife;
     [SerializeField] private float _currentLife;
-
-
+    
     private void Start()
     {
-        
         _currentLife = _maxLife;
     }
 

@@ -36,7 +36,6 @@ public class Bullet: MonoBehaviour, IBullet
     public void OnTriggerEnter(Collider otherCollider)
     {
         if (!layerTarget.Contains(otherCollider.gameObject.layer)) return;
-        Debug.LogError("Trigger");
         
         IDamageable damageable = otherCollider.GetComponent<IDamageable>();
         damageable?.TakeDamage(_damage);
