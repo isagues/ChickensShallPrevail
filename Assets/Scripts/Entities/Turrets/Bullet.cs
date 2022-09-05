@@ -15,8 +15,9 @@ public class Bullet: MonoBehaviour, IBullet
     [SerializeField] private Rigidbody _rigidBody;
     public Collider Collider => _collider;
     [SerializeField] private Collider _collider;
+    
     public IAutoMove AutoMove => _autoMoveController;
-    [SerializeReference] private IAutoMove _autoMoveController;
+    [SerializeField] private IAutoMove _autoMoveController;
 
     [SerializeField] private List<int> layerTarget;
 
@@ -28,7 +29,7 @@ public class Bullet: MonoBehaviour, IBullet
 
         _collider.isTrigger = true;
         _rigidBody.useGravity = false;
-        // _rigidBody.isKinematic = true;
+        _rigidBody.isKinematic = true; //Inafectable
         _rigidBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
     }
 

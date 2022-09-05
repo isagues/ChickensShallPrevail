@@ -8,18 +8,21 @@ public class Generador : MonoBehaviour
     
     private float nextShotTime = 0;
     [SerializeField] private float period;
+    [SerializeField] private int count;
+    private int current = 0;
 
     private void Update()
     {
-        if(Time.time > nextShotTime ) {
+        if(Time.time > nextShotTime && current < count) {
             nextShotTime += period;
+            current ++;
             NewEnemy();
         }
     }
 
     private void NewEnemy()
     {
-        var enemy = Instantiate(_enemyPrefab, transform.position + Vector3.forward * 5, transform.rotation);
+        var enemy = Instantiate(_enemyPrefab, transform.position, transform.rotation);
         enemy.name = "monstro";
     }
 }

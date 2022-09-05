@@ -19,10 +19,7 @@ public class Character : MonoBehaviour
     [SerializeField] private KeyCode _deploy = KeyCode.E;
 
     [SerializeField] private KeyCode _weaponSlot1 = KeyCode.Alpha1;
-    [SerializeField] private KeyCode _weaponSlot2 = KeyCode.Alpha2;
-    [SerializeField] private KeyCode _weaponSlot3 = KeyCode.Alpha3;
     
-    [SerializeField] private float _timer = 3;
     void Start()
     {
         _movementController = GetComponent<MovementController>();
@@ -40,20 +37,13 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(_deploy)) DeployTurret();
 
         if(Input.GetKey(_weaponSlot1)) ChangeTurret(0);
-        // if(Input.GetKey(_weaponSlot2)) ChangeTurret(1);
-        // if(Input.GetKey(_weaponSlot3)) ChangeTurret(2);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.LogWarning(collision);
     }
 
     private void DeployTurret()
     {
         // Se crea en la posicion y direccion del character.
         var turret = Instantiate(_currentTurret, transform.position, transform.rotation);
-        turret.name = "Bala Turret";
+        turret.name = "Turret";
         turret.gameObject.SetActive(true);
     }
 

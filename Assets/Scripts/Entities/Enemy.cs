@@ -1,18 +1,47 @@
+using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class Enemy: MonoBehaviour, IEnemy
 {
-    public int Damage { get; }
-    public Rigidbody Rigidbody { get; }
-    public Collider Collider { get; }
-    public void OnTriggerEnter(Collider otherCollider)
-    {
-        throw new System.NotImplementedException();
-    }
+    
+    [SerializeField] private int _damage = 1;
+    [SerializeField] private Rigidbody _rigidBody;
+    [SerializeField] private Collider _collider;
+    
+    [SerializeField] private IAutoMove _autoMoveController;
+    
+    [SerializeField] private List<int> _damageableLayerMask;
+    
+    #region ACCESORS
+    public Rigidbody Rigidbody => _rigidBody;
+    public Collider Collider => _collider;
+    public int Damage => _damage;
+    public IAutoMove AutoMove => _autoMoveController;
+    #endregion
 
-    public float Speed { get; }
-    public void Travel()
+    private void OnCollisionStay(Collision collision)
     {
-        throw new System.NotImplementedException();
+        if(_damageableLayerMask.Contains(collision.gameObject.layer))
+        {
+            var damageable = collision.gameObject.GetComponent<IDamageable>();
+            damageable?.TakeDamage(Damage);
+        }
+    }
+        
+    private void Start()
+    {
+        _rigidBody = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
+        _autoMoveController = GetComponent<IAutoMove>();
+
+        _rigidBody.useGravity = false;
+        // _rigidBody.isKinematic = true;
+        _rigidBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+    }
+    
+    private void Update()
+    {
+        _autoMoveController.Travel();
     }
 }
