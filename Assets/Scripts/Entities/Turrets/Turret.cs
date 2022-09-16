@@ -1,5 +1,7 @@
 
 using System;
+using Command;
+using Manager;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -17,6 +19,8 @@ public class Turret : MonoBehaviour, ITurret
     public GameObject BulletPrefab => _bulletPrefab;
     public IDamageable Damageable => _damageable;
     public Collider Collider => _collider;
+    
+    private CmdAttack _cmdAttack;
     #endregion
     
     public virtual void Attack()
@@ -30,13 +34,14 @@ public class Turret : MonoBehaviour, ITurret
     {
         _damageable = GetComponent<IDamageable>();
         _collider = GetComponent<Collider>();
+        _cmdAttack = new CmdAttack(this);
     }
 
     private void Update()
     {
         if(Time.time > nextShotTime ) {
             nextShotTime += period;
-            Attack();
+            EventQueueManager.instance.AddCommand(_cmdAttack);
         }
     }
 }

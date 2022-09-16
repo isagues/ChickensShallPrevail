@@ -1,6 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using Command;
+using Manager;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -20,19 +20,29 @@ public class Character : MonoBehaviour
 
     [SerializeField] private KeyCode _weaponSlot1 = KeyCode.Alpha1;
     
+    private CmdMovement _cmdMoveForward; 
+    private CmdMovement _cmdMoveBackward;
+    private CmdRotation _cmdRotateRight;
+    private CmdRotation _cmdRotateLeft; 
     void Start()
     {
         _movementController = GetComponent<MovementController>();
+        
+        _cmdMoveForward = new CmdMovement(_movementController, Vector3.forward);
+        _cmdMoveBackward = new CmdMovement(_movementController, -Vector3.forward);
+        _cmdRotateRight = new CmdRotation(_movementController, Vector3.up);
+        _cmdRotateLeft = new CmdRotation(_movementController, -Vector3.up);
+        
         ChangeTurret(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(_moveFoward)) _movementController.Travel(Vector3.forward);
-        if (Input.GetKey(_moveBack)) _movementController.Travel(-Vector3.forward);
-        if (Input.GetKey(_moveRight)) _movementController.Rotate(Vector3.up);
-        if (Input.GetKey(_moveLeft)) _movementController.Rotate(-Vector3.up);
+        if (Input.GetKey(_moveFoward)) EventQueueManager.instance.AddCommand(_cmdMoveForward);
+        if (Input.GetKey(_moveBack)) EventQueueManager.instance.AddCommand(_cmdMoveBackward);
+        if (Input.GetKey(_moveRight)) EventQueueManager.instance.AddCommand(_cmdRotateRight);
+        if (Input.GetKey(_moveLeft)) EventQueueManager.instance.AddCommand(_cmdRotateLeft);
 
         if (Input.GetKeyDown(_deploy)) DeployTurret();
 
