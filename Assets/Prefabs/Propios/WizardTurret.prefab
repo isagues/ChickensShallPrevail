@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1248815240492774, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1251583507443948, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_Layer
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLife: 100000
+  _actorStats: {fileID: 11400000, guid: cfe292c87c05ac841887e403bf03ae8b, type: 2}
   _currentLife: 0
 --- !u!114 &2082601360938242848
 MonoBehaviour:

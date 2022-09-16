@@ -1,15 +1,16 @@
 using System;
+using Flyweight;
 using UnityEngine;
 
 public class LifeController: MonoBehaviour, IDamageable
 {
-    public float MaxLife => _maxLife;
-    [SerializeField] private float _maxLife;
+    [SerializeField] private ActorStats _actorStats;
+    public float MaxLife => _actorStats.MaxLife;
     [SerializeField] private float _currentLife;
     
     private void Start()
     {
-        _currentLife = _maxLife;
+        _currentLife = MaxLife;
     }
 
     public void TakeDamage(float damage)

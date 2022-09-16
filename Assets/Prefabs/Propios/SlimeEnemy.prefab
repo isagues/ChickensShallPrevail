@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71f2af0dafb433cb7869162ddfd1266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _actorStats: {fileID: 11400000, guid: d4408c474d4a55646a347bb85e682b89, type: 2}
 --- !u!114 &-2123664476868989631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,5 +178,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLife: 1000
-  _currentLife: 0
+  _actorStats: {fileID: 11400000, guid: d4408c474d4a55646a347bb85e682b89, type: 2}
+  _currentLife: 100
