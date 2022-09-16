@@ -10,6 +10,7 @@ public class Generador : MonoBehaviour
     [SerializeField] private float period;
     [SerializeField] private int count;
     private int current = 0;
+    
 
     private void Update()
     {
