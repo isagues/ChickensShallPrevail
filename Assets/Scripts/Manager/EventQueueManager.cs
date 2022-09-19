@@ -20,7 +20,6 @@ namespace Manager
         private void Update()
         {
             ProcessQueue(_events);
-            
         }
 
         public void AddCommand(ICommand command) => _events.Enqueue(command);
