@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
     private MovementController _movementController;
     [SerializeField] private List<Turret> _turrets;
     private Turret _currentTurret;
+
+    private int _coins = 0;
     
     [SerializeField] private KeyCode _moveFoward = KeyCode.W;
     [SerializeField] private KeyCode _moveBack = KeyCode.S;
@@ -47,6 +49,7 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(_deploy)) DeployTurret();
 
         if(Input.GetKey(_weaponSlot1)) ChangeTurret(0);
+        _coins += _coins + 1;
     }
 
     private void DeployTurret()
