@@ -1,5 +1,6 @@
 using System;
 using Flyweight;
+using Manager;
 using UnityEngine;
 
 public class LifeController: MonoBehaviour, IDamageable
@@ -19,5 +20,14 @@ public class LifeController: MonoBehaviour, IDamageable
         if(_currentLife <= 0) Die();
     }
 
-    public void Die() => Destroy(this.gameObject); // si es this saca solo el componente de este script.
+    public void Die()
+    { 
+        Destroy(this.gameObject);
+        // si es this saca solo el componente de este script.
+    }
+
+    private void OnDestroy()
+    {
+        if (name == "Character") EventsManager.instance.EventGameOver(false);
+    }
 }
