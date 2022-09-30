@@ -22,6 +22,10 @@ public class Character : MonoBehaviour
 
     [SerializeField] private KeyCode _weaponSlot1 = KeyCode.Alpha1;
     
+    
+    [SerializeField] private KeyCode _setVictory = KeyCode.V;
+    [SerializeField] private KeyCode _setDefeat = KeyCode.L;
+    
     private CmdMovement _cmdMoveForward; 
     private CmdMovement _cmdMoveBackward;
     private CmdRotation _cmdRotateRight;
@@ -45,11 +49,14 @@ public class Character : MonoBehaviour
         if (Input.GetKey(_moveBack)) EventQueueManager.instance.AddCommand(_cmdMoveBackward);
         if (Input.GetKey(_moveRight)) EventQueueManager.instance.AddCommand(_cmdRotateRight);
         if (Input.GetKey(_moveLeft)) EventQueueManager.instance.AddCommand(_cmdRotateLeft);
-
+        if (Input.GetKeyDown(_setVictory)) EventsManager.instance.EventGameOver(true);
+        if (Input.GetKeyDown(_setDefeat)) EventsManager.instance.EventGameOver(false);
+        
         if (Input.GetKeyDown(_deploy)) DeployTurret();
 
         if(Input.GetKey(_weaponSlot1)) ChangeTurret(0);
         _coins += _coins + 1;
+        
     }
 
     private void DeployTurret()

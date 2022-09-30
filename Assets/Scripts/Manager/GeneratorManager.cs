@@ -77,7 +77,7 @@ namespace Manager
             }
             else
             {
-                Debug.Log(enemyType.ToString() + " was not found");
+                // Debug.Log(enemyType.ToString() + " was not found");
             }
             
         }

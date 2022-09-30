@@ -17,6 +17,7 @@ namespace Manager
 
         public void EventGameOver(bool isVictory)
         {
+            Debug.Log(isVictory);
             if (OnGameOver != null) OnGameOver(isVictory);
         }
     }
