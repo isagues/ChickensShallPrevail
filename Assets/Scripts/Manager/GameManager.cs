@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Manager
 {
@@ -8,16 +9,22 @@ namespace Manager
     {
         [SerializeField] private bool _isGameOver = false;
         [SerializeField] private bool _isVictory = false;
+        [SerializeField] private Text _gameoverMessage;
 
-        void Start()
+        private void Start()
         {
-            //   .instance.OnGameOver += OnGameOver;
+            EventsManager.instance.OnGameOver += OnGameOver;
+            _gameoverMessage.text = string.Empty;
         }
+
 
         private void OnGameOver(bool isVictory)
         {
             _isGameOver = true;
             _isVictory = isVictory;
+
+            _gameoverMessage.text = isVictory ? "Victory" : "Defeat";
+            _gameoverMessage.color = isVictory ? Color.cyan : Color.red;
             
             GlobalData.instance.SetVictoryField(_isVictory);
             

@@ -12,12 +12,19 @@ public class LifeController: MonoBehaviour, IDamageable
     private void Start()
     {
         _currentLife = MaxLife;
+        UI_Updater();
     }
 
     public void TakeDamage(float damage)
     {
         _currentLife -= damage;
-        if(_currentLife <= 0) Die();
+        UI_Updater();
+
+        if (IsDead())
+        {
+            if (name == "Character") EventsManager.instance.EventGameOver(false);
+            Die();
+        }
     }
 
     public void Die()
@@ -25,9 +32,16 @@ public class LifeController: MonoBehaviour, IDamageable
         Destroy(this.gameObject);
         // si es this saca solo el componente de este script.
     }
+    
+    private bool IsDead() => _currentLife <= 0;
 
     private void OnDestroy()
     {
         if (name == "Character") EventsManager.instance.EventGameOver(false);
+    }
+    
+    public void UI_Updater() 
+    { 
+        if(name == "Sir Pipo") EventsManager.instance.CharacterLifeChange(_currentLife, MaxLife);
     }
 }
