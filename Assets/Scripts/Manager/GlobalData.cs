@@ -1,19 +1,22 @@
 using UnityEngine;
 
-public class GlobalData : MonoBehaviour
+namespace Manager
 {
-    static public GlobalData instance;
-
-    public bool IsVictory => _isVictory;
-    [SerializeField] private bool _isVictory;
-
-    private void Awake()
+    public class GlobalData : MonoBehaviour
     {
-        if (instance != null) Destroy(this.gameObject);
-        instance = this;
-        
-        DontDestroyOnLoad(this);
-    }
+        public static GlobalData instance;
 
-    public void SetVictoryField(bool isVictory) => _isVictory = isVictory;
+        public bool IsVictory => _isVictory;
+        [SerializeField] private bool _isVictory;
+
+        private void Awake()
+        {
+            if (instance != null) Destroy(this.gameObject);
+            instance = this;
+        
+            DontDestroyOnLoad(this);
+        }
+
+        public void SetVictoryField(bool isVictory) => _isVictory = isVictory;
+    }
 }

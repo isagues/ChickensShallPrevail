@@ -21,7 +21,7 @@ namespace Manager
 
         public void EventGameOver(bool isVictory)
         {
-            if (OnGameOver != null) OnGameOver(isVictory);
+            OnGameOver?.Invoke(isVictory);
         }
         
         public void CharacterLifeChange(float currentLife, float maxLife)

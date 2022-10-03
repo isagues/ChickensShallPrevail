@@ -22,7 +22,7 @@ public class LifeController: MonoBehaviour, IDamageable
 
         if (IsDead())
         {
-            if (name == "Character") EventsManager.instance.EventGameOver(false);
+            if (name == "Sir Pipo") EventsManager.instance.EventGameOver(false);
             Die();
         }
     }
