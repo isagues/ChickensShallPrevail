@@ -16,9 +16,10 @@ namespace Manager
         private void Start()
         {
             EventsManager.instance.OnCharacterLifeChange += UpdateLifeBar;
+            EventsManager.instance.OnCoinsChange += OnCoinsChange;
         }
 
-        private void OnCoinChange(int currentCoins)
+        private void OnCoinsChange(int currentCoins)
         {
             _eggAmout.text = $"{currentCoins}";
         }

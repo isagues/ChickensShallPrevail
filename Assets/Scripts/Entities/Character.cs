@@ -42,6 +42,8 @@ public class Character : MonoBehaviour
         _cmdRotateLeft = new CmdRotation(_movementController, -Vector3.up);
         _cmdApplyDamage = new CmdApplyDamage(GetComponent<IDamageable>(), 5);
         
+        InvokeRepeating(nameof(UpdateCoins), 1, 1);
+
         ChangeTurret(0);
     }
 
@@ -59,8 +61,6 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(_deploy)) DeployTurret();
 
         if(Input.GetKey(_weaponSlot1)) ChangeTurret(0);
-        _coins += _coins + 1;
-        
     }
 
     private void DeployTurret()
@@ -75,5 +75,11 @@ public class Character : MonoBehaviour
     {
         foreach (var gun in _turrets) gun.gameObject.SetActive(false);
         _currentTurret = _turrets[index];
+    }
+
+    private void UpdateCoins()
+    {
+        _coins += 1;
+        EventsManager.instance.CoinsChange(_coins);
     }
 }

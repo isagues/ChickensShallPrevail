@@ -18,6 +18,7 @@ namespace Manager
         #region GAME_MANAGER
         public event Action<bool> OnGameOver;
         public event Action<float, float> OnCharacterLifeChange;
+        public event Action<int> OnCoinsChange;
 
         public void EventGameOver(bool isVictory)
         {
@@ -27,6 +28,11 @@ namespace Manager
         public void CharacterLifeChange(float currentLife, float maxLife)
         {
             OnCharacterLifeChange?.Invoke(currentLife, maxLife);
+        }
+        
+        public void CoinsChange(int currentCoins)
+        {
+            OnCoinsChange?.Invoke(currentCoins);
         }
         #endregion
     }
