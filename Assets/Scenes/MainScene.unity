@@ -1071,7 +1071,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 643041988}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &385831749
 GameObject:
@@ -1763,10 +1763,10 @@ Transform:
   m_LocalPosition: {x: 4.6578655, y: 3.0718167, z: -44.808784}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 377545187}
   - {fileID: 873353638}
   - {fileID: 1418208855}
   - {fileID: 1489853063}
-  - {fileID: 377545187}
   - {fileID: 241856287}
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -2494,7 +2494,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 643041988}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &873353639
 MonoBehaviour:
@@ -3509,8 +3509,8 @@ MonoBehaviour:
   _moveLeft: 97
   _deploy: 101
   _weaponSlot1: 49
-  _setVictory: 13
-  _setDefeat: 8
+  _setVictory: 118
+  _setDefeat: 108
   _takeDamage: 116
 --- !u!114 &1317702934
 MonoBehaviour:
@@ -3627,7 +3627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 643041988}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &1442715302
 PrefabInstance:
@@ -3827,7 +3827,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 643041988}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1499794751
 GameObject:

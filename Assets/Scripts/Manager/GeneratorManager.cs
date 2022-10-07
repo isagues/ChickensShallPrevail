@@ -53,7 +53,6 @@ namespace Manager
         {
             while (EnemySpawnQueue.Count > 0)
             {
-                Debug.Log(EnemySpawnQueue.Peek().enemyType.ToString());
                 if (Time.time > EnemySpawnQueue.Peek().time)
                 {
                     EnemySpawnParams enemySpawnParams = EnemySpawnQueue.Dequeue();
@@ -72,7 +71,6 @@ namespace Manager
             newPosition.x = newPosition.x + lane * GeneratorDistance;
             if (enemies.ContainsKey(enemyType))
             {
-                Debug.Log(enemies[enemyType].ToString());
                 var enemy = Instantiate(enemies[enemyType], newPosition, transform.rotation);
                 enemy.name = "monstro";
             }

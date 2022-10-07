@@ -9,12 +9,10 @@ namespace Manager
     {
         [SerializeField] private bool _isGameOver = false;
         [SerializeField] private bool _isVictory = false;
-        [SerializeField] private Text _gameoverMessage;
 
         private void Start()
         {
             EventsManager.instance.OnGameOver += OnGameOver;
-            _gameoverMessage.text = string.Empty;
         }
 
 
@@ -22,16 +20,13 @@ namespace Manager
         {
             _isGameOver = true;
             _isVictory = isVictory;
-
-            _gameoverMessage.text = isVictory ? "Victory" : "Defeat";
-            _gameoverMessage.color = isVictory ? Color.cyan : Color.red;
             
+            SetVictoryField(isVictory);
             GlobalData.instance.SetVictoryField(_isVictory);
-            
             LoadEndgameScene();
             
         }
-
+        public void SetVictoryField(bool isVictory) => _isVictory = isVictory;
         private void LoadEndgameScene() => SceneManager.LoadScene("Endgame");
     }
    

@@ -14,11 +14,11 @@ namespace Entities
         public LevelPlan()
         {
             levelGeneratorParamsQueue = new Queue<EnemySpawnParams>();
-            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(0, 0, EnemyType.BlueSlime));
-            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(1, 5, EnemyType.RedSlime));
-            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(2, 10, EnemyType.BlueSlime));
-            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(3, 15, EnemyType.RedSlime));
-            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(4, 20, EnemyType.BlueSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(0, 0, EnemyType.RedSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(1, 5, EnemyType.BlueSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(2, 10, EnemyType.RedSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(3, 15, EnemyType.BlueSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(4, 20, EnemyType.RedSlime));
         }
     }
 
