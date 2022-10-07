@@ -22,6 +22,8 @@ namespace Manager
 
         public void EventGameOver(bool isVictory)
         {
+            Debug.Log("por ganar");
+            Debug.Log(isVictory);
             OnGameOver?.Invoke(isVictory);
         }
         

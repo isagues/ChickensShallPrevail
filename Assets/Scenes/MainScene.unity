@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.24647538, g: 0.28234535, b: 0.3457032, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1709671, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2508,9 +2508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9ab48b7944401abdb105c25c2c2a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isGameOver: 0
+  _isGameOver: 1
   _isVictory: 0
-  _gameoverMessage: {fileID: 31666486}
+  _gameoverMessage: {fileID: 0}
 --- !u!114 &873353640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2523,9 +2523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460680ab7285412e9e4ae4dbbdbc77fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _egg: {fileID: 0}
+  _egg: {fileID: 1698956407}
   _lifebar: {fileID: 253342336}
-  _avatar: {fileID: 0}
+  _avatar: {fileID: 1904604231}
   _eggAmout: {fileID: 1126117257}
 --- !u!114 &873353641
 MonoBehaviour:
@@ -3598,10 +3598,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460680ab7285412e9e4ae4dbbdbc77fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _egg: {fileID: 0}
+  _egg: {fileID: 1698956407}
   _lifebar: {fileID: 253342336}
-  _avatar: {fileID: 0}
-  _eggAmout: {fileID: 0}
+  _avatar: {fileID: 1904604231}
+  _eggAmout: {fileID: 1126117257}
 --- !u!114 &1418208854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5281,8 +5281,8 @@ MonoBehaviour:
   _eggPrefab: {fileID: 6023477689653686232, guid: dae571be53e3948e195a0306a92b54d2, type: 3}
   _rigidBody: {fileID: 0}
   _collider: {fileID: 0}
-  period: 5
-  layerTarget: 0d000000
+  period: 0
+  layerTarget: 
 --- !u!95 &2095928614
 Animator:
   serializedVersion: 3
