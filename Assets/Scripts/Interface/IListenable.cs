@@ -8,7 +8,6 @@ public interface IListenable
     AudioSource AudioSource { get; }
 
     void InitAudioSource();
-    void PlayOnShot(AudioClip clip);
     void Play();
     void Stop();
 }

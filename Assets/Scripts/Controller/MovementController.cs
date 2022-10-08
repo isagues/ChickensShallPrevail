@@ -1,17 +1,19 @@
-using System.Numerics;
 using Flyweight;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
-public class MovementController: MonoBehaviour, IMovable
+namespace Controller
 {
+    public class MovementController: MonoBehaviour, IMovable
+    {
 
-    [SerializeField] private ActorStats _actorStats;
-    public float Speed => _actorStats.MovementSpeed;
+        [SerializeField] private ActorStats _actorStats;
+        public float Speed => _actorStats.MovementSpeed;
 
-    public float RotationSpeed => _actorStats.RotationSpeed;
+        public float RotationSpeed => _actorStats.RotationSpeed;
 
-    public void Travel(Vector3 direction) => transform.Translate(direction * (Time.deltaTime * Speed));
+        public void Travel(Vector3 direction) => transform.Translate(direction * (Time.deltaTime * Speed));
 
-    public void Rotate(Vector3 direction) => transform.Rotate(direction * (Time.deltaTime * RotationSpeed));
+        public void Rotate(Vector3 direction) => transform.Rotate(direction * (Time.deltaTime * RotationSpeed));
+    }
 }
