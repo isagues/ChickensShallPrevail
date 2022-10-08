@@ -2378,7 +2378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}
-  _cost: 10
+  _cost: 50
   period: 1
 --- !u!1 &1956949540428108
 GameObject:

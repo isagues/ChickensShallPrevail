@@ -638,6 +638,9 @@ GameObject:
   - component: {fileID: 5685285466172480620}
   - component: {fileID: -6400776756204365946}
   - component: {fileID: 2082601360938242848}
+  - component: {fileID: 1998103222370356189}
+  - component: {fileID: 1189882499367238270}
+  - component: {fileID: 9064106378262068477}
   m_Layer: 11
   m_Name: PolyArtWizardStandardMat
   m_TagString: Untagged
@@ -720,6 +723,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}
+  _cost: 25
+  period: 1
+--- !u!65 &1998103222370356189
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248815240492774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.03, z: 1}
+  m_Center: {x: 0, y: 0.99, z: 0}
+--- !u!114 &1189882499367238270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248815240492774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actorStats: {fileID: 11400000, guid: 8a03951108bef9047b9e6078ad7d1ac5, type: 2}
+  _currentLife: 50
+--- !u!114 &9064106378262068477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248815240492774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404385e493f34ddead834e93d9efae93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}
+  _cost: 0
   period: 1
 --- !u!1 &1251583507443948
 GameObject:

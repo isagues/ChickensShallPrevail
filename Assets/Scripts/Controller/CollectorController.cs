@@ -12,7 +12,7 @@ namespace Controller
     [RequireComponent(typeof(Collider))]
     public class CollectorController : MonoBehaviour, ICollector  
     {
-        [SerializeField] private int collectableLayer = -1;
+        [SerializeField] private int collectableLayer = -1;    
 
         private Dictionary<CollectableType, int> collectables;
 
@@ -32,11 +32,23 @@ namespace Controller
             if (Enum.TryParse(otherCollider.gameObject.name, true, out CollectableType type))
             {
                 collectables[type] += 10;
-                Debug.Log(otherCollider.gameObject);
-                EventsManager.instance.CollectableChange(type, collectables[type]);
+                NotifyCollectableChane(type);
             }
             
             Destroy(otherCollider.gameObject);
+        }
+
+        private void NotifyCollectableChane(CollectableType type)
+        {
+            EventsManager.instance.CollectableChange(type, collectables[type]);
+        }
+        
+        public bool Expend(CollectableType type, int amount)
+        {
+            if (collectables[type] < amount) return false;
+            collectables[type] -= amount;
+            NotifyCollectableChane(type);
+            return true;
         }
     }
 }

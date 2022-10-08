@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Command;
 using Controller;
+using Entities;
 using Manager;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
 
     private MovementController _movementController;
+    private CollectorController _collectorController;
     [SerializeField] private List<Turret> _turrets;
     private Turret _currentTurret;
     
@@ -35,6 +37,7 @@ public class Character : MonoBehaviour
     void Start()
     {
         _movementController = GetComponent<MovementController>();
+        _collectorController = GetComponent<CollectorController>();
         
         _cmdMoveForward = new CmdMovement(_movementController, Vector3.forward);
         _cmdMoveBackward = new CmdMovement(_movementController, -Vector3.forward);
@@ -64,14 +67,12 @@ public class Character : MonoBehaviour
 
     private void DeployTurret()
     {
-        if (_coins >= _currentTurret.Cost)
-        {
-            // Se crea en la posicion y direccion del character.
-            var turret = Instantiate(_currentTurret, transform.position, transform.rotation);
-            turret.name = "Turret";
-            turret.gameObject.SetActive(true);
-            _coins -= _currentTurret.Cost;
-        }
+        if (!_collectorController.Expend(CollectableType.Egg, _currentTurret.Cost)) return;
+        
+        // Se crea en la posicion y direccion del character.
+        var turret = Instantiate(_currentTurret, transform.position, transform.rotation);
+        turret.name = "Turret";
+        turret.gameObject.SetActive(true);
 
     }
 

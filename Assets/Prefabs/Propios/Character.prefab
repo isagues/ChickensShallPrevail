@@ -38,6 +38,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292943211588477438}
     m_Modifications:
+    - target: {fileID: 1317702933, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: _turrets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317702933, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: _turrets.Array.data[0]
+      value: 
+      objectReference: {fileID: 2390797188936934691, guid: 1721367e3fd32418eb16e8deb661ce00, type: 3}
+    - target: {fileID: 1317702933, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: _turrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 7474397873684331140, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
+    - target: {fileID: 1317702936, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
     - target: {fileID: 2066896392038131574, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_RootOrder
       value: 0

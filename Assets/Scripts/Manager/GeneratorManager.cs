@@ -12,9 +12,9 @@ namespace Manager
         public Dictionary<EnemyType, GameObject> enemies;
         
         [SerializeField] 
-        private float _generatorDistance;
+        private float laneCount;
 
-        public float GeneratorDistance => _generatorDistance;
+        public float LaneCount => laneCount;
 
         [SerializeField] 
         private LevelPlan _levelPlan;
@@ -68,7 +68,9 @@ namespace Manager
         private void GenerateNewEnemy(int lane, EnemyType enemyType)
         {
             Vector3 newPosition = transform.position;
-            newPosition.x += lane * GeneratorDistance;
+            float width = GetComponent<Renderer>().bounds.size.x;
+            if (lane >= laneCount) throw new Exception($"Lane out of bounds, max lane is {laneCount}");
+            newPosition.x += Mathf.Lerp( -width/2, width/2, lane / laneCount); 
          
             if (enemies.ContainsKey(enemyType))
             {
