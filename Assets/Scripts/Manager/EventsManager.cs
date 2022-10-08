@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using Entities;
 using UnityEngine;
+using Utils;
 
 namespace Manager
 {
@@ -12,13 +15,19 @@ namespace Manager
         {
             if (instance != null) Destroy(this);
             instance = this;
+            
+            OnCollectableChange = new Dictionary<CollectableType, Action<int>>();
+            foreach (var type in EnumUtil.GetValues<CollectableType>())  
+            {  
+                OnCollectableChange[type] = _ => {};
+            } 
         }
         #endregion
 
         #region GAME_MANAGE
         public event Action<bool> OnGameOver;
         public event Action<float, float> OnCharacterLifeChange;
-        public event Action<int> OnCoinsChange;
+        private Dictionary<CollectableType, Action<int>> OnCollectableChange;
 
         public void EventGameOver(bool isVictory)
         {
@@ -30,10 +39,16 @@ namespace Manager
             OnCharacterLifeChange?.Invoke(currentLife, maxLife);
         }
         
-        public void CoinsChange(int currentCoins)
+        public void CollectableChange(CollectableType type, int currentValue)
         {
-            OnCoinsChange?.Invoke(currentCoins);
+            OnCollectableChange[type].Invoke(currentValue);
         }
+
+        public void AddOnCollectableChangeHandler(CollectableType type, Action<int> handler)
+        {
+            OnCollectableChange[type] += handler;
+        }
+        
         #endregion
     }
 }

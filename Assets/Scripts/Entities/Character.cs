@@ -11,8 +11,6 @@ public class Character : MonoBehaviour
     private MovementController _movementController;
     [SerializeField] private List<Turret> _turrets;
     private Turret _currentTurret;
-
-    private int _coins = 0;
     
     [SerializeField] private KeyCode _moveFoward = KeyCode.W;
     [SerializeField] private KeyCode _moveBack = KeyCode.S;
@@ -44,8 +42,6 @@ public class Character : MonoBehaviour
         _cmdRotateLeft = new CmdRotation(_movementController, -Vector3.up);
         _cmdApplyDamage = new CmdApplyDamage(GetComponent<IDamageable>(), 5);
         
-        InvokeRepeating(nameof(UpdateCoins), 1, 1);
-
         ChangeTurret(0);
     }
 
@@ -83,11 +79,5 @@ public class Character : MonoBehaviour
     {
         foreach (var gun in _turrets) gun.gameObject.SetActive(false);
         _currentTurret = _turrets[index];
-    }
-
-    private void UpdateCoins()
-    {
-        _coins += 1;
-        EventsManager.instance.CoinsChange(_coins);
     }
 }

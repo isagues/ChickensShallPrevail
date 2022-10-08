@@ -53,7 +53,7 @@ namespace Entities
         public void Deploy()
         {
             var turret = Instantiate(_eggPrefab, transform.position, transform.rotation);
-            turret.name = "Egg";
+            turret.name = CollectableType.Egg.ToString();
         }
 
         private void OnTriggerEnter(Collider other)

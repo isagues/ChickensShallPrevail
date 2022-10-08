@@ -5,4 +5,9 @@
         BlueSlime,
         RedSlime
     }
+    
+    public enum CollectableType
+    {
+        Egg
+    }
 }

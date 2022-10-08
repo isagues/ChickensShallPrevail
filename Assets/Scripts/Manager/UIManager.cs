@@ -1,9 +1,10 @@
-﻿using Manager;
+﻿using Entities;
+using Manager;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Manager
-{
+namespace Manager{
+
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private Image _egg;
@@ -16,10 +17,10 @@ namespace Manager
         private void Start()
         {
             EventsManager.instance.OnCharacterLifeChange += UpdateLifeBar;
-            EventsManager.instance.OnCoinsChange += OnCoinsChange;
+            EventsManager.instance.AddOnCollectableChangeHandler(CollectableType.Egg, OnCollectableChange);
         }
 
-        private void OnCoinsChange(int currentCoins)
+        private void OnCollectableChange(int currentCoins)
         {
             _eggAmout.text = $"{currentCoins}";
         }
