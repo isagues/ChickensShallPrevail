@@ -376,8 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: cfe292c87c05ac841887e403bf03ae8b, type: 2}
-  _currentLife: 0
+  _actorStats: {fileID: 11400000, guid: 8a03951108bef9047b9e6078ad7d1ac5, type: 2}
+  _currentLife: 50
 --- !u!114 &2082601360938242848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,4 +391,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}
+  _cost: 5
   period: 1

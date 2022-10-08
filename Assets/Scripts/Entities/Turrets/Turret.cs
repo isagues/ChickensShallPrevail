@@ -11,6 +11,9 @@ public class Turret : MonoBehaviour, ITurret
     [SerializeField] protected GameObject _bulletPrefab;
     private IDamageable _damageable;
     private Collider _collider;
+
+    public int Cost => _cost;
+    [SerializeField] private int _cost;
     
     private float nextShotTime = 0;
     [SerializeField] private float period;

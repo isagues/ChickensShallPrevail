@@ -22,6 +22,7 @@ public class Character : MonoBehaviour
     [SerializeField] private KeyCode _deploy = KeyCode.E;
 
     [SerializeField] private KeyCode _weaponSlot1 = KeyCode.Alpha1;
+    [SerializeField] private KeyCode _weaponSlot2 = KeyCode.Alpha2;
     
     
     [SerializeField] private KeyCode _setVictory = KeyCode.V;
@@ -62,14 +63,20 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(_deploy)) DeployTurret();
 
         if(Input.GetKey(_weaponSlot1)) ChangeTurret(0);
+        if(Input.GetKey(_weaponSlot2)) ChangeTurret(1);
     }
 
     private void DeployTurret()
     {
-        // Se crea en la posicion y direccion del character.
-        var turret = Instantiate(_currentTurret, transform.position, transform.rotation);
-        turret.name = "Turret";
-        turret.gameObject.SetActive(true);
+        if (_coins >= _currentTurret.Cost)
+        {
+            // Se crea en la posicion y direccion del character.
+            var turret = Instantiate(_currentTurret, transform.position, transform.rotation);
+            turret.name = "Turret";
+            turret.gameObject.SetActive(true);
+            _coins -= _currentTurret.Cost;
+        }
+
     }
 
     private void ChangeTurret(int index)
