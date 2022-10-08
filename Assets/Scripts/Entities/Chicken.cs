@@ -65,11 +65,9 @@ namespace Entities
         private void Update()
         {
             _autoMoveController.Travel();
-            if (Time.time > nextShotTime)
-            {
-                nextShotTime += period;
-                EventQueueManager.instance.AddCommand(_cmdDeploy);
-            }
+            if (!(Time.time > nextShotTime)) return;
+            nextShotTime += period;
+            EventQueueManager.instance.AddCommand(_cmdDeploy);
         }
     }
 }
