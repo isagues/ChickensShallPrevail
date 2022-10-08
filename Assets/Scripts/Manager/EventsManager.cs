@@ -15,15 +15,13 @@ namespace Manager
         }
         #endregion
 
-        #region GAME_MANAGER
+        #region GAME_MANAGE
         public event Action<bool> OnGameOver;
         public event Action<float, float> OnCharacterLifeChange;
         public event Action<int> OnCoinsChange;
 
         public void EventGameOver(bool isVictory)
         {
-            Debug.Log("por ganar");
-            Debug.Log(isVictory);
             OnGameOver?.Invoke(isVictory);
         }
         

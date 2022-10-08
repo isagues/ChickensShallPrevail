@@ -7,6 +7,7 @@ namespace Manager
 {
     public class GameManager : MonoBehaviour
     {
+        public bool GameOver => _isGameOver;
         [SerializeField] private bool _isGameOver = false;
         [SerializeField] private bool _isVictory = false;
 
@@ -14,7 +15,6 @@ namespace Manager
         {
             EventsManager.instance.OnGameOver += OnGameOver;
         }
-
 
         private void OnGameOver(bool isVictory)
         {

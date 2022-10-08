@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Manager;
 using UnityEngine;
 
 // Agregamos un componente obligatorio -> Esto fueza a que unity agregue 
@@ -8,11 +9,12 @@ using UnityEngine;
 public class SoundEffectController : MonoBehaviour, IListenable
 {
     #region IListenable_Properties
-    // El audio quedar� asignado por inspector
-    public AudioClip AudioClip => _audioClip;
-    /// SerializeField nos permite exponer una propiedad privada en el inspector
-    [SerializeField] private AudioClip _audioClip;
 
+    public AudioClip AudioClip => _soundTrackClip;
+    /// SerializeField nos permite exponer una propiedad privada en el inspector
+    [SerializeField] private AudioClip _soundTrackClip;
+    [SerializeField] private AudioClip _victoryClip;
+    [SerializeField] private AudioClip _defeatClip;
     public AudioSource AudioSource => _audioSource;
     private AudioSource _audioSource;
     #endregion
@@ -37,27 +39,21 @@ public class SoundEffectController : MonoBehaviour, IListenable
     #endregion
 
     #region Unity_Events
-    // Start is called before the first frame update
+
     void Start()
     {
         InitAudioSource();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Al presionar una tecla le damos play al audio clip
-        if (Input.GetKeyDown(KeyCode.O)) PlayOnShot(_audioClip);
-        if (Input.GetKeyDown(KeyCode.P)) Play();
+        Play();
+        EventsManager.instance.OnGameOver += OnGameOver;
     }
     #endregion
     
     #region GameOver
-
+    
     private void OnGameOver(bool isVictory)
     {
-        if (isVictory) PlayOnShot(_audioClip); //VictoryTheme
-        else           PlayOnShot(_audioClip); //DefeatTheme
+        if (isVictory) PlayOnShot(_victoryClip); //VictoryTheme
+        else           PlayOnShot(_defeatClip); //DefeatTheme
     }
     
     #endregion

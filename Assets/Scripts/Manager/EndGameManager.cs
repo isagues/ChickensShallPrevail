@@ -14,8 +14,7 @@ namespace Manager
         private void Start()
         {
             _background.sprite = GlobalData.instance.IsVictory ? _victorySprite : _defeatSprite;
-
-            String name = inputName.text;
+            
         }
     }
 }
