@@ -68,11 +68,12 @@ namespace Manager
         private void GenerateNewEnemy(int lane, EnemyType enemyType)
         {
             Vector3 newPosition = transform.position;
-            newPosition.x = newPosition.x + lane * GeneratorDistance;
+            newPosition.x += lane * GeneratorDistance;
+         
             if (enemies.ContainsKey(enemyType))
             {
                 var enemy = Instantiate(enemies[enemyType], newPosition, transform.rotation);
-                enemy.name = "monstro";
+                enemy.name = enemyType.ToString();
             }
             else
             {

@@ -15,9 +15,15 @@ namespace Entities
         {
             levelGeneratorParamsQueue = new Queue<EnemySpawnParams>();
             levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(0, 0, EnemyType.RedSlime));
-            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(1, 5, EnemyType.BlueSlime));
-            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(2, 10, EnemyType.RedSlime));
-            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(3, 15, EnemyType.BlueSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(1, 2, EnemyType.BlueSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(2, 4, EnemyType.RedSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(3, 6, EnemyType.BlueSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(4, 8, EnemyType.RedSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(5, 10, EnemyType.BlueSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(0, 12, EnemyType.RedSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(1, 14, EnemyType.BlueSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(2, 16, EnemyType.RedSlime));
+            levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(3, 18, EnemyType.BlueSlime));
             levelGeneratorParamsQueue.Enqueue(new EnemySpawnParams(4, 20, EnemyType.RedSlime));
         }
     }

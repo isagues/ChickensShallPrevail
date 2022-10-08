@@ -12,7 +12,7 @@ namespace Controller
         [SerializeField] private AudioClip _victoryClip;
         [SerializeField] private AudioClip _defeatClip;
 
-        private void Start()
+        private new void Start()
         {
             if (GlobalData.instance.IsVictory) SetAudioClip(_victoryClip);
             else SetAudioClip(_defeatClip);
