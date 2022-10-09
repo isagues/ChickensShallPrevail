@@ -2302,7 +2302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4063552230360950
 Transform:
   m_ObjectHideFlags: 0
@@ -2378,7 +2378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 6641143064160285880, guid: 8121f7c34d22a45799cef02b22dc61b0, type: 3}
-  _cost: 0
+  _turretType: 1
+  _cost: 50
   period: 0.001
 --- !u!1 &1956949540428108
 GameObject:

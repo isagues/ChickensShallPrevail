@@ -7,7 +7,7 @@ namespace Flyweight
     [CreateAssetMenu(fileName = "ActorStats", menuName = "Stats/Actor", order = 0)]
     public class ActorStats : ScriptableObject
     {
-        [SerializeField] private StatValues _statValues;
+        [SerializeField] private ActorStatValues _statValues;
 
         public int MaxLife => _statValues.MaxLife;
         public float MovementSpeed => _statValues.MovementSpeed;
@@ -15,7 +15,7 @@ namespace Flyweight
     }
 
     [System.Serializable]
-    public struct StatValues
+    public struct ActorStatValues
     {
         public int MaxLife;
         public float MovementSpeed;

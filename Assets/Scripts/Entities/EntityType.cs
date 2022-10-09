@@ -6,6 +6,13 @@
         RedSlime
     }
     
+    
+    public enum TurretType
+    {
+        BlueTurret,
+        BlackTurret
+    }
+    
     public enum CollectableType
     {
         Egg

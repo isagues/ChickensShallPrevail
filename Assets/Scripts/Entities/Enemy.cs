@@ -7,7 +7,7 @@ public class Enemy: MonoBehaviour, IEnemy
     
     [SerializeField] private int _damage = 1;
     [SerializeField] private List<int> _damageableLayerMask;
-    
+
     private Rigidbody _rigidBody;
     private Collider _collider;
     private IDamageable _damageable;

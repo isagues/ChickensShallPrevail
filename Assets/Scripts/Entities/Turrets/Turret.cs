@@ -1,6 +1,7 @@
 
 using System;
 using Command;
+using Entities;
 using Manager;
 using UnityEngine;
 
@@ -11,6 +12,9 @@ public class Turret : MonoBehaviour, ITurret
     [SerializeField] protected GameObject _bulletPrefab;
     private IDamageable _damageable;
     protected Collider _collider;
+
+     public TurretType TurretType => _turretType;
+     [SerializeField] private TurretType _turretType;
 
     public int Cost => _cost;
     [SerializeField] private int _cost;

@@ -27,6 +27,8 @@ namespace Manager
         #region GAME_MANAGE
         public event Action<bool> OnGameOver;
         public event Action<float, float> OnCharacterLifeChange;
+        public event Action<Turret> OnTurretChange; 
+        
         private Dictionary<CollectableType, Action<int>> OnCollectableChange;
 
         public void EventGameOver(bool isVictory)
@@ -39,11 +41,17 @@ namespace Manager
             OnCharacterLifeChange?.Invoke(currentLife, maxLife);
         }
         
+        public void TurretChange(Turret turret)
+        {
+            Debug.Log("changing to turret" + turret.TurretType);
+            OnTurretChange?.Invoke(turret);
+        }
+        
         public void CollectableChange(CollectableType type, int currentValue)
         {
             OnCollectableChange[type].Invoke(currentValue);
         }
-
+        
         public void AddOnCollectableChangeHandler(CollectableType type, Action<int> handler)
         {
             OnCollectableChange[type] += handler;

@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
 
     private MovementController _movementController;
     private CollectorController _collectorController;
+    
     [SerializeField] private List<Turret> _turrets;
     private Turret _currentTurret;
     
@@ -80,5 +81,7 @@ public class Character : MonoBehaviour
     {
         foreach (var gun in _turrets) gun.gameObject.SetActive(false);
         _currentTurret = _turrets[index];
+        EventsManager.instance.TurretChange(_currentTurret);
+        
     }
 }

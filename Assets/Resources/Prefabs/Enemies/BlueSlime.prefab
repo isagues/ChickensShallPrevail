@@ -770,7 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71f2af0dafb433cb7869162ddfd1266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: d4408c474d4a55646a347bb85e682b89, type: 2}
+  _actorStats: {fileID: 11400000, guid: 041b0d32fe8f6614a8a6a80268802606, type: 2}
 --- !u!114 &6937559344655455312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: d4408c474d4a55646a347bb85e682b89, type: 2}
+  _actorStats: {fileID: 11400000, guid: 041b0d32fe8f6614a8a6a80268802606, type: 2}
   _currentLife: 25
 --- !u!114 &4950993481248968523
 MonoBehaviour:
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3876caebaee94f3eb42335115513acc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
+  _damage: 10
   _damageableLayerMask: 00000000
 --- !u!1 &5297739214040648687
 GameObject:
