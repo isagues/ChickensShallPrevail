@@ -17,6 +17,10 @@ namespace Controller
             transform.Rotate(rotation * Vector3.up);
             transform.Translate(Vector3.forward * (Time.deltaTime * Speed));
         }
-            
+
+        public void TravelToTarget(Vector3 target)
+        {
+            throw new System.Exception("PLOP");
+        }
     }
 }

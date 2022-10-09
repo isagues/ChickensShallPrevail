@@ -1,7 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// AL momento de creacion de la bala, si no existen los componentes los agrega
 [RequireComponent(typeof(Rigidbody), typeof(Collider), typeof(IAutoMove))]
 public class Bullet: MonoBehaviour, IBullet
 {
@@ -17,11 +17,11 @@ public class Bullet: MonoBehaviour, IBullet
     [SerializeField] private Collider _collider;
     
     public IAutoMove AutoMove => _autoMoveController;
-    [SerializeField] private IAutoMove _autoMoveController;
+    [SerializeField] protected IAutoMove _autoMoveController;
 
     [SerializeField] private List<int> layerTarget;
-
-    private void Start()
+    
+    protected virtual void Start()
     {
         _rigidBody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
@@ -43,7 +43,7 @@ public class Bullet: MonoBehaviour, IBullet
         Destroy(this.gameObject);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         _lifeTime -= Time.deltaTime;
         if(_lifeTime <= 0) Destroy(this.gameObject);

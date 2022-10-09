@@ -10,7 +10,7 @@ public class Turret : MonoBehaviour, ITurret
     
     [SerializeField] protected GameObject _bulletPrefab;
     private IDamageable _damageable;
-    private Collider _collider;
+    protected Collider _collider;
 
     public int Cost => _cost;
     [SerializeField] private int _cost;
@@ -33,14 +33,14 @@ public class Turret : MonoBehaviour, ITurret
         bullet.name = "Bala Turret";
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         _damageable = GetComponent<IDamageable>();
         _collider = GetComponent<Collider>();
         _cmdAttack = new CmdAttack(this);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(Time.time > nextShotTime ) {
             nextShotTime += period;

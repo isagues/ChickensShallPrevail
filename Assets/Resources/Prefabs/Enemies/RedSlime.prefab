@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 8794162042851104228}
   - component: {fileID: -8527996926705360521}
   - component: {fileID: 475625438877216717}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RedSlime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
