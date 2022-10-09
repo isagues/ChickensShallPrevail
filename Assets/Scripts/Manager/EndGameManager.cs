@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Manager
@@ -13,8 +14,7 @@ namespace Manager
         private InputField inputName;
         private void Start()
         {
-            _background.sprite = GlobalData.instance.IsVictory ? _victorySprite : _defeatSprite;
-            
+            GetComponent<Image>().sprite = GlobalData.instance.IsVictory ? _victorySprite : _defeatSprite;
         }
     }
 }

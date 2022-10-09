@@ -14,10 +14,8 @@ namespace Controller
 
         private new void Start()
         {
-            if (GlobalData.instance.IsVictory) SetAudioClip(_victoryClip);
-            else SetAudioClip(_defeatClip);
+            SetAudioClip(GlobalData.instance.IsVictory ? _victoryClip : _defeatClip);
             base.Start();
-
         }
     }
 }
