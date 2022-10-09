@@ -27,7 +27,7 @@ namespace Manager
 
         #region GAME_MANAGE
         public event Action<bool>                   OnGameOver;
-        public event Action<float, float>           OnCharacterLifeChange;
+        public event Action<float, float>           OnFarmLifeChange;
         public event Action<Turret>                 OnTurretChange;
         public event Action<EnemyType, GameObject>  OnEnemySpawn;
         public event Action<int>                    OnEnemyKilled;
@@ -39,9 +39,9 @@ namespace Manager
             OnGameOver?.Invoke(isVictory);
         }
         
-        public void CharacterLifeChange(float currentLife, float maxLife)
+        public void FarmLifeChange(float currentLife, float maxLife)
         {
-            OnCharacterLifeChange?.Invoke(currentLife, maxLife);
+            OnFarmLifeChange?.Invoke(currentLife, maxLife);
         }
         
         public void TurretChange(Turret turret)

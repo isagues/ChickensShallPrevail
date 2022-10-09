@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Command;
 using Manager;
 using UnityEngine;
@@ -10,26 +12,25 @@ namespace Entities.Turrets
         [SerializeField] protected GameObject bulletPrefab;
         private IDamageable _damageable;
         private Collider _collider;
-
+        
+        [SerializeField] private List<int> _damageableLayerMask;
         public TurretType TurretType => turretType;
         [SerializeField] private TurretType turretType;
-
-        public int Cost => cost;
         [SerializeField] private int cost;
-        
-        public float Period => period;
         [SerializeField] private float period;
         
         private float _nextShotTime = 0;
     
         #region ACCESORS
+        public int Cost => cost;
+        public float Period => period;
         public GameObject BulletPrefab => bulletPrefab;
         public IDamageable Damageable => _damageable;
         public Collider Collider => _collider;
-    
+        
         private CmdAttack _cmdAttack;
         #endregion
-    
+        
         public virtual void Attack()
         {
             var height = _collider.bounds.size.y / 4;

@@ -28,10 +28,8 @@ namespace Manager{
             {
                 var objectType = thisObject.GetType().Name;
                 if (objectType != "Sprite") continue;
-                Debug.Log(thisObject.name);
                 if (Enum.TryParse(thisObject.name, true, out TurretType type))
                 {
-                    Debug.Log(type + " " + (Sprite)thisObject);
                     turretSprites.Add(type, (Sprite)thisObject);
                 }
             }
@@ -40,7 +38,7 @@ namespace Manager{
         {
             turretSprites = new Dictionary<TurretType, Sprite>();
             LoadTurretImages();
-            EventsManager.instance.OnCharacterLifeChange += UpdateLifeBar;
+            EventsManager.instance.OnFarmLifeChange += UpdateLifeBar;
             EventsManager.instance.OnTurretChange += OnTurretChange;
             EventsManager.instance.AddOnCollectableChangeHandler(CollectableType.Egg, OnCollectableChange);
         }

@@ -29,13 +29,11 @@ public class Character : MonoBehaviour
     
     [SerializeField] private KeyCode _setVictory = KeyCode.V;
     [SerializeField] private KeyCode _setDefeat = KeyCode.L;
-    [SerializeField] private KeyCode _takeDamage = KeyCode.T;
-    
+
     private CmdMovement _cmdMoveForward; 
     private CmdMovement _cmdMoveBackward;
     private CmdRotation _cmdRotateRight;
     private CmdRotation _cmdRotateLeft;
-    private CmdApplyDamage _cmdApplyDamage;
     void Start()
     {
         _movementController = GetComponent<MovementController>();
@@ -45,8 +43,7 @@ public class Character : MonoBehaviour
         _cmdMoveBackward = new CmdMovement(_movementController, -Vector3.forward);
         _cmdRotateRight = new CmdRotation(_movementController, Vector3.up);
         _cmdRotateLeft = new CmdRotation(_movementController, -Vector3.up);
-        _cmdApplyDamage = new CmdApplyDamage(GetComponent<IDamageable>(), 5);
-        
+
         ChangeTurret(0);
     }
 
@@ -59,8 +56,7 @@ public class Character : MonoBehaviour
         if (Input.GetKey(_moveLeft)) EventQueueManager.instance.AddCommand(_cmdRotateLeft);
         if (Input.GetKeyDown(_setVictory)) EventsManager.instance.EventGameOver(true);
         if (Input.GetKeyDown(_setDefeat)) EventsManager.instance.EventGameOver(false);
-        if (Input.GetKeyDown(_takeDamage)) EventQueueManager.instance.AddCommand(_cmdApplyDamage);
-        
+
         if (Input.GetKeyDown(_deploy)) DeployTurret();
 
         if(Input.GetKey(_weaponSlot1)) ChangeTurret(0);

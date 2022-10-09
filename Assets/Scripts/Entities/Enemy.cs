@@ -27,12 +27,21 @@ namespace Entities
 
         private void OnCollisionStay(Collision collision)
         {
-            if (!damageableLayerMask.Contains(collision.gameObject.layer)) return;
-        
+            int layer = collision.gameObject.layer;
+            if (!damageableLayerMask.Contains(layer) || layer == 14) return;
             var damageable = collision.gameObject.GetComponent<IDamageable>();
             damageable?.TakeDamage(Damage);
         }
-        
+
+        private void OnTriggerEnter(Collider other)
+        {
+            int layer = other.gameObject.layer;
+            if (!damageableLayerMask.Contains(layer) && layer != 14) return;
+            var damageable = other.gameObject.GetComponent<IDamageable>();
+            damageable?.TakeDamage(Damage * 3);
+            Destroy(gameObject);
+        }
+
         private void Start()
         {
             _rigidBody = GetComponent<Rigidbody>();
