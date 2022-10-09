@@ -7,9 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class UIButtonLogic : MonoBehaviour
 {
-    public void LoadMenuScene(SoundEffectController soundEffectController)
+    public void LoadMenuScene()
     {
-        soundEffectController.Stop();
         SceneManager.LoadScene("MainMenu");
     }
 

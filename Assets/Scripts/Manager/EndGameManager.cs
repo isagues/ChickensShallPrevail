@@ -7,14 +7,17 @@ namespace Manager
 {
     public class EndGameManager : MonoBehaviour
     {
-        [SerializeField] private Image _background;
-        [SerializeField] private Sprite _victorySprite;
-        [SerializeField] private Sprite _defeatSprite;
+        [SerializeField] private String _victoryText;
+        [SerializeField] private String _defeatText;
+        [SerializeField] private Color _victoryColor;
+        [SerializeField] private Color _defeatColor;
 
         private InputField inputName;
         private void Start()
         {
-            GetComponent<Image>().sprite = GlobalData.instance.IsVictory ? _victorySprite : _defeatSprite;
+            var endText = GetComponent<Text>();
+            endText.text = GlobalData.instance.IsVictory ? _victoryText : _defeatText;
+            endText.color = GlobalData.instance.IsVictory ? _victoryColor : _defeatColor;
         }
     }
 }
