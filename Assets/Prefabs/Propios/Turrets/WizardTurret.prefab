@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WizardTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 1248815240492774, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4463868907105534, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -55,5 +59,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2082601360938242848, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}
+    m_RemovedComponents:
+    - {fileID: 2082601360938242848, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+    - {fileID: 5685285466172480620, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+    - {fileID: -6400776756204365946, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+--- !u!1 &4453880044340773093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1248815240492774, guid: ccd8c3b89aa02e943a08ab9238a8a70c, type: 3}
+  m_PrefabInstance: {fileID: 4452709311766771203}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2510087853118930911
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453880044340773093}
+  serializedVersion: 2
+  m_Mass: 100
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
