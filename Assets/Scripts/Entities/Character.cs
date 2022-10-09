@@ -68,7 +68,7 @@ public class Character : MonoBehaviour
         if (!_collectorController.Expend(CollectableType.Egg, _currentTurret.Cost)) return;
         
         // Se crea en la posicion y direccion del character.
-        var turret = Instantiate(_currentTurret, transform.position, transform.rotation);
+        var turret = Instantiate(_currentTurret, transform.position + 2*Vector3.forward, transform.rotation);
         turret.name = _currentTurret.name;
         turret.transform.parent = GameObject.Find("Turrets").transform;
         turret.gameObject.SetActive(true);
