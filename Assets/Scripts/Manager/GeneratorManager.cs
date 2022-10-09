@@ -79,6 +79,7 @@ namespace Manager
             {
                 var enemy = Instantiate(_enemyPrefabs[enemyType], newPosition, transform.rotation);
                 enemy.name = enemyType.ToString();
+                enemy.transform.parent = GameObject.Find("Enemies").transform;
                 EventsManager.instance.EnemySpawn(enemyType, enemy);
             }
 

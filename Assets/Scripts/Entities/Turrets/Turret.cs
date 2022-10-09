@@ -36,6 +36,7 @@ namespace Entities.Turrets
             var t = transform;
             var bullet = Instantiate(bulletPrefab, t.position + Vector3.up * height, t.rotation);
             bullet.name = bulletPrefab.name;
+            bullet.transform.parent = transform;
         }
 
         protected virtual void Start()

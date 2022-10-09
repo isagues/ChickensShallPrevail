@@ -54,6 +54,7 @@ namespace Entities
         {
             var turret = Instantiate(_eggPrefab, transform.position, transform.rotation);
             turret.name = CollectableType.Egg.ToString();
+            turret.transform.parent = GameObject.Find("Eggs").transform;
         }
 
         private void OnTriggerEnter(Collider other)
