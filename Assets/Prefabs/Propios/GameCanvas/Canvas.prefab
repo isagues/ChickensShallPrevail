@@ -131,9 +131,9 @@ MonoBehaviour:
   _avatar: {fileID: 8823437825552893988}
   _egg: {fileID: 8823437825875818516}
   _eggAmout: {fileID: 8823437825308988394}
-  _turretType: {fileID: 8823437825406725263}
-  _turretName: {fileID: 8823437826777526433}
-  _turretCost: {fileID: 5902598089943848252}
+  _deployeableType: {fileID: 8823437825406725263}
+  _deployeableName: {fileID: 8823437826777526433}
+  _deployeableCost: {fileID: 5902598089943848252}
 --- !u!1 &8823437824871346524
 GameObject:
   m_ObjectHideFlags: 0

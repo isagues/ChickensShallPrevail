@@ -21,19 +21,21 @@ namespace Entities
         [SerializeField] private float period;
 
         private CmdDeploy _cmdDeploy;
-
+        
         [SerializeField] private List<int> layerTarget;
-
+        
+        [SerializeField] private DeployeableType _deployeableType;
+        [SerializeField] private int cost;
         #region ACCESORS
-
+        public DeployeableType DeployeableType => _deployeableType;
+        public int Cost => cost;
         public GameObject BulletPrefab => _eggPrefab;
         public Collider Collider => _collider;
         public Rigidbody Rigidbody => _rigidBody;
         public IAutoMove AutoMove => _autoMoveController;
 
         #endregion
-
-
+        
         private void Start()
         {
             _rigidBody = GetComponent<Rigidbody>();

@@ -1343,9 +1343,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f09007d9a24b619d94d6efbf8135c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turrets:
-  - {fileID: 4612001841285630718, guid: 1721367e3fd32418eb16e8deb661ce00, type: 3}
-  - {fileID: 7830433311923617048, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
+  _deployeables:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _moveFoward: 119
   _moveBack: 115
   _moveRight: 100
@@ -1355,7 +1356,6 @@ MonoBehaviour:
   _weaponSlot2: 50
   _setVictory: 118
   _setDefeat: 108
-  _takeDamage: 116
 --- !u!114 &1317702935
 MonoBehaviour:
   m_ObjectHideFlags: 0

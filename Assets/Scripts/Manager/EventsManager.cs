@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Entities;
 using Entities.Turrets;
+using Interface;
 using UnityEngine;
 using Utils;
 
@@ -28,7 +29,7 @@ namespace Manager
         #region GAME_MANAGE
         public event Action<bool>                   OnGameOver;
         public event Action<float, float>           OnFarmLifeChange;
-        public event Action<Turret>                 OnTurretChange;
+        public event Action<Deployeable>            OnDeployableChange;
         public event Action<EnemyType, GameObject>  OnEnemySpawn;
         public event Action<int>                    OnEnemyKilled;
         
@@ -44,9 +45,9 @@ namespace Manager
             OnFarmLifeChange?.Invoke(currentLife, maxLife);
         }
         
-        public void TurretChange(Turret turret)
+        public void DeployableChange(Deployeable deployeable)
         {
-            OnTurretChange?.Invoke(turret);
+            OnDeployableChange?.Invoke(deployeable);
         }
         
         public void CollectableChange(CollectableType type, int currentValue)

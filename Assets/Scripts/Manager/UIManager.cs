@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Entities;
 using Entities.Turrets;
+using Interface;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,33 +14,33 @@ namespace Manager{
         [SerializeField] private Image _avatar;
         [SerializeField] private Image _egg;
         [SerializeField] private Text _eggAmout;
-        [SerializeField] private Image _turretType;
-        [SerializeField] private Text _turretName;
-        [SerializeField] private Text _turretCost;
+        [SerializeField] private Image _deployeableType;
+        [SerializeField] private Text _deployeableName;
+        [SerializeField] private Text _deployeableCost;
         
-        private Dictionary<TurretType, Sprite> turretSprites;
+        private Dictionary<DeployeableType, Sprite> deployeableSprites;
         
         private float _characterCurrentLife;
         
-        void LoadTurretImages()
+        void LoadDeployeablesImages()
         {
-            var resources = Resources.LoadAll("Sprites/Turrets");
+            var resources = Resources.LoadAll("Sprites/Deployeables");
             foreach (var thisObject in resources)
             {
                 var objectType = thisObject.GetType().Name;
                 if (objectType != "Sprite") continue;
-                if (Enum.TryParse(thisObject.name, true, out TurretType type))
+                if (Enum.TryParse(thisObject.name, true, out DeployeableType type))
                 {
-                    turretSprites.Add(type, (Sprite)thisObject);
+                    deployeableSprites.Add(type, (Sprite)thisObject);
                 }
             }
         }
         private void Start()
         {
-            turretSprites = new Dictionary<TurretType, Sprite>();
-            LoadTurretImages();
+            deployeableSprites = new Dictionary<DeployeableType, Sprite>();
+            LoadDeployeablesImages();
             EventsManager.instance.OnFarmLifeChange += UpdateLifeBar;
-            EventsManager.instance.OnTurretChange += OnTurretChange;
+            EventsManager.instance.OnDeployableChange += OnDeployableChange;
             EventsManager.instance.AddOnCollectableChangeHandler(CollectableType.Egg, OnCollectableChange);
         }
 
@@ -48,11 +49,11 @@ namespace Manager{
             _eggAmout.text = $"{currentCoins}";
         }
 
-        private void OnTurretChange(Turret turret)
+        private void OnDeployableChange(Deployeable deployeable)
         {
-            _turretType.sprite = turretSprites[turret.TurretType];
-            _turretName.text = $"{turret.TurretType}";
-            _turretCost.text = $"{turret.Cost}";
+            _deployeableType.sprite = deployeableSprites[deployeable.DeployeableType];
+            _deployeableName.text = $"{deployeable.DeployeableType}";
+            _deployeableCost.text = $"{deployeable.Cost}";
         }
         
         private void UpdateLifeBar(float currentLife, float maxLife)

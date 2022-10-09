@@ -664,6 +664,7 @@ GameObject:
   - component: {fileID: 7452629425188518602}
   - component: {fileID: 7452629425188518601}
   - component: {fileID: 2516782261590013901}
+  - component: {fileID: -4933708417884875041}
   m_Layer: 0
   m_Name: POYACO
   m_TagString: Untagged
@@ -768,3 +769,19 @@ MonoBehaviour:
   _collider: {fileID: 0}
   period: 10
   layerTarget: 
+  _deployeableType: 0
+  cost: 0
+--- !u!114 &-4933708417884875041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7452629425188518197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b408d020117d4a9f9fb2c86b4465b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deployeableType: 0
+  cost: 20

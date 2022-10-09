@@ -6,8 +6,9 @@
         RedSlime
     }
     
-    public enum TurretType
+    public enum DeployeableType
     {
+        Chicken,
         BlueTurret,
         BlackTurret
     }

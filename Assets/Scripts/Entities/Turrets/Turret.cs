@@ -1,28 +1,27 @@
 using System;
 using System.Collections.Generic;
 using Command;
+using Interface;
 using Manager;
 using UnityEngine;
+using Quaternion = System.Numerics.Quaternion;
 
 namespace Entities.Turrets
 {
     [RequireComponent(typeof(Collider))]
-    public class Turret : MonoBehaviour, ITurret 
+    public class Turret : MonoBehaviour, ITurret
     {
         [SerializeField] protected GameObject bulletPrefab;
         private IDamageable _damageable;
         private Collider _collider;
         
         [SerializeField] private List<int> _damageableLayerMask;
-        public TurretType TurretType => turretType;
-        [SerializeField] private TurretType turretType;
-        [SerializeField] private int cost;
+
         [SerializeField] private float period;
         
         private float _nextShotTime = 0;
-    
+
         #region ACCESORS
-        public int Cost => cost;
         public float Period => period;
         public GameObject BulletPrefab => bulletPrefab;
         public IDamageable Damageable => _damageable;

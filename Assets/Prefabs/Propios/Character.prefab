@@ -50,6 +50,22 @@ PrefabInstance:
       propertyPath: _turrets.Array.data[1]
       value: 
       objectReference: {fileID: 7830433311923617048, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
+    - target: {fileID: 1317702933, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: _deployeables.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317702933, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: _deployeables.Array.data[0]
+      value: 
+      objectReference: {fileID: -4933708417884875041, guid: a6b77e6f3b5e948788d81ac1e73d6552, type: 3}
+    - target: {fileID: 1317702933, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: _deployeables.Array.data[1]
+      value: 
+      objectReference: {fileID: 950961179484411005, guid: ced2a4fc62bf040609f0f65baec73161, type: 3}
+    - target: {fileID: 1317702933, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: _deployeables.Array.data[2]
+      value: 
+      objectReference: {fileID: 3526451375443967728, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
     - target: {fileID: 1317702936, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_Constraints
       value: 116
