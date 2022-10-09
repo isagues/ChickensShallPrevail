@@ -1,0 +1,15 @@
+{
+  "enemySpawnPlan":
+  [ {"lane": 0, "time": 0,  "enemyType": "RedSlime"}
+  , {"lane": 1, "time": 2,  "enemyType": "BlueSlime"}
+  , {"lane": 2, "time": 4,  "enemyType": "RedSlime"}
+  , {"lane": 3, "time": 6,  "enemyType": "BlueSlime"}
+  , {"lane": 4, "time": 8,  "enemyType": "RedSlime"}
+  , {"lane": 2, "time": 10, "enemyType": "BlueSlime"}
+  , {"lane": 0, "time": 12, "enemyType": "RedSlime"}
+  , {"lane": 1, "time": 14, "enemyType": "BlueSlime"}
+  , {"lane": 2, "time": 16, "enemyType": "RedSlime"}
+  , {"lane": 3, "time": 18, "enemyType": "BlueSlime"}
+  , {"lane": 4, "time": 20, "enemyType": "RedSlime"}
+  ]
+}

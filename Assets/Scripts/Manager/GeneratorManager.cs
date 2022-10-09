@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Entities;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Manager
 {
@@ -17,24 +16,25 @@ namespace Manager
         public float LaneCount => laneCount;
 
         [SerializeField] 
+        private int level;
+
         private LevelPlan _levelPlan;
-        
-        public Queue<EnemySpawnParams> EnemySpawnQueue => _levelPlan.levelGeneratorParamsQueue;
-        
-        
+
         private void Awake()
         {
             if (instance != null) Destroy(this);
             instance = this;
         }
 
-        void Start()
+        private void Start()
         {
             enemies = new Dictionary<EnemyType, GameObject>();
             LoadPrefabs();
+            
+            _levelPlan = JsonUtility.FromJson<LevelPlan>(Resources.Load<TextAsset>($"Levels/level{level}").text);
         }
 
-        void LoadPrefabs()
+        private void LoadPrefabs()
         {
             var resources = Resources.LoadAll("Prefabs/Enemies");
             foreach (var thisObject in resources)
@@ -51,24 +51,18 @@ namespace Manager
         
         private void Update()
         {
-            while (EnemySpawnQueue.Count > 0)
+            var time = Time.time;
+            while (_levelPlan.IsSpawnTime(time))
             {
-                if (Time.time > EnemySpawnQueue.Peek().time)
-                {
-                    EnemySpawnParams enemySpawnParams = EnemySpawnQueue.Dequeue();
-                    GenerateNewEnemy(enemySpawnParams.lane, enemySpawnParams.enemyType);
-                }
-                else
-                {
-                    break;
-                }
+                var enemySpawnParams = _levelPlan.PopEnemySpawnParam();
+                GenerateNewEnemy(enemySpawnParams.lane, enemySpawnParams.enemyType);
             }
         }
 
         private void GenerateNewEnemy(int lane, EnemyType enemyType)
         {
-            Vector3 newPosition = transform.position;
-            float width = GetComponent<Renderer>().bounds.size.x;
+            var newPosition = transform.position;
+            var width = GetComponent<Renderer>().bounds.size.x;
             if (lane >= laneCount) throw new Exception($"Lane out of bounds, max lane is {laneCount}");
             newPosition.x += Mathf.Lerp( -width/2, width/2, lane / laneCount); 
          

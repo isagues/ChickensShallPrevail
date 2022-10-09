@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laneCount: 5
+  level: 1
 --- !u!1 &7353123580268095416
 GameObject:
   m_ObjectHideFlags: 0
