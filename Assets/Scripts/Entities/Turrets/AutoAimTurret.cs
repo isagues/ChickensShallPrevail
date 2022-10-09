@@ -11,7 +11,6 @@ namespace Entities.Turrets
         {
             base.Start();
 
-            Debug.Log(_bulletPrefab.GetComponent<IBullet>().GetType());
             if (_bulletPrefab.GetComponent<IBullet>().GetType() != typeof(LockedOnBullet))
                 throw new ArgumentException("Invalid bullet type. Required LockedOnBullet");
 
