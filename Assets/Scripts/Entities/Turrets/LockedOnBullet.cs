@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Manager;
 using UnityEngine;
 using Utils;
@@ -8,8 +6,10 @@ namespace Entities.Turrets
 {
     public class LockedOnBullet : Bullet
     {
-        [SerializeField] private GameObject target;
-        private OnDestroyPublisher onDestroyPublisher;
+        [SerializeField]
+        private GameObject          target;
+        private bool                _lockOn;
+        private OnDestroyPublisher  _onDestroyPublisher;
 
         protected override void Start()
         {
@@ -17,28 +17,41 @@ namespace Entities.Turrets
             target = VectorUtils.FindClosestByTag(transform.position, "Enemy");
             if (target is null)
             {
-                Destroy(gameObject);
-                return;
+                _lockOn = false;
             }
-            
-            onDestroyPublisher = OnDestroyPublisher.AttachPublisher(target);
-            onDestroyPublisher.OnDestroyAction += SelfDestruct;
+            else
+            {
+                _lockOn = true;
+                _onDestroyPublisher = OnDestroyPublisher.AttachPublisher(target);
+                _onDestroyPublisher.OnDestroyAction += LockOff;
+            }
         }
 
+        private void LockOff()
+        {
+            _lockOn = false;
+        }
+
+        protected new void Update()
+        {
+            if (_lockOn)
+            {
+                AutoMove.TravelToTarget(target.transform.position);
+            }
+            else
+            {
+                AutoMove.Travel();
+            }
+
+            UpdateLifetime();
+        }
+        
         public void OnDestroy()
         {
-            onDestroyPublisher.OnDestroyAction -= SelfDestruct;
-        }
-
-        private void SelfDestruct()
-        {
-            Destroy(gameObject);
-        }
-
-        protected override void Update()
-        {
-            // if (target == null) Destroy(this.gameObject);
-            _autoMoveController.TravelToTarget(target.transform.position);
+            if (_lockOn)
+            {
+                _onDestroyPublisher.OnDestroyAction -= LockOff;
+            }
         }
     }
 }

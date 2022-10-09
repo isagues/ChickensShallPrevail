@@ -2302,7 +2302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4063552230360950
 Transform:
   m_ObjectHideFlags: 0
@@ -2374,12 +2374,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1953271650171834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf1f1e7e5694c4596e85bd2fc75a3e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 404385e493f34ddead834e93d9efae93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 6641143064160285880, guid: 8121f7c34d22a45799cef02b22dc61b0, type: 3}
-  _cost: 0
-  period: 0.001
+  bulletPrefab: {fileID: 6641143064160285880, guid: 8121f7c34d22a45799cef02b22dc61b0, type: 3}
+  _damageableLayerMask: 00000000
+  turretType: 1
+  cost: 0
+  period: 1
 --- !u!1 &1956949540428108
 GameObject:
   m_ObjectHideFlags: 0

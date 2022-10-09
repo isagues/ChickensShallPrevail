@@ -1,53 +1,55 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(Collider), typeof(IAutoMove))]
-public class Bullet: MonoBehaviour, IBullet
+namespace Entities.Turrets
 {
-    public int Damage => _damage;
-    [SerializeField] private int _damage = 10;
-    
-    public float LifeTime => _lifeTime;
-    [SerializeField] private float _lifeTime = 5;
-
-    public Rigidbody Rigidbody => _rigidBody;
-    [SerializeField] private Rigidbody _rigidBody;
-    public Collider Collider => _collider;
-    [SerializeField] private Collider _collider;
-    
-    public IAutoMove AutoMove => _autoMoveController;
-    [SerializeField] protected IAutoMove _autoMoveController;
-
-    [SerializeField] private List<int> layerTarget;
-    
-    protected virtual void Start()
+    [RequireComponent(typeof(Rigidbody), typeof(Collider), typeof(IAutoMove))]
+    public class Bullet: MonoBehaviour, IBullet
     {
-        _rigidBody = GetComponent<Rigidbody>();
-        _collider = GetComponent<Collider>();
-        _autoMoveController = GetComponent<IAutoMove>();
+        public int Damage => damage;
+        [SerializeField] private int damage = 10;
+    
+        public float LifeTime => lifeTime;
+        [SerializeField] private float lifeTime = 5;
 
-        _collider.isTrigger = true;
-        _rigidBody.useGravity = false;
-        _rigidBody.isKinematic = true; //Inafectable
-        _rigidBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-    }
+        public Rigidbody Rigidbody { get; private set; }
+        public Collider Collider { get; private set; }
+        protected IAutoMove AutoMove { get; private set; }
 
-    public void OnTriggerEnter(Collider otherCollider)
-    {
-        if (!layerTarget.Contains(otherCollider.gameObject.layer)) return;
-        
-        IDamageable damageable = otherCollider.GetComponent<IDamageable>();
-        damageable?.TakeDamage(_damage);
-        
-        Destroy(this.gameObject);
-    }
+        [SerializeField] private List<int> layerTarget;
+    
+        protected virtual void Start()
+        {
+            Rigidbody = GetComponent<Rigidbody>();
+            Collider = GetComponent<Collider>();
+            AutoMove = GetComponent<IAutoMove>();
 
-    protected virtual void Update()
-    {
-        _lifeTime -= Time.deltaTime;
-        if(_lifeTime <= 0) Destroy(this.gameObject);
+            Collider.isTrigger = true;
+            Rigidbody.useGravity = false;
+            Rigidbody.isKinematic = true; // Inafectable
+            Rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        }
+
+        public void OnTriggerEnter(Collider otherCollider)
+        {
+            if (!layerTarget.Contains(otherCollider.gameObject.layer)) return;
         
-        _autoMoveController.Travel();
+            var damageable = otherCollider.GetComponent<IDamageable>();
+            damageable?.TakeDamage(damage);
+        
+            Destroy(gameObject);
+        }
+
+        protected void UpdateLifetime()
+        {
+            lifeTime -= Time.deltaTime;
+            if(lifeTime <= 0) Destroy(gameObject);
+        }
+
+        protected void Update()
+        {
+            AutoMove.Travel();
+            UpdateLifetime();
+        }
     }
 }

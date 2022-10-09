@@ -7,8 +7,9 @@ namespace Manager
 {
     public class GeneratorManager : MonoBehaviour
     {
-        public static GeneratorManager instance;
-        public Dictionary<EnemyType, GameObject> enemies;
+        public static GeneratorManager Instance;
+        
+        private Dictionary<EnemyType, GameObject> _enemyPrefabs;
         
         [SerializeField] 
         private float laneCount;
@@ -19,19 +20,27 @@ namespace Manager
         private int level;
 
         private LevelPlan _levelPlan;
+        private int _enemyCount = 0;
+
+        private Renderer _renderer;
 
         private void Awake()
         {
-            if (instance != null) Destroy(this);
-            instance = this;
+            if (Instance != null) Destroy(this);
+            Instance = this;
         }
 
         private void Start()
         {
-            enemies = new Dictionary<EnemyType, GameObject>();
+            _renderer = GetComponent<Renderer>();
+            
+            _enemyPrefabs = new Dictionary<EnemyType, GameObject>();
             LoadPrefabs();
             
             _levelPlan = JsonUtility.FromJson<LevelPlan>(Resources.Load<TextAsset>($"Levels/level{level}").text);
+
+            EventsManager.instance.OnEnemySpawn  += OnEnemySpawn;
+            EventsManager.instance.OnEnemyKilled += OnEnemyKilled;
         }
 
         private void LoadPrefabs()
@@ -44,7 +53,7 @@ namespace Manager
 
                 if (Enum.TryParse(thisObject.name, true, out EnemyType type))
                 {
-                    enemies.Add(type, (GameObject)thisObject);
+                    _enemyPrefabs.Add(type, (GameObject)thisObject);
                 }
             }
         }
@@ -62,22 +71,33 @@ namespace Manager
         private void GenerateNewEnemy(int lane, EnemyType enemyType)
         {
             var newPosition = transform.position;
-            var width = GetComponent<Renderer>().bounds.size.x;
+            var width = _renderer.bounds.size.x;
             if (lane >= laneCount) throw new Exception($"Lane out of bounds, max lane is {laneCount}");
             newPosition.x += Mathf.Lerp( -width/2, width/2, lane / laneCount); 
          
-            if (enemies.ContainsKey(enemyType))
+            if (_enemyPrefabs.ContainsKey(enemyType))
             {
-                var enemy = Instantiate(enemies[enemyType], newPosition, transform.rotation);
+                var enemy = Instantiate(_enemyPrefabs[enemyType], newPosition, transform.rotation);
                 enemy.name = enemyType.ToString();
+                enemy.transform.parent = GameObject.Find("Enemies").transform;
+                EventsManager.instance.EnemySpawn(enemyType, enemy);
             }
-            else
+
+        }
+        
+        private void OnEnemySpawn(EnemyType _, GameObject __)
+        {
+            _enemyCount++;
+        }
+
+        private void OnEnemyKilled(int _)
+        {
+            _enemyCount--;
+            if (_enemyCount == 0 && _levelPlan.IsEmpty())
             {
-                // Debug.Log(enemyType.ToString() + " was not found");
+                EventsManager.instance.EventGameOver(true);
             }
             
         }
-
-        
     }
 }

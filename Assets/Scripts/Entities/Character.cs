@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Command;
 using Controller;
 using Entities;
+using Entities.Turrets;
 using Manager;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class Character : MonoBehaviour
 
     private MovementController _movementController;
     private CollectorController _collectorController;
+    
     [SerializeField] private List<Turret> _turrets;
     private Turret _currentTurret;
     
@@ -27,13 +29,11 @@ public class Character : MonoBehaviour
     
     [SerializeField] private KeyCode _setVictory = KeyCode.V;
     [SerializeField] private KeyCode _setDefeat = KeyCode.L;
-    [SerializeField] private KeyCode _takeDamage = KeyCode.T;
-    
+
     private CmdMovement _cmdMoveForward; 
     private CmdMovement _cmdMoveBackward;
     private CmdRotation _cmdRotateRight;
     private CmdRotation _cmdRotateLeft;
-    private CmdApplyDamage _cmdApplyDamage;
     void Start()
     {
         _movementController = GetComponent<MovementController>();
@@ -43,8 +43,7 @@ public class Character : MonoBehaviour
         _cmdMoveBackward = new CmdMovement(_movementController, -Vector3.forward);
         _cmdRotateRight = new CmdRotation(_movementController, Vector3.up);
         _cmdRotateLeft = new CmdRotation(_movementController, -Vector3.up);
-        _cmdApplyDamage = new CmdApplyDamage(GetComponent<IDamageable>(), 5);
-        
+
         ChangeTurret(0);
     }
 
@@ -57,8 +56,7 @@ public class Character : MonoBehaviour
         if (Input.GetKey(_moveLeft)) EventQueueManager.instance.AddCommand(_cmdRotateLeft);
         if (Input.GetKeyDown(_setVictory)) EventsManager.instance.EventGameOver(true);
         if (Input.GetKeyDown(_setDefeat)) EventsManager.instance.EventGameOver(false);
-        if (Input.GetKeyDown(_takeDamage)) EventQueueManager.instance.AddCommand(_cmdApplyDamage);
-        
+
         if (Input.GetKeyDown(_deploy)) DeployTurret();
 
         if(Input.GetKey(_weaponSlot1)) ChangeTurret(0);
@@ -71,14 +69,16 @@ public class Character : MonoBehaviour
         
         // Se crea en la posicion y direccion del character.
         var turret = Instantiate(_currentTurret, transform.position, transform.rotation);
-        turret.name = "Turret";
+        turret.name = _currentTurret.name;
+        turret.transform.parent = GameObject.Find("Turrets").transform;
         turret.gameObject.SetActive(true);
 
     }
 
     private void ChangeTurret(int index)
     {
-        foreach (var gun in _turrets) gun.gameObject.SetActive(false);
         _currentTurret = _turrets[index];
+        EventsManager.instance.TurretChange(_currentTurret);
+        
     }
 }

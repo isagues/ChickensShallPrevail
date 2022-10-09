@@ -1257,7 +1257,6 @@ GameObject:
   - component: {fileID: 1317702936}
   - component: {fileID: 1317702937}
   - component: {fileID: 1317702933}
-  - component: {fileID: 1317702934}
   - component: {fileID: 1317702935}
   - component: {fileID: 2727806428981686627}
   m_Layer: 12
@@ -1317,7 +1316,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &1317702937
 BoxCollider:
@@ -1345,30 +1344,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turrets:
-  - {fileID: 2082601360938242848, guid: 1721367e3fd32418eb16e8deb661ce00, type: 3}
+  - {fileID: 4612001841285630718, guid: 1721367e3fd32418eb16e8deb661ce00, type: 3}
+  - {fileID: 7830433311923617048, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
   _moveFoward: 119
   _moveBack: 115
   _moveRight: 100
   _moveLeft: 97
   _deploy: 101
   _weaponSlot1: 49
+  _weaponSlot2: 50
   _setVictory: 118
   _setDefeat: 108
   _takeDamage: 116
---- !u!114 &1317702934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066896392038628118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: cfe292c87c05ac841887e403bf03ae8b, type: 2}
-  _currentLife: 10
 --- !u!114 &1317702935
 MonoBehaviour:
   m_ObjectHideFlags: 0

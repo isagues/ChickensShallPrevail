@@ -743,7 +743,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 124
   m_CollisionDetection: 0
 --- !u!65 &5984592272283069756
 BoxCollider:
@@ -756,8 +756,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.49, z: 0}
+  m_Size: {x: 1.6973432, y: 1.8332212, z: 1.005691}
+  m_Center: {x: 0.007644117, y: 0.9066106, z: 0.002845645}
 --- !u!114 &7935520632403891958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -770,7 +770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71f2af0dafb433cb7869162ddfd1266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: d4408c474d4a55646a347bb85e682b89, type: 2}
+  _actorStats: {fileID: 11400000, guid: 041b0d32fe8f6614a8a6a80268802606, type: 2}
 --- !u!114 &6937559344655455312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: d4408c474d4a55646a347bb85e682b89, type: 2}
+  _actorStats: {fileID: 11400000, guid: 041b0d32fe8f6614a8a6a80268802606, type: 2}
   _currentLife: 25
 --- !u!114 &4950993481248968523
 MonoBehaviour:
@@ -797,8 +797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3876caebaee94f3eb42335115513acc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
-  _damageableLayerMask: 00000000
+  _damage: 10
+  _damageableLayerMask: 0e000000
 --- !u!1 &5297739214040648687
 GameObject:
   m_ObjectHideFlags: 0

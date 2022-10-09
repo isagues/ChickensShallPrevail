@@ -23,7 +23,7 @@ namespace Controller
 
             if (IsDead())
             {
-                if (name == "Sir Pipo") EventsManager.instance.EventGameOver(false);
+                if (name == "FArm") EventsManager.instance.EventGameOver(false);
                 Die();
             }
         }
@@ -43,7 +43,7 @@ namespace Controller
     
         public void UI_Updater() 
         { 
-            if(name == "Sir Pipo") EventsManager.instance.CharacterLifeChange(_currentLife, MaxLife);
+            if(name == "FArm") EventsManager.instance.FarmLifeChange(_currentLife, MaxLife);
         }
     }
 }
