@@ -6,7 +6,6 @@
         RedSlime
     }
     
-    
     public enum TurretType
     {
         BlueTurret,

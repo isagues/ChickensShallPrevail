@@ -722,8 +722,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404385e493f34ddead834e93d9efae93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}
-  _cost: 25
+  bulletPrefab: {fileID: 0}
+  turretType: 0
+  cost: 0
   period: 1
 --- !u!65 &1998103222370356189
 BoxCollider:
@@ -764,8 +765,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404385e493f34ddead834e93d9efae93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}
-  _cost: 0
+  bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}
+  turretType: 0
+  cost: 10
   period: 1
 --- !u!1 &1251583507443948
 GameObject:

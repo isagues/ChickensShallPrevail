@@ -7,21 +7,23 @@ namespace Utils
         // https://docs.unity3d.com/ScriptReference/GameObject.FindGameObjectsWithTag.html
         public static GameObject FindClosestByTag(Vector3 position, string tag)
         {
-            GameObject[] gos;
-            gos = GameObject.FindGameObjectsWithTag("Enemy");
+            var gos = GameObject.FindGameObjectsWithTag(tag);
             GameObject closest = null;
-            float distance = Mathf.Infinity;
-            foreach (GameObject go in gos)
+            var distance = Mathf.Infinity;
+            foreach (var go in gos)
             {
-                Vector3 diff = go.transform.position - position;
-                float curDistance = diff.sqrMagnitude;
-                if (curDistance < distance)
-                {
-                    closest = go;
-                    distance = curDistance;
-                }
+                var curDistance = Distance(go.transform.position, position);
+                if (!(curDistance < distance)) continue;
+                
+                closest = go;
+                distance = curDistance;
             }
             return closest;
+        }
+
+        public static float Distance(Vector3 v1, Vector3 v2)
+        {
+            return (v1 - v2).sqrMagnitude;
         }
     }
 }

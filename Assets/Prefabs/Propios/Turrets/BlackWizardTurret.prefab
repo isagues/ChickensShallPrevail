@@ -2374,13 +2374,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1953271650171834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbf1f1e7e5694c4596e85bd2fc75a3e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 404385e493f34ddead834e93d9efae93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 6641143064160285880, guid: 8121f7c34d22a45799cef02b22dc61b0, type: 3}
-  _turretType: 1
-  _cost: 50
-  period: 0.001
+  bulletPrefab: {fileID: 6641143064160285880, guid: 8121f7c34d22a45799cef02b22dc61b0, type: 3}
+  turretType: 1
+  cost: 20
+  period: 0.1
 --- !u!1 &1956949540428108
 GameObject:
   m_ObjectHideFlags: 0
