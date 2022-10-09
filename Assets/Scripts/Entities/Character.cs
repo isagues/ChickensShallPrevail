@@ -80,7 +80,6 @@ public class Character : MonoBehaviour
 
     private void ChangeTurret(int index)
     {
-        foreach (var gun in _turrets) gun.gameObject.SetActive(false);
         _currentTurret = _turrets[index];
         EventsManager.instance.TurretChange(_currentTurret);
         
