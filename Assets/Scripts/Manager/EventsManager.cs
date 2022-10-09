@@ -17,20 +17,22 @@ namespace Manager
             if (instance != null) Destroy(this);
             instance = this;
             
-            OnCollectableChange = new Dictionary<CollectableType, Action<int>>();
+            _onCollectableChange = new Dictionary<CollectableType, Action<int>>();
             foreach (var type in EnumUtil.GetValues<CollectableType>())  
             {  
-                OnCollectableChange[type] = _ => {};
+                _onCollectableChange[type] = _ => {};
             } 
         }
         #endregion
 
         #region GAME_MANAGE
-        public event Action<bool> OnGameOver;
-        public event Action<float, float> OnCharacterLifeChange;
-        public event Action<Turret> OnTurretChange; 
+        public event Action<bool>                   OnGameOver;
+        public event Action<float, float>           OnCharacterLifeChange;
+        public event Action<Turret>                 OnTurretChange;
+        public event Action<EnemyType, GameObject>  OnEnemySpawn;
+        public event Action<int>                    OnEnemyKilled;
         
-        private Dictionary<CollectableType, Action<int>> OnCollectableChange;
+        private Dictionary<CollectableType, Action<int>> _onCollectableChange;
 
         public void EventGameOver(bool isVictory)
         {
@@ -44,18 +46,27 @@ namespace Manager
         
         public void TurretChange(Turret turret)
         {
-            Debug.Log("changing to turret" + turret.TurretType);
             OnTurretChange?.Invoke(turret);
         }
         
         public void CollectableChange(CollectableType type, int currentValue)
         {
-            OnCollectableChange[type].Invoke(currentValue);
+            _onCollectableChange[type].Invoke(currentValue);
         }
         
         public void AddOnCollectableChangeHandler(CollectableType type, Action<int> handler)
         {
-            OnCollectableChange[type] += handler;
+            _onCollectableChange[type] += handler;
+        }
+
+        public void EnemySpawn(EnemyType type,GameObject enemy)
+        {
+            OnEnemySpawn?.Invoke(type, enemy);
+        }
+        
+        public void EnemyKilled(int id)
+        {
+            OnEnemyKilled?.Invoke(id);
         }
         
         #endregion
