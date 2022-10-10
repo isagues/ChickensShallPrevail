@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Command;
+using Flyweight;
 using Interface;
 using Manager;
 using UnityEngine;
@@ -15,15 +16,13 @@ namespace Entities.Turrets
         private IDamageable _damageable;
         private Collider _collider;
         private IListenable _listenable;
-        
-        [SerializeField] private List<int> _damageableLayerMask;
 
-        [SerializeField] private float period;
+        [SerializeField] private TurretStat turretStat;
         
         private float _nextShotTime;
     
         #region ACCESORS
-        public float Period => period;
+        public float Period => turretStat.Period;
         public GameObject BulletPrefab => bulletPrefab;
         public IDamageable Damageable => _damageable;
         public Collider Collider => _collider;
@@ -54,7 +53,7 @@ namespace Entities.Turrets
         protected virtual void Update()
         {
             if(Time.time > _nextShotTime) {
-                _nextShotTime += period;
+                _nextShotTime += Period;
                 EventQueueManager.instance.AddCommand(_cmdAttack);
             }
         }

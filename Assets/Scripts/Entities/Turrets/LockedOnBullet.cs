@@ -6,23 +6,22 @@ namespace Entities.Turrets
 {
     public class LockedOnBullet : Bullet
     {
-        [SerializeField]
-        private GameObject          target;
+        private GameObject          _target;
         private bool                _lockOn;
         private OnDestroyPublisher  _onDestroyPublisher;
 
         protected override void Start()
         {
             base.Start();
-            target = VectorUtils.FindClosestByTag(transform.position, "Enemy");
-            if (target is null)
+            _target = VectorUtils.FindClosestByTag(transform.position, "Enemy");
+            if (_target is null)
             {
                 _lockOn = false;
             }
             else
             {
                 _lockOn = true;
-                _onDestroyPublisher = OnDestroyPublisher.AttachPublisher(target);
+                _onDestroyPublisher = OnDestroyPublisher.AttachPublisher(_target);
                 _onDestroyPublisher.OnDestroyAction += LockOff;
             }
         }
@@ -36,7 +35,7 @@ namespace Entities.Turrets
         {
             if (_lockOn)
             {
-                AutoMove.TravelToTarget(target.transform.position);
+                AutoMove.TravelToTarget(_target.transform.position);
             }
             else
             {

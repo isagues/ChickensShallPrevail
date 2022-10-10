@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de9dc088b13428995b8374d467c07c6, type: 3}
+  m_Script: {fileID: 11500000, guid: df1f81575aaa4be4ae955ad8aabf31b8, type: 3}
   m_Name: ChickenStat
   m_EditorClassIdentifier: 
-  _statValues:
-    MaxLife: 50
-    MovementSpeed: 1
-    RotationSpeed: 0
+  statValues:
+    maxLife: 0
+    speed: 0
+    deployeableType: 0
+    cost: 0

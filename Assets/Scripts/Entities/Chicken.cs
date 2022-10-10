@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Command;
+using Flyweight;
 using Interface;
 using Manager;
 using UnityEngine;
@@ -16,19 +17,16 @@ namespace Entities
         [SerializeField] private Collider _collider;
 
         [SerializeField] private IAutoMove _autoMoveController;
+
+        [SerializeField] private ChickenStat _chickenStat;
         
         private float nextDeployTime;
-        [SerializeField] private float period;
 
         private CmdDeploy _cmdDeploy;
         
         [SerializeField] private List<int> layerTarget;
-        
-        [SerializeField] private DeployeableType _deployeableType;
-        [SerializeField] private int cost;
         #region ACCESORS
-        public DeployeableType DeployeableType => _deployeableType;
-        public int Cost => cost;
+        public int Period => _chickenStat.Period;
         public GameObject BulletPrefab => _eggPrefab;
         public Collider Collider => _collider;
         public Rigidbody Rigidbody => _rigidBody;
@@ -71,7 +69,7 @@ namespace Entities
         {
             _autoMoveController.Travel();
             if (!(Time.time > nextDeployTime)) return;
-            nextDeployTime += period;
+            nextDeployTime += Period;
             EventQueueManager.instance.AddCommand(_cmdDeploy);
         }
     }

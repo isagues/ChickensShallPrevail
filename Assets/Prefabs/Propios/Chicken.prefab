@@ -198,7 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79db97f5685a4dbfbfcdc42e3064feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: a72a4642a2604fd9a268aeb1f564b340, type: 2}
 --- !u!114 &6336014611389540774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,10 +213,8 @@ MonoBehaviour:
   _eggPrefab: {fileID: 6023477689653686232, guid: dae571be53e3948e195a0306a92b54d2, type: 3}
   _rigidBody: {fileID: 0}
   _collider: {fileID: 0}
-  period: 5
+  _chickenStat: {fileID: 11400000, guid: a72a4642a2604fd9a268aeb1f564b340, type: 2}
   layerTarget: 0d000000
-  _deployeableType: 0
-  cost: 0
 --- !u!114 &-3808499245637167671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,8 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b408d020117d4a9f9fb2c86b4465b2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deployeableType: 0
-  cost: 20
 --- !u!114 &-8194394201731481835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,8 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: a72a4642a2604fd9a268aeb1f564b340, type: 2}
-  _currentLife: 50
+  currentLife: 0
 --- !u!1 &6336014611718182837
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de9dc088b13428995b8374d467c07c6, type: 3}
-  m_Name: CharacterStats
+  m_Script: {fileID: 11500000, guid: 617e2cef8a5048fe804e543014f4f593, type: 3}
+  m_Name: BlueSlime
   m_EditorClassIdentifier: 
-  _statValues:
-    MaxLife: 150
-    MovementSpeed: 10
-    RotationSpeed: 100
+  statValues:
+    maxLife: 0
+    speed: 0
+    damage: 0
+    damageableLayerMask: 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Flyweight;
 using UnityEngine;
 
 namespace Entities.Turrets
@@ -6,12 +7,11 @@ namespace Entities.Turrets
     [RequireComponent(typeof(Rigidbody), typeof(Collider), typeof(IAutoMove))]
     public class Bullet: MonoBehaviour, IBullet
     {
-        public int Damage => damage;
-        [SerializeField] private int damage = 10;
-    
-        public float LifeTime => lifeTime;
-        [SerializeField] private float lifeTime = 5;
+        [SerializeField] private BulletStat bulletStat;
+        public int Damage => bulletStat.Damage;
+        public float LifeTime => bulletStat.LifeTime;
 
+        private float _currentLifeTime;
         public Rigidbody Rigidbody { get; private set; }
         public Collider Collider { get; private set; }
         protected IAutoMove AutoMove { get; private set; }
@@ -24,6 +24,7 @@ namespace Entities.Turrets
             Collider = GetComponent<Collider>();
             AutoMove = GetComponent<IAutoMove>();
 
+            _currentLifeTime = LifeTime;
             Collider.isTrigger = true;
             Rigidbody.useGravity = false;
             Rigidbody.isKinematic = true; // Inafectable
@@ -35,15 +36,15 @@ namespace Entities.Turrets
             if (!layerTarget.Contains(otherCollider.gameObject.layer)) return;
         
             var damageable = otherCollider.GetComponent<IDamageable>();
-            damageable?.TakeDamage(damage);
+            damageable?.TakeDamage(Damage);
         
             Destroy(gameObject);
         }
 
         protected void UpdateLifetime()
         {
-            lifeTime -= Time.deltaTime;
-            if(lifeTime <= 0) Destroy(gameObject);
+            _currentLifeTime -= Time.deltaTime;
+            if(_currentLifeTime <= 0) Destroy(gameObject);
         }
 
         protected void Update()

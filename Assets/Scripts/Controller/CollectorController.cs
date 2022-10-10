@@ -12,12 +12,14 @@ namespace Controller
     [RequireComponent(typeof(Collider))]
     public class CollectorController : MonoBehaviour, ICollector  
     {
-        [SerializeField] private int collectableLayer = -1;    
+        private ICollectorStats _stats;    
 
         private Dictionary<CollectableType, int> collectables;
 
+        public int CollectableLayer => _stats.CollectableLayer;
         private void Start()
         {
+            _stats = GetComponent<ICollectorStats>();
             collectables = new Dictionary<CollectableType, int>();
             foreach (var type in EnumUtil.GetValues<CollectableType>())  
             {  
@@ -27,7 +29,7 @@ namespace Controller
 
         private void OnCollisionEnter(Collision otherCollider)
         {
-            if (collectableLayer != otherCollider.gameObject.layer) return;
+            if (CollectableLayer != otherCollider.gameObject.layer) return;
             
             if (Enum.TryParse(otherCollider.gameObject.name, true, out CollectableType type))
             {
@@ -50,5 +52,10 @@ namespace Controller
             NotifyCollectableChane(type);
             return true;
         }
+    }
+    
+    public interface ICollectorStats
+    {
+        int CollectableLayer { get; }
     }
 }

@@ -650,8 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: 8a03951108bef9047b9e6078ad7d1ac5, type: 2}
-  _currentLife: 250
+  currentLife: 0
 --- !u!114 &8200855356255210774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,8 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}
-  _damageableLayerMask: 
-  period: 1
+  turretStat: {fileID: 11400000, guid: 2c17ef6fdf6c41b4096fb72a14cdefbd, type: 2}
 --- !u!114 &950961179484411005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,8 +677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b408d020117d4a9f9fb2c86b4465b2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deployeableType: 1
-  cost: 10
 --- !u!82 &6528032048299416255
 AudioSource:
   m_ObjectHideFlags: 0

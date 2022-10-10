@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Flyweight;
 using Manager;
 using UnityEngine;
 
@@ -7,28 +8,27 @@ namespace Entities
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class Enemy: MonoBehaviour, IEnemy
     {
-    
-        [SerializeField] private int damage = 1;
-        [SerializeField] private List<int> damageableLayerMask;
+
+        [SerializeField] private EnemyStat enemyStat;
 
         private Rigidbody _rigidBody;
         private Collider _collider;
         private IDamageable _damageable;
         private IAutoMove _autoMoveController;
-    
-    
+        
         #region ACCESORS
+        public int Damage => enemyStat.Damage;
+        public List<int> DamageableLayerMask => enemyStat.DamageableLayerMask;
         public Rigidbody Rigidbody => _rigidBody;
         public Collider Collider => _collider;
         public IDamageable Damageable => _damageable;
-        public int Damage => damage;
         public IAutoMove AutoMove => _autoMoveController;
         #endregion
 
         private void OnCollisionStay(Collision collision)
         {
             int layer = collision.gameObject.layer;
-            if (!damageableLayerMask.Contains(layer) || layer == 14) return;
+            if (!DamageableLayerMask.Contains(layer) || layer == 14) return;
             var damageable = collision.gameObject.GetComponent<IDamageable>();
             damageable?.TakeDamage(Damage);
         }
@@ -36,7 +36,7 @@ namespace Entities
         private void OnTriggerEnter(Collider other)
         {
             int layer = other.gameObject.layer;
-            if (!damageableLayerMask.Contains(layer) && layer != 14) return;
+            if (!DamageableLayerMask.Contains(layer) && layer != 14) return;
             var damageable = other.gameObject.GetComponent<IDamageable>();
             damageable?.TakeDamage(Damage);
             Destroy(gameObject);

@@ -6,22 +6,23 @@ namespace Controller
 {
     public class LifeController: MonoBehaviour, IDamageable
     {
-        [SerializeField] private ActorStats _actorStats;
-        public float MaxLife => _actorStats.MaxLife;
-        [SerializeField] private float _currentLife;
+        private ILifeControllerStat _stat;
+        public float MaxLife => _stat.MaxLife;
+        [SerializeField] private float currentLife; //Debug purposes
     
         private void Start()
         {
-            _currentLife = MaxLife;
+            _stat = GetComponent<ILifeControllerStat>();
+            currentLife = MaxLife;
             UI_Updater();
         }
 
         public void TakeDamage(float damage)
         {
-            _currentLife -= damage;
+            currentLife -= damage;
             UI_Updater();
 
-            if (_currentLife <= 0)
+            if (currentLife <= 0)
             {
                 Die();
             }
@@ -34,7 +35,12 @@ namespace Controller
         
         public void UI_Updater() 
         { 
-            if(name == "FArm") EventsManager.instance.FarmLifeChange(_currentLife, MaxLife);
+            if(name == "FArm") EventsManager.instance.FarmLifeChange(currentLife, MaxLife);
         }
+    }
+
+    public interface ILifeControllerStat
+    {
+        float MaxLife { get; }
     }
 }
