@@ -10,7 +10,8 @@
     {
         Chicken,
         BlueTurret,
-        BlackTurret
+        BlackTurret,
+        VioletTurret
     }
     
     public enum CollectableType

@@ -1,11 +1,14 @@
+using Flyweight;
 using Manager;
 using UnityEngine;
 using Utils;
 
 namespace Entities.Turrets
 {
-    public class LockedOnBullet : Bullet
+    public class LockedOnBullet : LinearBullet
     {
+        private BulletStat _stats;
+        protected BulletStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<BulletStat>();
         private GameObject          _target;
         private bool                _lockOn;
         private OnDestroyPublisher  _onDestroyPublisher;

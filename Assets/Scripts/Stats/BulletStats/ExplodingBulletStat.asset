@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a90526c668a4a73adfab7460f272f41, type: 3}
-  m_Name: BulletStat
+  m_Script: {fileID: 11500000, guid: 1088d2ba17814fb0ad9990385f148a08, type: 3}
+  m_Name: ExplodingBulletStat
   m_EditorClassIdentifier: 
   statValues:
     speed: 15
     damage: 10
     lifeTime: 10
-    layerTarget: 0a000000
+    layerTarget: 
+  statValues:
+    explosionCount: 0

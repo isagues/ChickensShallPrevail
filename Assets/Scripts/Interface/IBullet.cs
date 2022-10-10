@@ -10,10 +10,7 @@ namespace Interface
         float LifeTime { get; }
     
         List<int> LayerTarget { get; }
-    
-        Rigidbody Rigidbody { get; }
-        Collider Collider { get; }
-    
+        
         void OnTriggerEnter(Collider otherCollider);
     }
 }
