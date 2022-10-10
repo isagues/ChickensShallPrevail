@@ -8,8 +8,6 @@ namespace Controller
     [RequireComponent(typeof(AudioSource))]
     public class SoundEffectController : MonoBehaviour, IListenable
     {
-        #region IListenable_Properties
-
         public AudioClip AudioClip => soundTrackClip;
         public bool AutoPlay => autoplay;
         public bool Loop => loop;
@@ -20,9 +18,16 @@ namespace Controller
         [SerializeField] private bool autoplay;
         [SerializeField] private bool loop;
         private AudioSource _audioSource;
-        #endregion
-
-        #region IListenable_Methods
+        
+        protected virtual void Start()
+        {
+            InitAudioSource();
+            if (autoplay)
+            {
+                Play();
+            }
+        }
+        
         public void InitAudioSource()
         {
             _audioSource = GetComponent<AudioSource>();
@@ -32,16 +37,5 @@ namespace Controller
     
         public void Play() => AudioSource.Play();
         public void Stop() => AudioSource.Stop();
-        
-        protected void Start()
-        {
-            InitAudioSource();
-            if (autoplay)
-            {
-                Play();
-            }
-        }
-        #endregion
-    
     }
 }

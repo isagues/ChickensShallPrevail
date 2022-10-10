@@ -10,9 +10,10 @@ namespace Entities.Turrets
         private bool                _lockOn;
         private OnDestroyPublisher  _onDestroyPublisher;
 
-        protected override void Start()
+        protected override void Awake()
         {
-            base.Start();
+            base.Awake();
+            
             _target = VectorUtils.FindClosestByTag(transform.position, "Enemy");
             if (_target is null)
             {

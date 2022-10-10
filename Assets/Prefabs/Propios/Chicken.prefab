@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 6336014611389540774}
   - component: {fileID: -3808499245637167671}
   - component: {fileID: -8194394201731481835}
+  - component: {fileID: 1863123610587573381}
   m_Layer: 14
   m_Name: Chicken
   m_TagString: Untagged
@@ -210,11 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff91722ff8064496a8d44e663a328082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eggPrefab: {fileID: 6023477689653686232, guid: dae571be53e3948e195a0306a92b54d2, type: 3}
-  _rigidBody: {fileID: 0}
-  _collider: {fileID: 0}
-  _chickenStat: {fileID: 11400000, guid: a72a4642a2604fd9a268aeb1f564b340, type: 2}
-  layerTarget: 0d000000
 --- !u!114 &-3808499245637167671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b408d020117d4a9f9fb2c86b4465b2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 20
 --- !u!114 &-8194394201731481835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +237,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLife: 0
+--- !u!114 &1863123610587573381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336014611718182835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bceb5405a844f9782bed644638ccaa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: a72a4642a2604fd9a268aeb1f564b340, type: 2}
 --- !u!1 &6336014611718182837
 GameObject:
   m_ObjectHideFlags: 0

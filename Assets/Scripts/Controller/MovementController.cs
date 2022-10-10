@@ -7,15 +7,14 @@ namespace Controller
 {
     public class MovementController: MonoBehaviour, IMovable
     {
-
         private IMovementStats _stats;
         public float Speed => _stats.Speed;
 
         public float RotationSpeed => _stats.RotationSpeed;
 
-        private void Start()
+        private void Awake()
         {
-            _stats = GetComponent<IMovementStats>();
+            _stats = GetComponent<StatSupplier>().GetStat<IMovementStats>();
         }
 
         public void Travel(Vector3 direction) => transform.Translate(direction * (Time.deltaTime * Speed));

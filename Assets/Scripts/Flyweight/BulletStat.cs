@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using Controller;
-using Entities;
+﻿using Controller;
 using UnityEngine;
-
-
 
 namespace Flyweight
 {

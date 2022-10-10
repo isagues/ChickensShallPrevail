@@ -52,8 +52,10 @@ namespace Manager{
 
         private void OnDeployableChange(Deployeable deployeable)
         {
-            deployeableType.sprite = _deployeableSprites[deployeable.DeployeableType];
-            deployeableName.text = $"{deployeable.DeployeableType}";
+            if (!deployeable.DeployeableType(out var type)) return;
+            
+            deployeableType.sprite = _deployeableSprites[type];
+            deployeableName.text = $"{type}";
             deployeableCost.text = $"{deployeable.Cost}";
         }
         

@@ -4,7 +4,7 @@ namespace Interface
 {
     public interface IDeployer
     {
-        GameObject BulletPrefab { get; }
+        GameObject DeployablePrefab { get; }
         
         void Deploy();
     }

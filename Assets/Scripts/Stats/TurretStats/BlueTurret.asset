@@ -17,3 +17,4 @@ MonoBehaviour:
     deployeableType: 1
     cost: 10
     period: 0.2
+    bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}

@@ -1,56 +1,53 @@
-using System;
-using System.Collections.Generic;
 using Command;
+using Controller;
 using Flyweight;
-using Interface;
 using Manager;
 using UnityEngine;
-using Quaternion = System.Numerics.Quaternion;
 
 namespace Entities.Turrets
 {
     [RequireComponent(typeof(Collider))]
     public class Turret : MonoBehaviour, ITurret
     {
-        [SerializeField] protected GameObject bulletPrefab;
         private IDamageable _damageable;
         private Collider _collider;
         private IListenable _listenable;
 
-        [SerializeField] private TurretStat turretStat;
+        private TurretStat _stats;
         
         private float _nextShotTime;
-    
-        #region ACCESORS
-        public float Period => turretStat.Period;
-        public GameObject BulletPrefab => bulletPrefab;
+        
+        public float Period => _stats.Period;
+        public GameObject BulletPrefab => _stats.BulletPrefab;
         public IDamageable Damageable => _damageable;
         public Collider Collider => _collider;
         public IListenable Listenable => _listenable;
         
         private CmdAttack _cmdAttack;
-        #endregion
+
+        private void Awake()
+        {
+            _stats = GetComponent<StatSupplier>().GetStat<TurretStat>();
+            
+            _damageable = GetComponent<IDamageable>();
+            _collider = GetComponent<Collider>();
+            _listenable = GetComponent<IListenable>();
+            
+            _cmdAttack = new CmdAttack(this);
+            _nextShotTime = Time.time;
+        }
         
-        public virtual void Attack()
+        public void Attack()
         {
             var height = _collider.bounds.size.y / 4;
             var t = transform;
-            var bullet = Instantiate(bulletPrefab, t.position + Vector3.up * height, t.rotation);
-            bullet.name = bulletPrefab.name;
+            var bullet = Instantiate(BulletPrefab, t.position + Vector3.up * height, t.rotation);
+            bullet.name = BulletPrefab.name;
             bullet.transform.parent = transform;
             _listenable.Play();
         }
 
-        protected virtual void Start()
-        {
-            _damageable = GetComponent<IDamageable>();
-            _collider = GetComponent<Collider>();
-            _listenable = GetComponent<IListenable>();
-            _cmdAttack = new CmdAttack(this);
-            _nextShotTime = Time.time;
-        }
-
-        protected virtual void Update()
+        protected void Update()
         {
             if(Time.time > _nextShotTime) {
                 _nextShotTime += Period;

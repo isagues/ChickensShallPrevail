@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Controller;
 using Flyweight;
 using Manager;
 using UnityEngine;
@@ -8,27 +9,25 @@ namespace Entities
     [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public class Enemy: MonoBehaviour, IEnemy
     {
-
-        [SerializeField] private EnemyStat enemyStat;
+        private EnemyStat _stats;
 
         private Rigidbody _rigidBody;
         private Collider _collider;
         private IDamageable _damageable;
         private IAutoMove _autoMoveController;
-        
-        #region ACCESORS
-        public int Damage => enemyStat.Damage;
-        public List<int> DamageableLayerMask => enemyStat.DamageableLayerMask;
+
+        public int Damage => _stats.Damage;
+        public List<int> DamageableLayerMask => _stats.DamageableLayerMask;
+        public int TargetLayer => _stats.TargetLayer;
         public Rigidbody Rigidbody => _rigidBody;
         public Collider Collider => _collider;
         public IDamageable Damageable => _damageable;
         public IAutoMove AutoMove => _autoMoveController;
-        #endregion
 
         private void OnCollisionStay(Collision collision)
         {
             int layer = collision.gameObject.layer;
-            if (!DamageableLayerMask.Contains(layer) || layer == 14) return;
+            if (!DamageableLayerMask.Contains(layer) || layer == TargetLayer) return;
             var damageable = collision.gameObject.GetComponent<IDamageable>();
             damageable?.TakeDamage(Damage);
         }
@@ -36,14 +35,16 @@ namespace Entities
         private void OnTriggerEnter(Collider other)
         {
             int layer = other.gameObject.layer;
-            if (!DamageableLayerMask.Contains(layer) && layer != 14) return;
+            if (!DamageableLayerMask.Contains(layer) && layer != TargetLayer) return;
             var damageable = other.gameObject.GetComponent<IDamageable>();
             damageable?.TakeDamage(Damage);
             Destroy(gameObject);
         }
 
-        private void Start()
+        private void Awake()
         {
+            _stats = GetComponent<StatSupplier>().GetStat<EnemyStat>();
+            
             _rigidBody = GetComponent<Rigidbody>();
             _collider = GetComponent<Collider>();
             _damageable = GetComponent<IDamageable>();

@@ -2299,8 +2299,9 @@ GameObject:
   - component: {fileID: 3526451375443967728}
   - component: {fileID: 3633227998570615543}
   - component: {fileID: 2552081297690149575}
+  - component: {fileID: -2649637938918935459}
   m_Layer: 11
-  m_Name: BlackWizardTurret
+  m_Name: BlackTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2379,8 +2380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404385e493f34ddead834e93d9efae93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6641143064160285880, guid: 8121f7c34d22a45799cef02b22dc61b0, type: 3}
-  turretStat: {fileID: 11400000, guid: ac0d05d149eeb7f4aac6a6613a497ebe, type: 2}
 --- !u!114 &3526451375443967728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2393,6 +2392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b408d020117d4a9f9fb2c86b4465b2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 25
 --- !u!82 &3633227998570615543
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2504,6 +2504,19 @@ MonoBehaviour:
   soundTrackClip: {fileID: 8300000, guid: 3a970147561904a37aee4e11b148343e, type: 3}
   autoplay: 0
   loop: 0
+--- !u!114 &-2649637938918935459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953271650171834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bceb5405a844f9782bed644638ccaa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: ac0d05d149eeb7f4aac6a6613a497ebe, type: 2}
 --- !u!1 &1956949540428108
 GameObject:
   m_ObjectHideFlags: 0

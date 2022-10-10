@@ -17,10 +17,15 @@ namespace Controller
         private Dictionary<CollectableType, int> collectables;
 
         public int CollectableLayer => _stats.CollectableLayer;
+
+        private void Awake()
+        {
+            _stats = GetComponent<StatSupplier>().GetStat<ICollectorStats>();
+            collectables = new Dictionary<CollectableType, int>();
+        }
+        
         private void Start()
         {
-            _stats = GetComponent<ICollectorStats>();
-            collectables = new Dictionary<CollectableType, int>();
             foreach (var type in EnumUtil.GetValues<CollectableType>())  
             {  
                 collectables[type] = 0;

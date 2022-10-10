@@ -1,3 +1,4 @@
+using System;
 using Flyweight;
 using Manager;
 using UnityEngine;
@@ -6,14 +7,18 @@ namespace Controller
 {
     public class LifeController: MonoBehaviour, IDamageable
     {
-        private ILifeControllerStat _stat;
-        public float MaxLife => _stat.MaxLife;
+        private ILifeControllerStat _stats;
+        public float MaxLife => _stats.MaxLife;
         [SerializeField] private float currentLife; //Debug purposes
+
+        private void Awake()
+        {
+            _stats = GetComponent<StatSupplier>().GetStat<ILifeControllerStat>();
+            currentLife = MaxLife;
+        }
     
         private void Start()
         {
-            _stat = GetComponent<ILifeControllerStat>();
-            currentLife = MaxLife;
             UI_Updater();
         }
 
@@ -35,7 +40,7 @@ namespace Controller
         
         public void UI_Updater() 
         { 
-            if(name == "FArm") EventsManager.instance.FarmLifeChange(currentLife, MaxLife);
+            if(name == "Farm") EventsManager.instance.FarmLifeChange(currentLife, MaxLife);
         }
     }
 

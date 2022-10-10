@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 7935520632403891958}
   - component: {fileID: 6937559344655455312}
   - component: {fileID: 4950993481248968523}
+  - component: {fileID: 1936955075483125173}
   m_Layer: 10
   m_Name: BlueSlime
   m_TagString: Enemy
@@ -795,7 +796,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3876caebaee94f3eb42335115513acc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStat: {fileID: 11400000, guid: 6b697deac1d244448bc179744685cde8, type: 2}
+--- !u!114 &1936955075483125173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285841168018167520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bceb5405a844f9782bed644638ccaa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: 6b697deac1d244448bc179744685cde8, type: 2}
 --- !u!1 &5297739214040648687
 GameObject:
   m_ObjectHideFlags: 0

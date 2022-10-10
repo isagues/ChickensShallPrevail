@@ -11,9 +11,10 @@ namespace Controller
         public float Speed => _stats.Speed;
 
         private float _rotation = 0f;
-        private void Start()
+        
+        private void Awake()
         {
-            _stats = GetComponent<IRandomAutoMoveStat>();
+            _stats = GetComponent<StatSupplier>().GetStat<IRandomAutoMoveStat>();
         }
 
         public void Travel()

@@ -17,3 +17,4 @@ MonoBehaviour:
     speed: 6
     damage: 25
     damageableLayerMask: 0b0000000e000000
+    targetLayer: 14

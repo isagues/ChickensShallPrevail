@@ -219,7 +219,7 @@ Transform:
   - {fileID: 44514964067716560}
   - {fileID: 5866373223281203400}
   m_Father: {fileID: 6765727786920438198}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &44514964657807304
 GameObject:
@@ -328,8 +328,9 @@ GameObject:
   - component: {fileID: 27157266}
   - component: {fileID: 27157264}
   - component: {fileID: 27157265}
+  - component: {fileID: 2114126047903210309}
   m_Layer: 14
-  m_Name: FArm
+  m_Name: Farm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -346,8 +347,8 @@ Transform:
   m_LocalPosition: {x: 1.5, y: 0.753, z: -81.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3866430738139605825}
   - {fileID: 44514964396374224}
-  - {fileID: 44514965037356127}
   - {fileID: 3957435504230148368}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -377,8 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: c0ebf23c17a76474793233aa52a9772c, type: 2}
-  _currentLife: 100
+  currentLife: 0
 --- !u!82 &27157266
 AudioSource:
   m_ObjectHideFlags: 0
@@ -502,6 +502,19 @@ MonoBehaviour:
   soundTrackClip: {fileID: 8300000, guid: 283c9344dcf53714bb6fb1e14a8b2009, type: 3}
   autoplay: 0
   loop: 0
+--- !u!114 &2114126047903210309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351887865999143202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bceb5405a844f9782bed644638ccaa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stat: {fileID: 11400000, guid: ab4ee8c9639cc38d293df0f15d4bc3c6, type: 2}
 --- !u!1 &3046811389674740971
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,7 +3028,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8209775890510335994, guid: c4fa87cd4eff4ae4ba4c8d1ad48df5f7, type: 3}
   m_PrefabInstance: {fileID: 44514965186744147}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6300586077348405132
+--- !u!1001 &7081446408730206354
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3024,7 +3037,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6336014611717950419, guid: 78ad06f6a639a1c42b72d8f620a2e7ad, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6336014611717950419, guid: 78ad06f6a639a1c42b72d8f620a2e7ad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3068,12 +3081,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336014611718182835, guid: 78ad06f6a639a1c42b72d8f620a2e7ad, type: 3}
       propertyPath: m_Name
-      value: Toon Chick@Walk In Place
+      value: Chicken
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ad06f6a639a1c42b72d8f620a2e7ad, type: 3}
---- !u!4 &44514965037356127 stripped
+--- !u!4 &3866430738139605825 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6336014611717950419, guid: 78ad06f6a639a1c42b72d8f620a2e7ad, type: 3}
-  m_PrefabInstance: {fileID: 6300586077348405132}
+  m_PrefabInstance: {fileID: 7081446408730206354}
   m_PrefabAsset: {fileID: 0}

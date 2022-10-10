@@ -6,25 +6,22 @@ namespace Entities
 {
     public class Farm : MonoBehaviour
     {
-        private const double TOLERANCE = 0.0001;
+        private const double Tolerance = 0.0001;
 
-        private IListenable _listenable;
-        
-        private IListenable Listenable => _listenable;
+        private IListenable Listenable { get; set; }
 
         private void Awake()
         {
             EventsManager.instance.OnFarmLifeChange += FarmLifeChange;
-            _listenable = GetComponent<IListenable>();
+            Listenable = GetComponent<IListenable>();
         }
 
         private void FarmLifeChange(float currentLife, float maxLife)
         {
-            if (Math.Abs(currentLife - maxLife) < TOLERANCE) return;
+            if (Math.Abs(currentLife - maxLife) < Tolerance) return;
             
-            if (currentLife < TOLERANCE) EventsManager.instance.EventGameOver(false);
-            else _listenable.Play();
-            
+            if (currentLife < Tolerance) EventsManager.instance.EventGameOver(false);
+            else Listenable.Play();
         }
     }
 }

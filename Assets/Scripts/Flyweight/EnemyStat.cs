@@ -2,8 +2,6 @@
 using Controller;
 using UnityEngine;
 
-
-
 namespace Flyweight
 {
     [CreateAssetMenu(fileName = "EnemyStat", menuName = "Stats/EnemyStat", order = 0)]
@@ -14,7 +12,7 @@ namespace Flyweight
         public float Speed => statValues.speed;
         public int Damage => statValues.damage;
         public List<int> DamageableLayerMask => statValues.damageableLayerMask;
-
+        public int TargetLayer => statValues.targetLayer;
     }
 
     [System.Serializable]
@@ -24,7 +22,6 @@ namespace Flyweight
         public float speed;
         public int damage;
         public List<int> damageableLayerMask;
-        
+        public int targetLayer;
     }
-    
 }

@@ -1,26 +1,23 @@
 ﻿using System;
-using Interface;
 using UnityEngine;
 
 namespace Entities
 {
     public class Deployeable : MonoBehaviour
     {
-        private IDeployeableStats _stats;
+        [SerializeField] private int cost;
 
-        private void Start()
+        public int Cost => cost;
+
+        public bool DeployeableType(out DeployeableType ret)
         {
-            enemyGameObject.GetComponent(typeof(IEnemy)) as IEnemy
-            _stats = GetComponent(typeof(IDeployeableStats)) as IDeployeableStats;
+            return Enum.TryParse(gameObject.name, true, out ret);
         }
-
-        public DeployeableType DeployeableType => _stats.DeployeableType;
-        public int Cost => _stats.Cost;
-        
     }
+
     public interface IDeployeableStats
     {
         DeployeableType DeployeableType { get; }
         int Cost { get; }
-}
+    }
 }

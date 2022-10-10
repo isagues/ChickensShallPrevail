@@ -3,8 +3,6 @@ using Controller;
 using Entities;
 using UnityEngine;
 
-
-
 namespace Flyweight
 {
     [CreateAssetMenu(fileName = "ChickenStat", menuName = "Stats/ChickenStat", order = 0)]
@@ -15,8 +13,9 @@ namespace Flyweight
         public float Speed => statValues.speed;
         public DeployeableType DeployeableType => statValues.deployeableType;
         public int Cost => statValues.cost;
-
         public int Period => statValues.period;
+        public GameObject EggPrefab => statValues.eggPrefab;
+        public List<int> LayerTarget => statValues.layerTarget;
     }
 
     [System.Serializable]
@@ -27,6 +26,8 @@ namespace Flyweight
         public DeployeableType deployeableType;
         public int cost;
         public int period;
+        public GameObject eggPrefab;
+        public List<int> layerTarget;
     }
     
 }

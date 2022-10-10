@@ -6,13 +6,13 @@ namespace Controller
 {
     public class LinearAutoMoveController: MonoBehaviour, IAutoMove
     {
-        private ILinearAutoMoveStat _stat;
-        public float Speed => _stat.Speed;
+        private ILinearAutoMoveStat _stats;
+        public float Speed => _stats.Speed;
         public void Travel() => transform.Translate(Vector3.forward * (Time.deltaTime * Speed));
 
-        private void Start()
+        private void Awake()
         {
-            _stat = GetComponent<ILinearAutoMoveStat>();
+            _stats = GetComponent<StatSupplier>().GetStat<ILinearAutoMoveStat>();
         }
 
         public void TravelToTarget(Vector3 target)

@@ -11,6 +11,7 @@ namespace Flyweight
     public class CharacterStat : ScriptableObject, IMovementStats, ICollectorStats
     {
         [SerializeField] private CharacterStatValues statValues;
+        
         public float Speed => statValues.speed;
         public float RotationSpeed => statValues.rotationSpeed;
         
