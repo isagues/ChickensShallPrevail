@@ -67,8 +67,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3526451375443967728, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
     - target: {fileID: 1317702936, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317702936, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: m_AngularDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317702936, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_Constraints
       value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317702936, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1317702937, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_Size.z
