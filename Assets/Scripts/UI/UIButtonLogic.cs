@@ -12,11 +12,7 @@ public class UIButtonLogic : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void LoadLevelScene(SoundEffectController soundEffectController) {
-        
-        soundEffectController.Stop();
-        SceneManager.LoadScene("LoadScreen");
-    }
+    public void LoadLevelScene() { SceneManager.LoadScene("LoadScreen"); }
     
     public void LoadHelpScene() => Debug.Log("Help scene");
     
