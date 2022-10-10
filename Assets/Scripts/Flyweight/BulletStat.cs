@@ -1,4 +1,5 @@
-﻿using Controller;
+﻿using System.Collections.Generic;
+using Controller;
 using UnityEngine;
 
 namespace Flyweight
@@ -12,6 +13,8 @@ namespace Flyweight
         public int Damage => statValues.damage;
         
         public float LifeTime => statValues.lifeTime;
+        
+        public List<int> LayerTarget => statValues.layerTarget;
     }
 
     [System.Serializable]
@@ -20,6 +23,7 @@ namespace Flyweight
         public float speed;
         public int damage;
         public float lifeTime;
+        public List<int> layerTarget;
     }
     
 }

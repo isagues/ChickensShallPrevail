@@ -79,7 +79,7 @@ namespace Entities
 
             var t = transform;
             var deployeable = Instantiate(_currentDeployable, t.position + 2*Vector3.forward, t.rotation);
-            deployeable.name = name;
+            deployeable.name = _currentDeployable.name;
             deployeable.transform.parent = GameObject.Find("Deployeables").transform;
             deployeable.gameObject.SetActive(true);
         }

@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7291628517856155307}
   - component: {fileID: 597696086744648217}
   - component: {fileID: -1646006873129873358}
-  - component: {fileID: 1751348924339980687}
   - component: {fileID: 6115349728083627508}
+  - component: {fileID: 4953889612553356121}
   m_Layer: 0
   m_Name: TurretBullet
   m_TagString: Untagged
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aca81db1ec7594f15b4743900d8c6cd2, type: 2}
+  - {fileID: 2100000, guid: df444e54394320b46be51688da21f95e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,19 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71f2af0dafb433cb7869162ddfd1266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1751348924339980687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3799596945384122088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a8d68422c92497c9cca4b9beaecac24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerTarget: 0a000000
 --- !u!114 &6115349728083627508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,3 +140,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stat: {fileID: 11400000, guid: 8e9b77be18f3e0742a5a528642394bc8, type: 2}
+--- !u!114 &4953889612553356121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3799596945384122088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b25aaab6b34388b23321dd11d322ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerTarget: 0a000000

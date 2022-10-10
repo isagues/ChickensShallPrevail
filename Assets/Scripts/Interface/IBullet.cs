@@ -1,13 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public interface IBullet
+namespace Interface
 {
-    int Damage { get; }
+    public interface IBullet
+    {
+        int Damage { get; }
     
-    float LifeTime { get; }
+        float LifeTime { get; }
     
-    Rigidbody Rigidbody { get; }
-    Collider Collider { get; }
+        List<int> LayerTarget { get; }
     
-    void OnTriggerEnter(Collider otherCollider);
+        Rigidbody Rigidbody { get; }
+        Collider Collider { get; }
+    
+        void OnTriggerEnter(Collider otherCollider);
+    }
 }

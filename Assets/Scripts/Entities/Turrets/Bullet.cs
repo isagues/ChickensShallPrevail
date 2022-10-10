@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Controller;
 using Flyweight;
+using Interface;
 using UnityEngine;
 
 namespace Entities.Turrets
@@ -11,12 +12,11 @@ namespace Entities.Turrets
         private BulletStat _stats;
         public int Damage => _stats.Damage;
         public float LifeTime => _stats.LifeTime;
+        public List<int> LayerTarget => _stats.LayerTarget;
 
         public Rigidbody Rigidbody { get; private set; }
         public Collider Collider { get; private set; }
         protected IAutoMove AutoMove { get; private set; }
-
-        [SerializeField] private List<int> layerTarget;
         
         private float _currentLifeTime;
 
@@ -37,7 +37,7 @@ namespace Entities.Turrets
 
         public void OnTriggerEnter(Collider otherCollider)
         {
-            if (!layerTarget.Contains(otherCollider.gameObject.layer)) return;
+            if (!LayerTarget.Contains(otherCollider.gameObject.layer)) return;
         
             var damageable = otherCollider.GetComponent<IDamageable>();
             damageable?.TakeDamage(Damage);
