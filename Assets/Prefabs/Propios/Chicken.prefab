@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 6336014611389540779}
   - component: {fileID: 6336014611389540774}
   - component: {fileID: -3808499245637167671}
+  - component: {fileID: -8194394201731481835}
   m_Layer: 14
   m_Name: Chicken
   m_TagString: Untagged
@@ -231,6 +232,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deployeableType: 0
   cost: 20
+--- !u!114 &-8194394201731481835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336014611718182835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actorStats: {fileID: 11400000, guid: a72a4642a2604fd9a268aeb1f564b340, type: 2}
+  _currentLife: 50
 --- !u!1 &6336014611718182837
 GameObject:
   m_ObjectHideFlags: 0

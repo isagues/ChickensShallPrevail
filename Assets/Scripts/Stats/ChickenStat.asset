@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ChickenStat
   m_EditorClassIdentifier: 
   _statValues:
-    MaxLife: 0
+    MaxLife: 50
     MovementSpeed: 1
     RotationSpeed: 0
