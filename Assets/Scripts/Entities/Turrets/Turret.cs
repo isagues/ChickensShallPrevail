@@ -19,8 +19,8 @@ namespace Entities.Turrets
 
         [SerializeField] private float period;
         
-        private float _nextShotTime = 0;
-
+        private float _nextShotTime;
+    
         #region ACCESORS
         public float Period => period;
         public GameObject BulletPrefab => bulletPrefab;
@@ -44,6 +44,7 @@ namespace Entities.Turrets
             _damageable = GetComponent<IDamageable>();
             _collider = GetComponent<Collider>();
             _cmdAttack = new CmdAttack(this);
+            _nextShotTime = Time.time;
         }
 
         protected virtual void Update()

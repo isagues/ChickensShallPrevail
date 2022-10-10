@@ -17,7 +17,7 @@ namespace Entities
 
         [SerializeField] private IAutoMove _autoMoveController;
         
-        private float nextShotTime = 0;
+        private float nextDeployTime;
         [SerializeField] private float period;
 
         private CmdDeploy _cmdDeploy;
@@ -48,6 +48,8 @@ namespace Entities
             _rigidBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             transform.Rotate(((float)Math.PI) * Vector3.up);
             transform.Rotate(2 * Vector3.up);
+            
+            nextDeployTime = Time.time;
 
             _cmdDeploy = new CmdDeploy(this);
         }
@@ -68,8 +70,8 @@ namespace Entities
         private void Update()
         {
             _autoMoveController.Travel();
-            if (!(Time.time > nextShotTime)) return;
-            nextShotTime += period;
+            if (!(Time.time > nextDeployTime)) return;
+            nextDeployTime += period;
             EventQueueManager.instance.AddCommand(_cmdDeploy);
         }
     }
