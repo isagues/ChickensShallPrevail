@@ -9,9 +9,9 @@ namespace Flyweight
     public class ChickenStat : ScriptableObject, ILifeControllerStat, IRandomAutoMoveStat, IDeployeableStats
     {
         [SerializeField] private ChickenStatValues statValues;
+        
         public float MaxLife => statValues.maxLife;
         public float Speed => statValues.speed;
-        public DeployeableType DeployeableType => statValues.deployeableType;
         public int Cost => statValues.cost;
         public int Period => statValues.period;
         public GameObject EggPrefab => statValues.eggPrefab;
@@ -23,7 +23,6 @@ namespace Flyweight
     {
         public float maxLife;
         public float speed;
-        public DeployeableType deployeableType;
         public int cost;
         public int period;
         public GameObject eggPrefab;

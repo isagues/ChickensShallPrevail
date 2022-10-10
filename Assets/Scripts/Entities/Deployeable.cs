@@ -1,13 +1,15 @@
 ﻿using System;
+using Flyweight;
 using UnityEngine;
 
 namespace Entities
 {
     public class Deployeable : MonoBehaviour
     {
-        [SerializeField] private int cost;
+        private IDeployeableStats _stats;
+        private IDeployeableStats Stats => _stats ??= GetComponent<StatSupplier>().GetStat<IDeployeableStats>();
 
-        public int Cost => cost;
+        public int Cost => Stats.Cost;
 
         public bool DeployeableType(out DeployeableType ret)
         {
@@ -17,7 +19,6 @@ namespace Entities
 
     public interface IDeployeableStats
     {
-        DeployeableType DeployeableType { get; }
         int Cost { get; }
     }
 }

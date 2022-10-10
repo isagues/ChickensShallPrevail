@@ -1,5 +1,4 @@
 using Command;
-using Controller;
 using Flyweight;
 using Manager;
 using UnityEngine;
@@ -9,16 +8,18 @@ namespace Entities.Turrets
     [RequireComponent(typeof(Collider))]
     public class Turret : MonoBehaviour, ITurret
     {
+        private TurretStat _stats;
+        private TurretStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<TurretStat>();
+        
+        public float Period => Stats.Period;
+        public GameObject BulletPrefab => Stats.BulletPrefab;
+        
         private IDamageable _damageable;
         private Collider _collider;
         private IListenable _listenable;
 
-        private TurretStat _stats;
-        
         private float _nextShotTime;
         
-        public float Period => _stats.Period;
-        public GameObject BulletPrefab => _stats.BulletPrefab;
         public IDamageable Damageable => _damageable;
         public Collider Collider => _collider;
         public IListenable Listenable => _listenable;
@@ -27,8 +28,6 @@ namespace Entities.Turrets
 
         private void Awake()
         {
-            _stats = GetComponent<StatSupplier>().GetStat<TurretStat>();
-            
             _damageable = GetComponent<IDamageable>();
             _collider = GetComponent<Collider>();
             _listenable = GetComponent<IListenable>();

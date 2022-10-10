@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Entities;
+using Flyweight;
 using Interface;
 using Manager;
 using UnityEngine;
@@ -12,23 +12,23 @@ namespace Controller
     [RequireComponent(typeof(Collider))]
     public class CollectorController : MonoBehaviour, ICollector  
     {
-        private ICollectorStats _stats;    
+        private ICollectorStats _stats;
+        private ICollectorStats Stats => _stats ??= GetComponent<StatSupplier>().GetStat<ICollectorStats>();
 
-        private Dictionary<CollectableType, int> collectables;
-
-        public int CollectableLayer => _stats.CollectableLayer;
+        private Dictionary<CollectableType, int> _collectables;
+        
+        public int CollectableLayer => Stats.CollectableLayer;
 
         private void Awake()
         {
-            _stats = GetComponent<StatSupplier>().GetStat<ICollectorStats>();
-            collectables = new Dictionary<CollectableType, int>();
+            _collectables = new Dictionary<CollectableType, int>();
         }
         
         private void Start()
         {
             foreach (var type in EnumUtil.GetValues<CollectableType>())  
             {  
-                collectables[type] = 0;
+                _collectables[type] = 0;
             } 
         }
 
@@ -38,7 +38,7 @@ namespace Controller
             
             if (Enum.TryParse(otherCollider.gameObject.name, true, out CollectableType type))
             {
-                collectables[type] += 10;
+                _collectables[type] += 10;
                 NotifyCollectableChane(type);
             }
             
@@ -47,13 +47,13 @@ namespace Controller
 
         private void NotifyCollectableChane(CollectableType type)
         {
-            EventsManager.instance.CollectableChange(type, collectables[type]);
+            EventsManager.instance.CollectableChange(type, _collectables[type]);
         }
         
         public bool Expend(CollectableType type, int amount)
         {
-            if (collectables[type] < amount) return false;
-            collectables[type] -= amount;
+            if (_collectables[type] < amount) return false;
+            _collectables[type] -= amount;
             NotifyCollectableChane(type);
             return true;
         }

@@ -1,4 +1,3 @@
-using System;
 using Flyweight;
 using Manager;
 using UnityEngine;
@@ -8,12 +7,14 @@ namespace Controller
     public class LifeController: MonoBehaviour, IDamageable
     {
         private ILifeControllerStat _stats;
-        public float MaxLife => _stats.MaxLife;
+        private ILifeControllerStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<ILifeControllerStat>();
+        
+        public float MaxLife => Stats.MaxLife;
+        
         [SerializeField] private float currentLife; //Debug purposes
 
         private void Awake()
         {
-            _stats = GetComponent<StatSupplier>().GetStat<ILifeControllerStat>();
             currentLife = MaxLife;
         }
     

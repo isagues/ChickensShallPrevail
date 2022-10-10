@@ -8,14 +8,11 @@ namespace Controller
     public class RandomWalkAutoMoveController: MonoBehaviour, IAutoMove
     {
         private IRandomAutoMoveStat _stats;
-        public float Speed => _stats.Speed;
+        private IRandomAutoMoveStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<IRandomAutoMoveStat>();
+        
+        public float Speed => Stats.Speed;
 
         private float _rotation = 0f;
-        
-        private void Awake()
-        {
-            _stats = GetComponent<StatSupplier>().GetStat<IRandomAutoMoveStat>();
-        }
 
         public void Travel()
         {

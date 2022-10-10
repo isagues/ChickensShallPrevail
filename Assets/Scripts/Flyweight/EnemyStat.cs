@@ -8,6 +8,7 @@ namespace Flyweight
     public class EnemyStat : ScriptableObject, ILifeControllerStat, ILinearAutoMoveStat
     {
         [SerializeField] private EnemyStatValues statValues;
+        
         public float MaxLife => statValues.maxLife;
         public float Speed => statValues.speed;
         public int Damage => statValues.damage;

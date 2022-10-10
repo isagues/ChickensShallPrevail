@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Controller;
 using Flyweight;
 using Interface;
 using UnityEngine;
@@ -10,9 +9,11 @@ namespace Entities.Turrets
     public class Bullet: MonoBehaviour, IBullet
     {
         private BulletStat _stats;
-        public int Damage => _stats.Damage;
-        public float LifeTime => _stats.LifeTime;
-        public List<int> LayerTarget => _stats.LayerTarget;
+        private BulletStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<BulletStat>();
+        
+        public int Damage => Stats.Damage;
+        public float LifeTime => Stats.LifeTime;
+        public List<int> LayerTarget => Stats.LayerTarget;
 
         public Rigidbody Rigidbody { get; private set; }
         public Collider Collider { get; private set; }
@@ -22,8 +23,6 @@ namespace Entities.Turrets
 
         protected virtual void Awake()
         {
-            _stats = GetComponent<StatSupplier>().GetStat<BulletStat>();
-            
             Rigidbody = GetComponent<Rigidbody>();
             Collider = GetComponent<Collider>();
             AutoMove = GetComponent<IAutoMove>();

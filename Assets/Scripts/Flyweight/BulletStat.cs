@@ -8,12 +8,10 @@ namespace Flyweight
     public class BulletStat : ScriptableObject, ILinearAutoMoveStat
     {
         [SerializeField] private BulletStatValues statValues;
+        
         public float Speed => statValues.speed;
-        
         public int Damage => statValues.damage;
-        
         public float LifeTime => statValues.lifeTime;
-        
         public List<int> LayerTarget => statValues.layerTarget;
     }
 

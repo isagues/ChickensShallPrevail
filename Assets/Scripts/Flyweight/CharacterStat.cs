@@ -3,8 +3,6 @@ using Controller;
 using Entities;
 using UnityEngine;
 
-
-
 namespace Flyweight
 {
     [CreateAssetMenu(fileName = "CharacterStat", menuName = "Stats/CharacterStat", order = 0)]
@@ -14,7 +12,6 @@ namespace Flyweight
         
         public float Speed => statValues.speed;
         public float RotationSpeed => statValues.rotationSpeed;
-        
         public  List<Deployeable> Deployeables => statValues.deployeables;
         public int CollectableLayer => statValues.collectableLayer;
     }

@@ -1,4 +1,3 @@
-using System;
 using Flyweight;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
@@ -8,14 +7,10 @@ namespace Controller
     public class MovementController: MonoBehaviour, IMovable
     {
         private IMovementStats _stats;
-        public float Speed => _stats.Speed;
+        private IMovementStats Stats => _stats ??= GetComponent<StatSupplier>().GetStat<IMovementStats>();
 
-        public float RotationSpeed => _stats.RotationSpeed;
-
-        private void Awake()
-        {
-            _stats = GetComponent<StatSupplier>().GetStat<IMovementStats>();
-        }
+        public float Speed => Stats.Speed;
+        public float RotationSpeed => Stats.RotationSpeed;
 
         public void Travel(Vector3 direction) => transform.Translate(direction * (Time.deltaTime * Speed));
 

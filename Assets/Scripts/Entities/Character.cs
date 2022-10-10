@@ -9,13 +9,17 @@ namespace Entities
 {
     public class Character : MonoBehaviour
     {
+        private CharacterStat _stats;
+        private CharacterStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<CharacterStat>();
+        
+        public List<Deployeable> Deployeables => Stats.Deployeables;
+        
         private MovementController _movementController;
         private CollectorController _collectorController;
     
         private Deployeable _currentDeployable;
 
-        private CharacterStat _stats;
-    
+
         [SerializeField] private KeyCode moveForward = KeyCode.W;
         [SerializeField] private KeyCode moveBack = KeyCode.S;
         [SerializeField] private KeyCode moveRight = KeyCode.D;
@@ -36,14 +40,13 @@ namespace Entities
         private CmdRotation _cmdRotateRight;
         private CmdRotation _cmdRotateLeft;
 
-        public List<Deployeable> Deployeables => _stats.Deployeables;
+        private Transform _deployeablesTransform;
 
         private void Awake()
         {
-            _stats = GetComponent<StatSupplier>().GetStat<CharacterStat>();
-            
             _movementController = GetComponent<MovementController>();
             _collectorController = GetComponent<CollectorController>();
+            _deployeablesTransform = GameObject.Find("Deployeables").transform;
         
             _cmdMoveForward = new CmdMovement(_movementController, Vector3.forward);
             _cmdMoveBackward = new CmdMovement(_movementController, -Vector3.forward);
@@ -55,8 +58,7 @@ namespace Entities
         {
             ChangeDeployeable(0);
         }
-
-        // Update is called once per frame
+        
         private void Update()
         {
             if (Input.GetKey(moveForward)) EventQueueManager.instance.AddCommand(_cmdMoveForward);
@@ -80,7 +82,7 @@ namespace Entities
             var t = transform;
             var deployeable = Instantiate(_currentDeployable, t.position + 2*Vector3.forward, t.rotation);
             deployeable.name = _currentDeployable.name;
-            deployeable.transform.parent = GameObject.Find("Deployeables").transform;
+            deployeable.transform.parent = _deployeablesTransform.transform;
             deployeable.gameObject.SetActive(true);
         }
 

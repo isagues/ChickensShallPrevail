@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Controller
+namespace Flyweight
 {
     public class StatSupplier : MonoBehaviour
     {

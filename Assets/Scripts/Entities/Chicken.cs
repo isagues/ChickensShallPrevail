@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Command;
-using Controller;
 using Flyweight;
 using Interface;
 using Manager;
@@ -13,6 +12,11 @@ namespace Entities
     public class Chicken : MonoBehaviour, IDeployer
     {
         private ChickenStat _stats;
+        private ChickenStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<ChickenStat>();
+        
+        public int Period => Stats.Period;
+        public GameObject DeployablePrefab => Stats.EggPrefab;
+        public List<int> LayerTarget => Stats.LayerTarget;
         
         private float _nextDeployTime;
 
@@ -21,15 +25,12 @@ namespace Entities
         public Collider Collider { get; private set; }
         public Rigidbody Rigidbody { get; private set; }
         public IAutoMove AutoMove { get; private set; }
-        
-        public int Period => _stats.Period;
-        public GameObject DeployablePrefab => _stats.EggPrefab;
-        public List<int> LayerTarget => _stats.LayerTarget;
-        
+
+        private Transform _eggsTransform;
 
         private void Awake()
         {
-            _stats = GetComponent<StatSupplier>().GetStat<ChickenStat>();
+            _eggsTransform = GameObject.Find("Eggs").transform;
             
             Rigidbody = GetComponent<Rigidbody>();
             Collider = GetComponent<Collider>();
@@ -52,7 +53,7 @@ namespace Entities
             var t = transform;
             var turret = Instantiate(DeployablePrefab, t.position, t.rotation);
             turret.name = CollectableType.Egg.ToString();
-            turret.transform.parent = GameObject.Find("Eggs").transform;
+            turret.transform.parent = _eggsTransform;
         }
 
         private void OnTriggerEnter(Collider other)

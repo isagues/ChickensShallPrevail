@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 // Agregamos un componente obligatorio -> Esto fueza a que unity agregue 

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Controller;
 using Flyweight;
 using Manager;
 using UnityEngine;
@@ -10,15 +9,17 @@ namespace Entities
     public class Enemy: MonoBehaviour, IEnemy
     {
         private EnemyStat _stats;
+        private EnemyStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<EnemyStat>();
 
+        public int Damage => Stats.Damage;
+        public List<int> DamageableLayerMask => Stats.DamageableLayerMask;
+        public int TargetLayer => Stats.TargetLayer;
+        
         private Rigidbody _rigidBody;
         private Collider _collider;
         private IDamageable _damageable;
         private IAutoMove _autoMoveController;
 
-        public int Damage => _stats.Damage;
-        public List<int> DamageableLayerMask => _stats.DamageableLayerMask;
-        public int TargetLayer => _stats.TargetLayer;
         public Rigidbody Rigidbody => _rigidBody;
         public Collider Collider => _collider;
         public IDamageable Damageable => _damageable;
@@ -43,8 +44,6 @@ namespace Entities
 
         private void Awake()
         {
-            _stats = GetComponent<StatSupplier>().GetStat<EnemyStat>();
-            
             _rigidBody = GetComponent<Rigidbody>();
             _collider = GetComponent<Collider>();
             _damageable = GetComponent<IDamageable>();
