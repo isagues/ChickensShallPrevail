@@ -10,8 +10,8 @@ namespace Manager
         public static OnDestroyPublisher AttachPublisher(GameObject gameObject)
         {
             return gameObject.TryGetComponent(out OnDestroyPublisher publisher)
-                    ? publisher
-                    : gameObject.AddComponent<OnDestroyPublisher>()
+                ? publisher
+                : gameObject.AddComponent<OnDestroyPublisher>()
                 ;
         }
 

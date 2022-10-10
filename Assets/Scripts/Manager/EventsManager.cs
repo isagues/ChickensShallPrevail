@@ -11,11 +11,14 @@ namespace Manager
     public class EventsManager : MonoBehaviour
     {
         public static EventsManager instance;
-
-        #region UNITY_EVENTS
+        
         private void Awake()
         {
-            if (instance != null) Destroy(this);
+            if (instance != null)
+            {
+                Destroy(this);
+                return;
+            }
             instance = this;
             
             _onCollectableChange = new Dictionary<CollectableType, Action<int>>();
@@ -24,9 +27,7 @@ namespace Manager
                 _onCollectableChange[type] = _ => {};
             } 
         }
-        #endregion
-
-        #region GAME_MANAGE
+        
         public event Action<bool>                   OnGameOver;
         public event Action<float, float>           OnFarmLifeChange;
         public event Action<Deployeable>            OnDeployableChange;
@@ -69,7 +70,5 @@ namespace Manager
         {
             OnEnemyKilled?.Invoke(id);
         }
-        
-        #endregion
     }
 }

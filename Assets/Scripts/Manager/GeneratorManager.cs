@@ -7,13 +7,8 @@ namespace Manager
 {
     public class GeneratorManager : MonoBehaviour
     {
-        public static GeneratorManager Instance;
-        
-        private Dictionary<EnemyType, GameObject> _enemyPrefabs;
-        
         [SerializeField] 
         private float laneCount;
-
         public float LaneCount => laneCount;
 
         [SerializeField] 
@@ -21,18 +16,14 @@ namespace Manager
 
         private LevelPlan _levelPlan;
         private int _enemyCount = 0;
-
+        private Dictionary<EnemyType, GameObject> _enemyPrefabs;
         private Renderer _renderer;
-
-        private void Awake()
-        {
-            if (Instance != null) Destroy(this);
-            Instance = this;
-        }
+        private Transform _enemiesContainer;
 
         private void Start()
         {
             _renderer = GetComponent<Renderer>();
+            _enemiesContainer = GameObject.Find("Enemies").transform;
             
             _enemyPrefabs = new Dictionary<EnemyType, GameObject>();
             LoadPrefabs();
@@ -79,7 +70,7 @@ namespace Manager
             {
                 var enemy = Instantiate(_enemyPrefabs[enemyType], newPosition, transform.rotation);
                 enemy.name = enemyType.ToString();
-                enemy.transform.parent = GameObject.Find("Enemies").transform;
+                enemy.transform.parent = _enemiesContainer;
                 EventsManager.instance.EnemySpawn(enemyType, enemy);
             }
 

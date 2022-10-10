@@ -6,17 +6,18 @@ namespace Manager
     {
         public static GlobalData instance;
 
-        public bool IsVictory => _isVictory;
-        [SerializeField] private bool _isVictory;
+        public bool IsVictory { get; set; }
 
         private void Awake()
         {
-            if (instance != null) Destroy(this.gameObject);
+            if (instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
             instance = this;
         
             DontDestroyOnLoad(this);
         }
-
-        public void SetVictoryField(bool isVictory) => _isVictory = isVictory;
     }
 }

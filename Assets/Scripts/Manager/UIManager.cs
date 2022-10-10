@@ -10,19 +10,19 @@ namespace Manager{
 
     public class UIManager : MonoBehaviour
     {
-        [SerializeField] private Slider _lifebar;
-        [SerializeField] private Image _avatar;
-        [SerializeField] private Image _egg;
-        [SerializeField] private Text _eggAmout;
-        [SerializeField] private Image _deployeableType;
-        [SerializeField] private Text _deployeableName;
-        [SerializeField] private Text _deployeableCost;
+        [SerializeField] private Slider lifebar;
+        [SerializeField] private Image  avatar;
+        [SerializeField] private Image  egg;
+        [SerializeField] private Text   eggAmout;
+        [SerializeField] private Image  deployeableType;
+        [SerializeField] private Text   deployeableName;
+        [SerializeField] private Text   deployeableCost;
         
-        private Dictionary<DeployeableType, Sprite> deployeableSprites;
+        private Dictionary<DeployeableType, Sprite> _deployeableSprites;
         
         private float _characterCurrentLife;
         
-        void LoadDeployeablesImages()
+        private void LoadDeployeablesImages()
         {
             var resources = Resources.LoadAll("Sprites/Deployeables");
             foreach (var thisObject in resources)
@@ -31,14 +31,14 @@ namespace Manager{
                 if (objectType != "Sprite") continue;
                 if (Enum.TryParse(thisObject.name, true, out DeployeableType type))
                 {
-                    deployeableSprites.Add(type, (Sprite)thisObject);
+                    _deployeableSprites.Add(type, (Sprite)thisObject);
                 }
             }
         }
 
         private void Awake()
         {
-            deployeableSprites = new Dictionary<DeployeableType, Sprite>();
+            _deployeableSprites = new Dictionary<DeployeableType, Sprite>();
             LoadDeployeablesImages();
             EventsManager.instance.OnDeployableChange += OnDeployableChange;
             EventsManager.instance.OnFarmLifeChange += UpdateLifeBar;
@@ -47,19 +47,19 @@ namespace Manager{
         
         private void OnCollectableChange(int currentCoins)
         {
-            _eggAmout.text = $"{currentCoins}";
+            eggAmout.text = $"{currentCoins}";
         }
 
         private void OnDeployableChange(Deployeable deployeable)
         {
-            _deployeableType.sprite = deployeableSprites[deployeable.DeployeableType];
-            _deployeableName.text = $"{deployeable.DeployeableType}";
-            _deployeableCost.text = $"{deployeable.Cost}";
+            deployeableType.sprite = _deployeableSprites[deployeable.DeployeableType];
+            deployeableName.text = $"{deployeable.DeployeableType}";
+            deployeableCost.text = $"{deployeable.Cost}";
         }
         
         private void UpdateLifeBar(float currentLife, float maxLife)
         {
-            _lifebar.value = currentLife / maxLife;
+            lifebar.value = currentLife / maxLife;
             _characterCurrentLife = currentLife;
         }
     }

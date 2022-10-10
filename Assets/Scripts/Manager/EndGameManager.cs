@@ -1,23 +1,20 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Manager
 {
     public class EndGameManager : MonoBehaviour
     {
-        [SerializeField] private String _victoryText;
-        [SerializeField] private String _defeatText;
-        [SerializeField] private Color _victoryColor;
-        [SerializeField] private Color _defeatColor;
+        [SerializeField] private string victoryText;
+        [SerializeField] private string defeatText;
+        [SerializeField] private Color victoryColor;
+        [SerializeField] private Color defeatColor;
 
-        private InputField inputName;
         private void Start()
         {
             var endText = GetComponent<Text>();
-            endText.text = GlobalData.instance.IsVictory ? _victoryText : _defeatText;
-            endText.color = GlobalData.instance.IsVictory ? _victoryColor : _defeatColor;
+            endText.text = GlobalData.instance.IsVictory ? victoryText : defeatText;
+            endText.color = GlobalData.instance.IsVictory ? victoryColor : defeatColor;
         }
     }
 }

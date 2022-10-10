@@ -127,13 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460680ab7285412e9e4ae4dbbdbc77fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifebar: {fileID: 8823437826315980515}
-  _avatar: {fileID: 8823437825552893988}
-  _egg: {fileID: 8823437825875818516}
-  _eggAmout: {fileID: 8823437825308988394}
-  _deployeableType: {fileID: 8823437825406725263}
-  _deployeableName: {fileID: 8823437826777526433}
-  _deployeableCost: {fileID: 5902598089943848252}
+  lifebar: {fileID: 8823437826315980515}
+  avatar: {fileID: 8823437825552893988}
+  egg: {fileID: 8823437825875818516}
+  eggAmout: {fileID: 8823437825308988394}
+  deployeableType: {fileID: 8823437825406725263}
+  deployeableName: {fileID: 8823437826777526433}
+  deployeableCost: {fileID: 5902598089943848252}
 --- !u!1 &8823437824871346524
 GameObject:
   m_ObjectHideFlags: 0

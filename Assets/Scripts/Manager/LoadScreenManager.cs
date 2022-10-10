@@ -3,37 +3,39 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LoadScreenManager : MonoBehaviour
+namespace Manager
 {
-    [SerializeField] private Image _progressBar;
-    [SerializeField] private Text _progressValue;
-    [SerializeField] private string _targetScene = "MainScene";
-
-    void Start()
+    public class LoadScreenManager : MonoBehaviour
     {
-        StartCoroutine(LoadAsync());
-    }
+        [SerializeField] private Image  progressBar;
+        [SerializeField] private Text   progressValue;
+        [SerializeField] private string targetScene = "MainScene";
 
-    IEnumerator LoadAsync()
-    {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(_targetScene);
-        operation.allowSceneActivation = false;
-        float progress = 0;
-
-        while (!operation.isDone)
+        private void Start()
         {
-            progress = operation.progress;
-            _progressBar.fillAmount = progress;
-            _progressValue.text = $"Cargando ... {progress * 100} %";
+            StartCoroutine(LoadAsync());
+        }
 
-            if(operation.progress >= .9f)
+        private IEnumerator LoadAsync()
+        {
+            var operation = SceneManager.LoadSceneAsync(targetScene);
+            operation.allowSceneActivation = false;
+
+            while (!operation.isDone)
             {
-                _progressValue.text = "Presionar espacio para continuar";
-                
-                if(Input.GetKeyDown(KeyCode.Space)) operation.allowSceneActivation = true;
-            }
+                var progress = operation.progress;
+                progressBar.fillAmount = progress;
+                progressValue.text = $"Cargando ... {progress * 100} %";
 
-            yield return null;
+                if(operation.progress >= .9f)
+                {
+                    progressValue.text = "Presionar espacio para continuar";
+                
+                    if(Input.GetKeyDown(KeyCode.Space)) operation.allowSceneActivation = true;
+                }
+
+                yield return null;
+            }
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Interface;
 using UnityEngine;
 
@@ -8,13 +7,19 @@ namespace Manager
     public class EventQueueManager : MonoBehaviour
     {
         public static EventQueueManager instance;
+
+        private Queue<ICommand> _events;
         
-        public Queue<ICommand> Events => _events;
-        private Queue<ICommand> _events = new Queue<ICommand>();
         private void Awake()
         {
-            if(instance != null) Destroy(this);
+            if (instance != null)
+            {
+                Destroy(this);
+                return;
+            }
             instance = this;
+            
+            _events = new Queue<ICommand>();
         }
 
         private void Update()
@@ -24,13 +29,11 @@ namespace Manager
 
         public void AddCommand(ICommand command) => _events.Enqueue(command);
         
-        public void ProcessQueue(Queue<ICommand> events) {
-            while(_events.Count > 0)
+        private static void ProcessQueue(Queue<ICommand> events) {
+            while(events.Count > 0)
             {
-                _events.Dequeue().Execute();
+                events.Dequeue().Execute();
             }
-
-            _events.Clear();
         }
     }
 }
