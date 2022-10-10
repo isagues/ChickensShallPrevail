@@ -9,12 +9,12 @@ namespace Manager
         [SerializeField] private string defeatText;
         [SerializeField] private Color victoryColor;
         [SerializeField] private Color defeatColor;
+        [SerializeField] private Text  _text;
 
-        private void Start()
+        private void Update()
         {
-            var endText = GetComponent<Text>();
-            endText.text = GlobalData.instance.IsVictory ? victoryText : defeatText;
-            endText.color = GlobalData.instance.IsVictory ? victoryColor : defeatColor;
+            _text.text = GlobalData.instance.IsVictory ? victoryText : defeatText;
+            _text.color = GlobalData.instance.IsVictory ? victoryColor : defeatColor;
         }
     }
 }
