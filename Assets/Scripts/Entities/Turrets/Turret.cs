@@ -14,6 +14,7 @@ namespace Entities.Turrets
         [SerializeField] protected GameObject bulletPrefab;
         private IDamageable _damageable;
         private Collider _collider;
+        private IListenable _listenable;
         
         [SerializeField] private List<int> _damageableLayerMask;
 
@@ -26,6 +27,7 @@ namespace Entities.Turrets
         public GameObject BulletPrefab => bulletPrefab;
         public IDamageable Damageable => _damageable;
         public Collider Collider => _collider;
+        public IListenable Listenable => _listenable;
         
         private CmdAttack _cmdAttack;
         #endregion
@@ -37,12 +39,14 @@ namespace Entities.Turrets
             var bullet = Instantiate(bulletPrefab, t.position + Vector3.up * height, t.rotation);
             bullet.name = bulletPrefab.name;
             bullet.transform.parent = transform;
+            _listenable.Play();
         }
 
         protected virtual void Start()
         {
             _damageable = GetComponent<IDamageable>();
             _collider = GetComponent<Collider>();
+            _listenable = GetComponent<IListenable>();
             _cmdAttack = new CmdAttack(this);
             _nextShotTime = Time.time;
         }
