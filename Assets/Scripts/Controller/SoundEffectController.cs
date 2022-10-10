@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 // Agregamos un componente obligatorio -> Esto fueza a que unity agregue 
@@ -9,11 +10,15 @@ namespace Controller
     {
         #region IListenable_Properties
 
-        public AudioClip AudioClip => _soundTrackClip;
-        public void SetAudioClip(AudioClip clip) => _soundTrackClip = clip;
-    
-        [SerializeField] private AudioClip _soundTrackClip;
+        public AudioClip AudioClip => soundTrackClip;
+        public bool AutoPlay => autoplay;
+        public bool Loop => loop;
+        public void SetAudioClip(AudioClip clip) => soundTrackClip = clip;
         public AudioSource AudioSource => _audioSource;
+    
+        [SerializeField] private AudioClip soundTrackClip;
+        [SerializeField] private bool autoplay;
+        [SerializeField] private bool loop;
         private AudioSource _audioSource;
         #endregion
 
@@ -22,6 +27,7 @@ namespace Controller
         {
             _audioSource = GetComponent<AudioSource>();
             _audioSource.clip = AudioClip;
+            _audioSource.loop = loop;
         }
     
         public void Play() => AudioSource.Play();
@@ -30,7 +36,10 @@ namespace Controller
         protected void Start()
         {
             InitAudioSource();
-            Play();
+            if (autoplay)
+            {
+                Play();
+            }
         }
         #endregion
     

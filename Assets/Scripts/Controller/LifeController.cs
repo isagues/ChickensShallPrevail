@@ -21,26 +21,17 @@ namespace Controller
             _currentLife -= damage;
             UI_Updater();
 
-            if (IsDead())
+            if (_currentLife <= 0)
             {
-                if (name == "FArm") EventsManager.instance.EventGameOver(false);
                 Die();
             }
         }
 
         public void Die()
         { 
-            Destroy(this.gameObject);
-            // si es this saca solo el componente de este script.
+            Destroy(gameObject);
         }
-    
-        private bool IsDead() => _currentLife <= 0;
-
-        private void OnDestroy()
-        {
-            if (name == "Character") EventsManager.instance.EventGameOver(false);
-        }
-    
+        
         public void UI_Updater() 
         { 
             if(name == "FArm") EventsManager.instance.FarmLifeChange(_currentLife, MaxLife);
