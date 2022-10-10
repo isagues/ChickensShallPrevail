@@ -57,7 +57,7 @@ PrefabInstance:
     - target: {fileID: 1317702933, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: _deployeables.Array.data[0]
       value: 
-      objectReference: {fileID: -4933708417884875041, guid: a6b77e6f3b5e948788d81ac1e73d6552, type: 3}
+      objectReference: {fileID: -3808499245637167671, guid: 78ad06f6a639a1c42b72d8f620a2e7ad, type: 3}
     - target: {fileID: 1317702933, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: _deployeables.Array.data[1]
       value: 

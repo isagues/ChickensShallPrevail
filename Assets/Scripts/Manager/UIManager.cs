@@ -35,15 +35,16 @@ namespace Manager{
                 }
             }
         }
-        private void Start()
+
+        private void Awake()
         {
             deployeableSprites = new Dictionary<DeployeableType, Sprite>();
             LoadDeployeablesImages();
-            EventsManager.instance.OnFarmLifeChange += UpdateLifeBar;
             EventsManager.instance.OnDeployableChange += OnDeployableChange;
+            EventsManager.instance.OnFarmLifeChange += UpdateLifeBar;
             EventsManager.instance.AddOnCollectableChangeHandler(CollectableType.Egg, OnCollectableChange);
         }
-
+        
         private void OnCollectableChange(int currentCoins)
         {
             _eggAmout.text = $"{currentCoins}";
