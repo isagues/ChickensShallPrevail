@@ -14,7 +14,6 @@ namespace Manager
         {
             GlobalData.instance.IsVictory = isVictory;
             SceneManager.LoadScene("Endgame");
-
         }
     }
 }

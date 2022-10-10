@@ -20,14 +20,11 @@ namespace Entities
 
         private void FarmLifeChange(float currentLife, float maxLife)
         {
-            if(Math.Abs(currentLife - maxLife) < TOLERANCE) return;
-            _listenable.Play();
-        }
-
-
-        private void OnDestroy()
-        {
-            EventsManager.instance.EventGameOver(false);
+            if (Math.Abs(currentLife - maxLife) < TOLERANCE) return;
+            
+            if (currentLife < TOLERANCE) EventsManager.instance.EventGameOver(false);
+            else _listenable.Play();
+            
         }
     }
 }

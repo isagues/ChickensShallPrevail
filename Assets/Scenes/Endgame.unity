@@ -430,9 +430,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cec73ab89627484aa507073093130c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _soundTrackClip: {fileID: 8300000, guid: 376032a544b801744bf38d26757a4819, type: 3}
-  _victoryClip: {fileID: 8300000, guid: 376032a544b801744bf38d26757a4819, type: 3}
-  _defeatClip: {fileID: 8300000, guid: 06906d718be5b6a4cb2df8732bf39832, type: 3}
+  soundTrackClip: {fileID: 8300000, guid: 77e9052f253b463280a788b56acbd053, type: 3}
+  autoplay: 1
+  loop: 1
+  _victoryClip: {fileID: 8300000, guid: 77e9052f253b463280a788b56acbd053, type: 3}
+  _defeatClip: {fileID: 8300000, guid: 0f29c3ca81fb43cbb0c5609b4bf068da, type: 3}
 --- !u!82 &1015349965
 AudioSource:
   m_ObjectHideFlags: 0

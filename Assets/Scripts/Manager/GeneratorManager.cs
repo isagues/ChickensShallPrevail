@@ -32,6 +32,7 @@ namespace Manager
 
             EventsManager.instance.OnEnemySpawn  += OnEnemySpawn;
             EventsManager.instance.OnEnemyKilled += OnEnemyKilled;
+            EventsManager.instance.OnGameOver += OnGameOver;
         }
 
         private void LoadPrefabs()
@@ -88,7 +89,12 @@ namespace Manager
             {
                 EventsManager.instance.EventGameOver(true);
             }
-            
+        }
+
+        private void OnGameOver(bool _)
+        {
+            EventsManager.instance.OnEnemySpawn  -= OnEnemySpawn;
+            EventsManager.instance.OnEnemyKilled -= OnEnemyKilled;
         }
     }
 }

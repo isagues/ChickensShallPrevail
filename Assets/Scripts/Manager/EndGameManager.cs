@@ -11,7 +11,7 @@ namespace Manager
         [SerializeField] private Color defeatColor;
         [SerializeField] private Text  _text;
 
-        private void Update()
+        private void Start()
         {
             _text.text = GlobalData.instance.IsVictory ? victoryText : defeatText;
             _text.color = GlobalData.instance.IsVictory ? victoryColor : defeatColor;
