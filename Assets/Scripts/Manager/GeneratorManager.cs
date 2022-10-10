@@ -51,7 +51,7 @@ namespace Manager
         
         private void Update()
         {
-            var time = Time.time;
+            var time = Time.timeSinceLevelLoad;
             while (_levelPlan.IsSpawnTime(time))
             {
                 var enemySpawnParams = _levelPlan.PopEnemySpawnParam();
