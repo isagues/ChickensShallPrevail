@@ -2364,8 +2364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24db0b90fd0f40fa997ce9799cb6c96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actorStats: {fileID: 11400000, guid: 8a03951108bef9047b9e6078ad7d1ac5, type: 2}
-  _currentLife: 40
+  _actorStats: {fileID: 11400000, guid: 8ca8711b875ccd647a327dc2a14ca3cd, type: 2}
+  _currentLife: 150
 --- !u!114 &7830433311923617048
 MonoBehaviour:
   m_ObjectHideFlags: 0

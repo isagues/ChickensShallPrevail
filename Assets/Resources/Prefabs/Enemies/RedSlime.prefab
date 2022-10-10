@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3876caebaee94f3eb42335115513acc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 25
   damageableLayerMask: 
 --- !u!114 &475625438877216717
 MonoBehaviour:

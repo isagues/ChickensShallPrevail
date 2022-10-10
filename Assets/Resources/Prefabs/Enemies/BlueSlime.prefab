@@ -784,7 +784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actorStats: {fileID: 11400000, guid: 041b0d32fe8f6614a8a6a80268802606, type: 2}
-  _currentLife: 25
+  _currentLife: 200
 --- !u!114 &4950993481248968523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3876caebaee94f3eb42335115513acc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 10
   damageableLayerMask: 
 --- !u!1 &5297739214040648687
 GameObject:

@@ -38,7 +38,7 @@ namespace Entities
             int layer = other.gameObject.layer;
             if (!damageableLayerMask.Contains(layer) && layer != 14) return;
             var damageable = other.gameObject.GetComponent<IDamageable>();
-            damageable?.TakeDamage(Damage * 3);
+            damageable?.TakeDamage(Damage);
             Destroy(gameObject);
         }
 

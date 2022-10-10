@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actorStats: {fileID: 11400000, guid: 8a03951108bef9047b9e6078ad7d1ac5, type: 2}
-  _currentLife: 50
+  _currentLife: 250
 --- !u!114 &8200855356255210774
 MonoBehaviour:
   m_ObjectHideFlags: 0
