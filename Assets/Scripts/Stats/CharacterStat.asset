@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: CharacterStat
   m_EditorClassIdentifier: 
   statValues:
-    maxLife: 0
-    speed: 0
-    rotationSpeed: 0
-    deployeables: []
-    collectableLayer: 0
+    speed: 10
+    rotationSpeed: 75
+    deployeables:
+    - {fileID: -3808499245637167671, guid: 78ad06f6a639a1c42b72d8f620a2e7ad, type: 3}
+    - {fileID: 950961179484411005, guid: ced2a4fc62bf040609f0f65baec73161, type: 3}
+    - {fileID: 3526451375443967728, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
+    collectableLayer: 15

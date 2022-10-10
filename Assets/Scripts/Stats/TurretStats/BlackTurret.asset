@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlackTurret
   m_EditorClassIdentifier: 
   statValues:
-    maxLife: 0
-    deployeableType: 0
-    cost: 0
-    period: 0
+    maxLife: 150
+    deployeableType: 2
+    cost: 25
+    period: 1

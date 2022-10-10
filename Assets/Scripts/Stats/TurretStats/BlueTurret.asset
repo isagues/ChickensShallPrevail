@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlueTurret
   m_EditorClassIdentifier: 
   statValues:
-    maxLife: 0
-    deployeableType: 0
-    cost: 0
-    period: 0
+    maxLife: 200
+    deployeableType: 1
+    cost: 10
+    period: 0.2

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RedSlime
   m_EditorClassIdentifier: 
   statValues:
-    maxLife: 0
-    speed: 0
-    damage: 0
-    damageableLayerMask: 
+    maxLife: 50
+    speed: 6
+    damage: 25
+    damageableLayerMask: 0b0000000e000000
