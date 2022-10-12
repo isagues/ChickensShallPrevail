@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ExplodingBulletStat
   m_EditorClassIdentifier: 
   statValues:
-    speed: 15
-    damage: 10
-    lifeTime: 10
-    layerTarget: 
-  statValues:
-    explosionCount: 0
+    speed: 1
+    damage: 20
+    lifeTime: 5
+    layerTarget: 0a000000
+  explotionStatValues:
+    explosionCount: 5

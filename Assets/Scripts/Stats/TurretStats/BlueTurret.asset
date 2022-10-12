@@ -16,4 +16,4 @@ MonoBehaviour:
     maxLife: 200
     cost: 10
     period: 1
-    bulletPrefab: {fileID: 5961826193263668453, guid: 4e968386847c5ea4caf5a42f40a3f3aa, type: 3}
+    bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}

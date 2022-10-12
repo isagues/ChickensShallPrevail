@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: VioletTurret
   m_EditorClassIdentifier: 
   statValues:
-    maxLife: 0
-    cost: 0
-    period: 0
-    bulletPrefab: {fileID: 0}
+    maxLife: 250
+    cost: 50
+    period: 1
+    bulletPrefab: {fileID: 5961826193263668453, guid: 4e968386847c5ea4caf5a42f40a3f3aa, type: 3}
