@@ -1,22 +1,21 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Controller;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIButtonLogic : MonoBehaviour
+namespace UI
 {
-    public void LoadMenuScene()
+    public class UIButtonLogic : MonoBehaviour
     {
-        SceneManager.LoadScene("MainMenu");
+        public void LoadMenuScene()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+
+        public void LoadLevelScene() { SceneManager.LoadScene("LoadScreen"); }
+    
+        public void LoadHelpScene() => Debug.Log("Help scene");
+    
+        public void LoadSettingsScene() => Debug.Log("Settings scene");
+
+        public void CloseGame() => Application.Quit();
     }
-
-    public void LoadLevelScene() { SceneManager.LoadScene("LoadScreen"); }
-    
-    public void LoadHelpScene() => Debug.Log("Help scene");
-    
-    public void LoadSettingsScene() => Debug.Log("Settings scene");
-
-    public void CloseGame() => Application.Quit();
 }
