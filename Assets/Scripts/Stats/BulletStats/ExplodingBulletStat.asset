@@ -17,5 +17,5 @@ MonoBehaviour:
     damage: 20
     lifeTime: 5
     layerTarget: 0a000000
-  explotionStatValues:
-    explosionCount: 5
+  explosionStatValues:
+    explosionCount: 2
