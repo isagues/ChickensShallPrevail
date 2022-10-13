@@ -82,7 +82,7 @@ namespace Entities
             if (!_collectorController.Expend(CollectableType.Egg, _currentDeployable.Cost)) return;
 
             var t = transform;
-            var deployeable = Instantiate(_currentDeployable, t.position + 2*Vector3.forward, t.rotation);
+            var deployeable = Instantiate(_currentDeployable, t.position + t.TransformVector(Vector3.forward * 1.2f), t.rotation);
             deployeable.name = _currentDeployable.name;
             deployeable.transform.parent = _deployeablesTransform.transform;
             deployeable.gameObject.SetActive(true);

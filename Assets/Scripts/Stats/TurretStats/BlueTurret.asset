@@ -15,5 +15,5 @@ MonoBehaviour:
   statValues:
     maxLife: 200
     cost: 10
-    period: 0.2
+    period: 0.8
     bulletPrefab: {fileID: 3799596945384122088, guid: 8c43d928cbf2e4c9e9af617891012778, type: 3}
