@@ -15,5 +15,5 @@ MonoBehaviour:
   statValues:
     speed: 15
     damage: 10
-    lifeTime: 10
+    lifeTime: 5
     layerTarget: 0a000000
