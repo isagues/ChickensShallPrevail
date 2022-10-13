@@ -14,12 +14,12 @@ namespace Entities.Turrets
         public List<int> LayerTarget => Stats().LayerTarget;
         protected IAutoMove AutoMove { get; private set; }
 
-        protected float _currentLifeTime;
+        protected float CurrentLifeTime;
 
         protected virtual void Awake()
         {
             AutoMove = GetComponent<IAutoMove>();
-            _currentLifeTime = LifeTime;
+            CurrentLifeTime = LifeTime;
         }
 
         public void OnTriggerEnter(Collider otherCollider)
@@ -29,22 +29,26 @@ namespace Entities.Turrets
             var damageable = otherCollider.GetComponent<IDamageable>();
             damageable?.TakeDamage(Damage);
 
+            SelfDestroy();
+        }
+
+        private void SelfDestroy()
+        {
+            BeforeDestroy();
             Destroy(gameObject);
         }
 
         protected void UpdateLifetime()
         {
-            _currentLifeTime -= Time.deltaTime;
-            if (_currentLifeTime <= 0)
+            CurrentLifeTime -= Time.deltaTime;
+            if (CurrentLifeTime <= 0)
             {
-                BeforeDestroy();
-                Destroy(gameObject);
+                SelfDestroy();
             }
         }
 
         protected virtual void BeforeDestroy()
         {
-            return;
         }
 
         protected void Update()
