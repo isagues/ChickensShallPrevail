@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8bc0af96ff4d2a88aa678a33adb146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundTrackClip: {fileID: 8300000, guid: 33af9cddc42e7d648b81a520e7424107, type: 3}
+  soundTrackClip: {fileID: 8300000, guid: c99e9720be9ce0b448a32872ce94de58, type: 3}
   autoplay: 1
   loop: 0
 --- !u!82 &2027738910
