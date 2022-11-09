@@ -12,6 +12,8 @@ namespace Flyweight
         public int Damage => statValues.damage;
         public float LifeTime => statValues.lifeTime;
         public List<int> LayerTarget => statValues.layerTarget;
+
+        public GameObject Explosion => statValues._explosionPrefab;
     }
 
     [System.Serializable]
@@ -21,6 +23,7 @@ namespace Flyweight
         public int damage;
         public float lifeTime;
         public List<int> layerTarget;
+        public GameObject _explosionPrefab;
     }
     
 }

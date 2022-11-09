@@ -1561,6 +1561,7 @@ MonoBehaviour:
   weaponSlot1: 49
   weaponSlot2: 50
   weaponSlot3: 51
+  weaponSlot4: 57
   setVictory: 118
   setDefeat: 108
 --- !u!114 &1355952726015829446

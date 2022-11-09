@@ -11,11 +11,11 @@ namespace Entities.Turrets
         protected abstract BulletStat Stats();
         public int Damage => Stats().Damage;
         public float LifeTime => Stats().LifeTime;
+        public GameObject ExplosionPrefab => Stats().Explosion;
         public List<int> LayerTarget => Stats().LayerTarget;
         protected IAutoMove AutoMove { get; private set; }
 
         protected float CurrentLifeTime;
-
         protected virtual void Awake()
         {
             AutoMove = GetComponent<IAutoMove>();
@@ -24,12 +24,17 @@ namespace Entities.Turrets
 
         public void OnTriggerEnter(Collider otherCollider)
         {
+            calculateDamage(otherCollider);
+        }
+        //Por que me esta damageando?
+        protected void calculateDamage(Collider otherCollider)
+        {
             if (!LayerTarget.Contains(otherCollider.gameObject.layer)) return;
 
             var damageable = otherCollider.GetComponent<IDamageable>();
             damageable?.TakeDamage(Damage);
 
-            SelfDestroy();
+            SelfDestroy(); 
         }
 
         private void SelfDestroy()
@@ -49,6 +54,7 @@ namespace Entities.Turrets
 
         protected virtual void BeforeDestroy()
         {
+            Instantiate(ExplosionPrefab, transform.position, transform.rotation);
         }
 
         protected void Update()
