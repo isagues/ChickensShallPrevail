@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71f2af0dafb433cb7869162ddfd1266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _raycastStats: {fileID: 11400000, guid: 5c861b1fe2f207447beb097057782ff6, type: 2}
 --- !u!114 &-8527996926705360521
 MonoBehaviour:
   m_ObjectHideFlags: 0

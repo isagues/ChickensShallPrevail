@@ -12,7 +12,6 @@ namespace Flyweight
         public int Damage => statValues.damage;
         public float LifeTime => statValues.lifeTime;
         public List<int> LayerTarget => statValues.layerTarget;
-
         public GameObject Explosion => statValues._explosionPrefab;
     }
 
