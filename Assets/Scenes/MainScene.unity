@@ -922,6 +922,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3410491792737038814, guid: e4b2fcb2d06d44db09bc619e76321374, type: 3}
+      propertyPath: weaponSlot4
+      value: 52
+      objectReference: {fileID: 0}
     - target: {fileID: 5827972284978220280, guid: e4b2fcb2d06d44db09bc619e76321374, type: 3}
       propertyPath: m_Name
       value: Character
