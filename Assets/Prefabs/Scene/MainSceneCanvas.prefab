@@ -95,7 +95,8 @@ MonoBehaviour:
   - {fileID: -977592144265632740, guid: 0888a6062a49b497d9c98553bfaab2f9, type: 3}
   - {fileID: 6125107023974935428, guid: 0888a6062a49b497d9c98553bfaab2f9, type: 3}
   - {fileID: 809812584010285543, guid: 0888a6062a49b497d9c98553bfaab2f9, type: 3}
-  _speed: 10
+  _baseSpeed: 5
+  _speedMultiplier: 1.3
 --- !u!1 &505462015467738249
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +231,7 @@ MonoBehaviour:
   deployeableType: {fileID: 8823437825406725263}
   deployeableName: {fileID: 8823437826777526433}
   deployeableCost: {fileID: 5902598089943848252}
+  heart: {fileID: 1171740947}
 --- !u!1 &8823437824871346524
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Entities;
 using Entities.Turrets;
 using Interface;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ namespace Manager{
         [SerializeField] private Image  deployeableType;
         [SerializeField] private Text   deployeableName;
         [SerializeField] private Text   deployeableCost;
+        [SerializeField] private Heart  heart;
         
         private Dictionary<DeployeableType, Sprite> _deployeableSprites;
         
@@ -63,6 +65,7 @@ namespace Manager{
         {
             lifebar.value = currentLife / maxLife;
             _characterCurrentLife = currentLife;
+            heart.SpeedUp();
         }
     }
 }
