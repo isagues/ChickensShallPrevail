@@ -295,6 +295,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6765727786920438198}
     m_Modifications:
+    - target: {fileID: 3340245831970520463, guid: c5d4582bc6d4148648742f5b639e1ff9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3340245833654077582, guid: c5d4582bc6d4148648742f5b639e1ff9, type: 3}
       propertyPath: m_Name
       value: ChickenHouse
