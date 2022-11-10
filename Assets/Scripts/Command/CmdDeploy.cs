@@ -4,7 +4,7 @@ namespace Command
 {
     public class CmdDeploy : ICommand
     {
-        private IDeployer _deployer;
+        private readonly IDeployer _deployer;
         
 
         public CmdDeploy(IDeployer deployer)

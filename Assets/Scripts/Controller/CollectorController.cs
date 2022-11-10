@@ -17,7 +17,7 @@ namespace Controller
 
         private Dictionary<CollectableType, int> _collectables;
         
-        public int CollectableLayer => Stats.CollectableLayer;
+        private int CollectableLayer => Stats.CollectableLayer;
 
         private void Awake()
         {

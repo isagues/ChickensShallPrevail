@@ -6,27 +6,26 @@ namespace Controller
 {
     public class LinearAutoMoveController: MonoBehaviour, IAutoMove
     {
-        public RaycastStat RaycastStats => _raycastStats;
-        [SerializeField] private RaycastStat _raycastStats;
+        private RaycastStat RaycastStats => raycastStats;
+        [SerializeField] private RaycastStat raycastStats;
         
         private ILinearAutoMoveStat _stats;
         private ILinearAutoMoveStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<ILinearAutoMoveStat>();
 
         public float Speed => Stats.Speed;
         private float _currentBoostSpeed = 1;
-        private bool _hasColided = false;
+        private bool _hasCollided = false;
 
         public void Travel()
         {
-           if (!_hasColided && RaycastStats != null)
+            if (!_hasCollided && RaycastStats != null)
             {
-                RaycastHit hit;
-                Ray ray = new Ray(transform.position, RaycastStats.Direction);
-                if (Physics.Raycast(ray, out hit, RaycastStats.Range))
+                var ray = new Ray(transform.position, RaycastStats.Direction);
+                if (Physics.Raycast(ray, out var hit, RaycastStats.Range))
                 {
                     if (RaycastStats.LayerTarget.Contains(hit.transform.gameObject.layer))
                     {
-                        _hasColided = true;
+                        _hasCollided = true;
                         _currentBoostSpeed = RaycastStats.BoostedSpeed;
                     }
                 } 

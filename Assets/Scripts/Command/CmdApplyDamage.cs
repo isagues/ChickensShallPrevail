@@ -4,8 +4,8 @@ namespace Command
 {
     public class CmdApplyDamage : ICommand
     {
-        private IDamageable _damageable;
-        private int _damage;
+        private readonly IDamageable _damageable;
+        private readonly int _damage;
 
         public CmdApplyDamage(IDamageable damageable, int damage)
         {

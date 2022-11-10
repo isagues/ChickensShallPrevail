@@ -5,7 +5,7 @@ namespace Command
 {
     public class CmdAttack : ICommand
     {
-        private ITurret _turret;
+        private readonly ITurret _turret;
         
 
         public CmdAttack(ITurret turret)
