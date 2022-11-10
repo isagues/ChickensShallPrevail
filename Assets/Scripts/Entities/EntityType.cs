@@ -9,6 +9,7 @@
     public enum DeployeableType
     {
         Chicken,
+        Catapult,
         BlueTurret,
         BlackTurret,
         VioletTurret
