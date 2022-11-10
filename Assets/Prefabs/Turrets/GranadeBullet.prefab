@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9cdb6d80a5b7ff04d9f2960a1967b03c, type: 2}
+  - {fileID: 2100000, guid: f6cdf4944c530ab409c8cd15c7a23aa0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71f2af0dafb433cb7869162ddfd1266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _raycastStats: {fileID: 0}
 --- !u!114 &4723543985864439959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,4 +153,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b8150dc1d84a1e83b07efef7e310e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionPrefab: {fileID: 6192724089161036641, guid: e17d9a3f04750764c8c0a7a0461e4c3b, type: 3}

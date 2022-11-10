@@ -17,6 +17,7 @@ MonoBehaviour:
     damage: 1
     lifeTime: 10
     layerTarget: 0a000000
+    _explosionPrefab: {fileID: 6192724089161036641, guid: e17d9a3f04750764c8c0a7a0461e4c3b, type: 3}
   granadeStatValues:
     radius: 10
     force: 500
