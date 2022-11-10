@@ -17,5 +17,6 @@ MonoBehaviour:
     damage: 20
     lifeTime: 5
     layerTarget: 0a000000
+    _explosionPrefab: {fileID: 8038344524183138613, guid: 0277167a12290af47801444830a2be97, type: 3}
   explosionStatValues:
     explosionCount: 2

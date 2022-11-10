@@ -15,5 +15,5 @@ MonoBehaviour:
   statValues:
     range: 20
     boostedSpeed: 2
-    layerTarget: 0e000000
+    layerTarget: 10000000
     direction: {x: 0, y: 0, z: -1}

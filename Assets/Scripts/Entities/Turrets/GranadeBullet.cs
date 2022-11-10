@@ -20,6 +20,17 @@ namespace Entities.Turrets
         protected override void Travel()
         {
         }
+        
+        public void OnTriggerEnter(Collider otherCollider)
+        {
+            base.OnTriggerEnter(otherCollider);
+            if (GranadeBulletStats.GroundLayer == otherCollider.gameObject.layer)
+            {
+                Explode();
+                SelfDestroy();
+            }
+            
+        }
 
         private void Explode()
         {

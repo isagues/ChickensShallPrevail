@@ -11,6 +11,8 @@ namespace Flyweight
         
         public float Force => granadeStatValues.force;
         public float ExplosionDamage => granadeStatValues.explosionDamage;
+
+        public int GroundLayer => granadeStatValues.groundLayer;
     }
 
     [System.Serializable]
@@ -19,5 +21,6 @@ namespace Flyweight
         public float radius;
         public float force;
         public float explosionDamage;
+        public int groundLayer;
     }
 }

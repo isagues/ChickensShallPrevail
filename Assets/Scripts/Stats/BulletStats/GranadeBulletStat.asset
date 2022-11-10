@@ -22,3 +22,4 @@ MonoBehaviour:
     radius: 10
     force: 500
     explosionDamage: 20
+    groundLayer: 9

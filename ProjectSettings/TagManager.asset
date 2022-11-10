@@ -15,14 +15,14 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Terrain
   - Enemies
   - Turrets
   - Player
   - Wall
   - Farm
   - Collectable
-  - 
+  - FarmDoor
   - 
   - 
   - 

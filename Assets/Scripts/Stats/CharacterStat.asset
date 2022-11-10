@@ -19,5 +19,6 @@ MonoBehaviour:
     - {fileID: -3808499245637167671, guid: 78ad06f6a639a1c42b72d8f620a2e7ad, type: 3}
     - {fileID: 950961179484411005, guid: ced2a4fc62bf040609f0f65baec73161, type: 3}
     - {fileID: 3526451375443967728, guid: dbf7a0c9d76b77a40af3104feac0641d, type: 3}
+    - {fileID: 5676842981418053249, guid: 87b4c3d7f0c8e08408648884ddc8eb9d, type: 3}
     - {fileID: 6319234328691410910, guid: f88110276aade4a81a2a50a167da15f9, type: 3}
     collectableLayer: 15

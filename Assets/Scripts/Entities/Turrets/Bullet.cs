@@ -34,10 +34,10 @@ namespace Entities.Turrets
             var damageable = otherCollider.GetComponent<IDamageable>();
             damageable?.TakeDamage(Damage);
 
-            SelfDestroy(); 
+            SelfDestroy();
         }
 
-        private void SelfDestroy()
+        protected void SelfDestroy()
         {
             BeforeDestroy();
             Destroy(gameObject);
