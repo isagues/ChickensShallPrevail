@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Command;
 using Controller;
@@ -16,9 +17,9 @@ namespace Entities
         
         private MovementController _movementController;
         private CollectorController _collectorController;
-    
-        private Deployeable _currentDeployable;
 
+        private int _currentDeployable;
+        private Deployeable CurrentDeployeable => Deployeables[_currentDeployable];
 
         [SerializeField] private KeyCode moveForward = KeyCode.W;
         [SerializeField] private KeyCode moveBack = KeyCode.S;
@@ -96,23 +97,31 @@ namespace Entities
             if(Input.GetKey(weaponSlot2)) ChangeDeployeable(1);
             if(Input.GetKey(weaponSlot3)) ChangeDeployeable(2);
             if(Input.GetKey(weaponSlot4)) ChangeDeployeable(3);
+
+            var mouseWheel = Math.Sign(Input.GetAxis("Mouse ScrollWheel"));
+            if (mouseWheel != 0)
+            {
+                var next = (_currentDeployable + mouseWheel) % Deployeables.Count;
+                if (next < 0) next += Deployeables.Count;
+                ChangeDeployeable(next);
+            }
         }
 
         private void DeployCurrentInstance()
         {
-            if (!_collectorController.Expend(CollectableType.Egg, _currentDeployable.Cost)) return;
+            if (!_collectorController.Expend(CollectableType.Egg, CurrentDeployeable.Cost)) return;
 
             var t = transform;
-            var deployeable = Instantiate(_currentDeployable, t.position + t.TransformVector(Vector3.forward * 1.2f), t.rotation);
-            deployeable.name = _currentDeployable.name;
+            var deployeable = Instantiate(CurrentDeployeable, t.position + t.TransformVector(Vector3.forward * 1.2f), t.rotation);
+            deployeable.name = CurrentDeployeable.name;
             deployeable.transform.parent = _deployeablesTransform.transform;
             deployeable.gameObject.SetActive(true);
         }
 
         private void ChangeDeployeable(int index)
         {
-            _currentDeployable = Deployeables[index];
-            EventsManager.instance.DeployableChange(_currentDeployable);
+            _currentDeployable = index;
+            EventsManager.instance.DeployableChange(CurrentDeployeable);
         }
     }
 }
