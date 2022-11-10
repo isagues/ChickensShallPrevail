@@ -17,6 +17,10 @@ namespace Entities.Turrets
             Explode();
         }
 
+        protected override void Travel()
+        {
+        }
+
         private void Explode()
         {
 

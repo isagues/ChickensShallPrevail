@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Entities.Turrets
 {
-    [RequireComponent(typeof(Rigidbody), typeof(Collider), typeof(IAutoMove))]
+    [RequireComponent(typeof(Rigidbody), typeof(Collider))]
     public abstract class Bullet : MonoBehaviour, IBullet
     {
         protected abstract BulletStat Stats();
@@ -57,9 +57,11 @@ namespace Entities.Turrets
             Instantiate(ExplosionPrefab, transform.position, transform.rotation);
         }
 
+        protected abstract void Travel();
+
         protected void Update()
         {
-            AutoMove.Travel();
+            Travel();
             UpdateLifetime();
         }
     }

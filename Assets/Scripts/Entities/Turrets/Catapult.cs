@@ -1,4 +1,4 @@
-using Command;
+﻿using Command;
 using Flyweight;
 using Manager;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Entities.Turrets
 {
     [RequireComponent(typeof(Collider))]
-    public class Turret : MonoBehaviour, ITurret
+    public class Catapult : MonoBehaviour, ITurret
     {
         private TurretStat _stats;
         private TurretStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<TurretStat>();
@@ -35,14 +35,15 @@ namespace Entities.Turrets
             _cmdAttack = new CmdAttack(this);
             _nextShotTime = Time.time;
         }
-        
         public void Attack()
         {
             var height = Collider.bounds.size.y / 4;
             var t = transform;
-            var bullet = Instantiate(BulletPrefab, t.position + Vector3.up * height, t.rotation);
-            bullet.name = BulletPrefab.name;
-            bullet.transform.parent = transform;
+            var projectile = Instantiate(BulletPrefab, t.position + t.forward + Vector3.up * height, t.rotation);
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 10f, ForceMode.VelocityChange);
+            projectile.name = BulletPrefab.name;
+            //projectile.transform.parent = transform;
             Listenable.Play();
         }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Entities.Turrets
 {
+    [RequireComponent(typeof(IAutoMove))]
     public class PropagatingBullet : Bullet
     {
         private PropagatingBulletStat _stats;
@@ -25,6 +26,11 @@ namespace Entities.Turrets
                 GenerateBullet(90);
                 GenerateBullet(-90);
             }
+        }
+
+        protected override void Travel()
+        {
+            AutoMove.Travel();
         }
 
         private void GenerateBullet(int angle)

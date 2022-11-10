@@ -1068,11 +1068,11 @@ GameObject:
   - component: {fileID: 1419511269380490930}
   - component: {fileID: 6668019848048296740}
   - component: {fileID: 7342264930181843613}
-  - component: {fileID: 73727814969533812}
   - component: {fileID: 6319234328691410910}
   - component: {fileID: 8905219185755753226}
   - component: {fileID: -8378184939218151943}
   - component: {fileID: -5250392627929039729}
+  - component: {fileID: 8163227213107448358}
   m_Layer: 0
   m_Name: Catapulta
   m_TagString: Untagged
@@ -1089,7 +1089,7 @@ Transform:
   m_GameObject: {fileID: 8209912528204893702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.807854, y: 8.197732, z: -32.340366}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 2460746952718993324}
   - {fileID: 2476164089009073508}
@@ -1142,18 +1142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLife: 100
---- !u!114 &73727814969533812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8209912528204893702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 404385e493f34ddead834e93d9efae93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6319234328691410910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,7 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bceb5405a844f9782bed644638ccaa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stat: {fileID: 11400000, guid: e6be825d1203c5d42880f36b8b5a0280, type: 2}
+  stat: {fileID: 11400000, guid: c4b8cf651a8e9b345b8a860a02eaad90, type: 2}
 --- !u!82 &-8378184939218151943
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1290,6 +1278,18 @@ MonoBehaviour:
   soundTrackClip: {fileID: 8300000, guid: 3a970147561904a37aee4e11b148343e, type: 3}
   autoplay: 0
   loop: 0
+--- !u!114 &8163227213107448358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209912528204893702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8885e6c73f4b49b8bbc4a2d6f4b159c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8458467295847672185
 GameObject:
   m_ObjectHideFlags: 0

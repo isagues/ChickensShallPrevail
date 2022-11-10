@@ -31,7 +31,8 @@ namespace Entities
         [SerializeField] private KeyCode weaponSlot1 = KeyCode.Alpha1;
         [SerializeField] private KeyCode weaponSlot2 = KeyCode.Alpha2;
         [SerializeField] private KeyCode weaponSlot3 = KeyCode.Alpha3;
-        [SerializeField] private KeyCode weaponSlot4 = KeyCode.Alpha9;
+        [SerializeField] private KeyCode weaponSlot4 = KeyCode.Alpha4;
+        [SerializeField] private KeyCode weaponSlot5 = KeyCode.Alpha5;
     
     
         [SerializeField] private KeyCode setVictory = KeyCode.V;
@@ -97,6 +98,7 @@ namespace Entities
             if(Input.GetKey(weaponSlot2)) ChangeDeployeable(1);
             if(Input.GetKey(weaponSlot3)) ChangeDeployeable(2);
             if(Input.GetKey(weaponSlot4)) ChangeDeployeable(3);
+            if(Input.GetKey(weaponSlot5)) ChangeDeployeable(4);
 
             var mouseWheel = Math.Sign(Input.GetAxis("Mouse ScrollWheel"));
             if (mouseWheel != 0)
