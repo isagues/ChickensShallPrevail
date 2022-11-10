@@ -12,7 +12,7 @@ namespace Entities
         private CharacterStat _stats;
         private CharacterStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<CharacterStat>();
         
-        public List<Deployeable> Deployeables => Stats.Deployeables;
+        private List<Deployeable> Deployeables => Stats.Deployeables;
         
         private MovementController _movementController;
         private CollectorController _collectorController;
@@ -38,8 +38,8 @@ namespace Entities
 
         private CmdMovement _cmdMoveForward; 
         private CmdMovement _cmdMoveBackward;
-        private CmdRotation _cmdRotateRight;
-        private CmdRotation _cmdRotateLeft;
+        private CmdMovement _cmdMoveRight;
+        private CmdMovement _cmdMoveLeft;
 
         private Transform _deployeablesTransform;
 
@@ -49,25 +49,46 @@ namespace Entities
             _collectorController = GetComponent<CollectorController>();
             _deployeablesTransform = GameObject.Find("Deployeables").transform;
         
-            _cmdMoveForward = new CmdMovement(_movementController, Vector3.forward);
-            _cmdMoveBackward = new CmdMovement(_movementController, -Vector3.forward);
-            _cmdRotateRight = new CmdRotation(_movementController, Vector3.up);
-            _cmdRotateLeft = new CmdRotation(_movementController, -Vector3.up);
+            _cmdMoveForward     = new CmdMovement(_movementController, Vector3.forward);
+            _cmdMoveBackward    = new CmdMovement(_movementController, Vector3.back);
+            _cmdMoveRight       = new CmdMovement(_movementController, Vector3.right);
+            _cmdMoveLeft        = new CmdMovement(_movementController, Vector3.left);
         }
         
         private void Start()
         {
+            EventsManager.instance.OnGameOver += _ =>
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            };
+            OnApplicationFocus(true);
+            
             ChangeDeployeable(0);
+        }
+        
+        private void OnApplicationFocus(bool hasFocus)
+        {
+            if (hasFocus)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
         
         private void Update()
         {
-            if (Input.GetKey(moveForward)) EventQueueManager.instance.AddCommand(_cmdMoveForward);
-            if (Input.GetKey(moveBack)) EventQueueManager.instance.AddCommand(_cmdMoveBackward);
-            if (Input.GetKey(moveRight)) EventQueueManager.instance.AddCommand(_cmdRotateRight);
-            if (Input.GetKey(moveLeft)) EventQueueManager.instance.AddCommand(_cmdRotateLeft);
-            if (Input.GetKeyDown(setVictory)) EventsManager.instance.EventGameOver(true);
-            if (Input.GetKeyDown(setDefeat)) EventsManager.instance.EventGameOver(false);
+            var mouseX = Input.GetAxis("Mouse X");
+            var cmdRotation = new CmdRotation(_movementController, Vector3.up * mouseX);
+            EventQueueManager.instance.AddCommand(cmdRotation);
+            
+            if (Input.GetKey(moveForward))      EventQueueManager.instance.AddCommand(_cmdMoveForward);
+            if (Input.GetKey(moveBack))         EventQueueManager.instance.AddCommand(_cmdMoveBackward);
+            if (Input.GetKey(moveRight))        EventQueueManager.instance.AddCommand(_cmdMoveRight);
+            if (Input.GetKey(moveLeft))         EventQueueManager.instance.AddCommand(_cmdMoveLeft);
+            
+            if (Input.GetKeyDown(setVictory))   EventsManager.instance.EventGameOver(true);
+            if (Input.GetKeyDown(setDefeat))    EventsManager.instance.EventGameOver(false);
 
             if (Input.GetKeyDown(deploy)) DeployCurrentInstance();
 
