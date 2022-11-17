@@ -9,16 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cce991f2e234e8f9acc7c70503c0615, type: 3}
-  m_Name: CatapultStat
+  m_Script: {fileID: 11500000, guid: 4eb8a75663df4d95b7c024a6e9ae5ed2, type: 3}
+  m_Name: BlueSlimeRaycast
   m_EditorClassIdentifier: 
   statValues:
-    maxLife: 0
-    cost: 0
-    period: 0
-    bulletPrefab: {fileID: 0}
-  statValues:
-    radius: 0
-    force: 0
-    explosionDamage: 0
-    groundLayer: 0
+    range: 0
+    boostedSpeed: 0
+    layerTarget: 
+    direction: {x: 0, y: 0, z: 0}

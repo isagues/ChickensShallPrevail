@@ -8,8 +8,8 @@ namespace Entities.Turrets
     [RequireComponent(typeof(Collider))]
     public class Catapult : MonoBehaviour, ITurret
     {
-        private TurretStat _stats;
-        private TurretStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<TurretStat>();
+        private CatapultStat _stats;
+        private CatapultStat Stats => _stats ??= GetComponent<StatSupplier>().GetStat<CatapultStat>();
         
         public float Period => Stats.Period;
         public GameObject BulletPrefab => Stats.BulletPrefab;
@@ -37,11 +37,11 @@ namespace Entities.Turrets
         }
         public void Attack()
         {
-            var height = Collider.bounds.size.y / 4;
+            var height = Collider.bounds.size.y;
             var t = transform;
             var projectile = Instantiate(BulletPrefab, t.position + t.forward + Vector3.up * height, t.rotation);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 50f, ForceMode.VelocityChange);
+            rb.AddForce(transform.forward * Stats.Force, ForceMode.VelocityChange);
             projectile.name = BulletPrefab.name;
             projectile.transform.parent = transform;
             Listenable.Play();
