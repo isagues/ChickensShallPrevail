@@ -655,6 +655,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 944073481, guid: 4bcbdfdeaa8c9324a8077e60c913a392, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6100206035326673554, guid: 4bcbdfdeaa8c9324a8077e60c913a392, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -822,6 +826,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 44514963655808403, guid: fa7854f89abe847ac8c9b366cbdcf4be, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 44514964657807302, guid: fa7854f89abe847ac8c9b366cbdcf4be, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2351887865999143202, guid: fa7854f89abe847ac8c9b366cbdcf4be, type: 3}
       propertyPath: m_Name
       value: Farm
