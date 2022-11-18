@@ -116,5 +116,6 @@ Material:
     - _TilingOffsetAlphaMaskPolarUV: {r: 0, g: 0, b: 0, a: 0}
     - _TilingOffsetMainTexPolarUV: {r: 0, g: 0, b: 0, a: 0}
     - _Tint: {r: 3.2073464, g: 0, b: 0, a: 1}
-    - _Tint_01: {r: 2.5796902, g: 0.4041911, b: 0.011887974, a: 1}
-    - _Tint_02: {r: 3.9533494, g: 1.4281734, b: 0.062094495, a: 0}
+    - _Tint_01: {r: 4.5981297, g: 0, b: 0.78971595, a: 1}
+    - _Tint_02: {r: 5.278032, g: 0, b: 1.9523023, a: 0}
+  m_BuildTextureStacks: []
