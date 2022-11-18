@@ -54,7 +54,9 @@ namespace Entities.Turrets
 
         protected virtual void BeforeDestroy()
         {
-            Instantiate(ExplosionPrefab, transform.position, transform.rotation);
+            var explosion = Instantiate(ExplosionPrefab, transform.position, transform.rotation);
+            explosion.name = ExplosionPrefab.name;
+            explosion.transform.parent = transform.parent;
         }
 
         protected abstract void Travel();
