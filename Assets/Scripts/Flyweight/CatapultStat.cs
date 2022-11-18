@@ -8,11 +8,13 @@ namespace Flyweight
         [SerializeField] private CatapultStats catapultStatValues;
         
         public float Force => catapultStatValues.force;
+        public float VerticalMultiplier => catapultStatValues.verticalMultiplier;
     }
     
     [System.Serializable]
     public struct CatapultStats
     {
         public float force;
+        public float verticalMultiplier;
     }
 }

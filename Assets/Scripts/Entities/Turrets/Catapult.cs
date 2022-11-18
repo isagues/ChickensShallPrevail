@@ -41,7 +41,7 @@ namespace Entities.Turrets
             var t = transform;
             var projectile = Instantiate(BulletPrefab, t.position + t.forward + Vector3.up * height, t.rotation);
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * Stats.Force, ForceMode.VelocityChange);
+            rb.AddForce((transform.forward + (transform.up * Stats.VerticalMultiplier)) * Stats.Force, ForceMode.VelocityChange);
             projectile.name = BulletPrefab.name;
             projectile.transform.parent = transform;
             Listenable.Play();

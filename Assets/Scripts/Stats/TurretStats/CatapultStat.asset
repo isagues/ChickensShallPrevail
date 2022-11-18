@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statValues:
     maxLife: 50
-    cost: 40
+    cost: 50
     period: 1
     bulletPrefab: {fileID: 2443644104640467851, guid: 99135943c7f68e34ea894694c28f7fdf, type: 3}
   catapultStatValues:
-    force: 75
+    force: 50
+    verticalMultiplier: 0.25
