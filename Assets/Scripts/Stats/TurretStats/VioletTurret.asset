@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statValues:
     maxLife: 250
-    cost: 0
+    cost: 30
     period: 1
     bulletPrefab: {fileID: 5961826193263668453, guid: 4e968386847c5ea4caf5a42f40a3f3aa, type: 3}

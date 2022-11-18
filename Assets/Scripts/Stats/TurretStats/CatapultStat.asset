@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: CatapultStat
   m_EditorClassIdentifier: 
   statValues:
-    maxLife: 0
-    cost: 0
-    period: 0
-    bulletPrefab: {fileID: 0}
-  statValues:
-    radius: 0
-    force: 0
-    explosionDamage: 0
-    groundLayer: 0
+    maxLife: 50
+    cost: 40
+    period: 1
+    bulletPrefab: {fileID: 2443644104640467851, guid: 99135943c7f68e34ea894694c28f7fdf, type: 3}
+  catapultStatValues:
+    force: 75
