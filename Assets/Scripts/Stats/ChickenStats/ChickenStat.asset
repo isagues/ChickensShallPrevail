@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1f81575aaa4be4ae955ad8aabf31b8, type: 3}
+  m_Name: ChickenStat
+  m_EditorClassIdentifier: 
+  statValues:
+    maxLife: 10
+    speed: 1
+    cost: 20
+    period: 5
+    transformTime: 5
+    eggPrefab: {fileID: 6023477689653686232, guid: dae571be53e3948e195a0306a92b54d2, type: 3}
+    transformPrefab: {fileID: 8206729029134444045, guid: f16e13513835fab42a053cc82fa96148, type: 3}
+    layerTarget: 0d000000

@@ -16,12 +16,15 @@ namespace Entities
         
         public int Period => Stats.Period;
         public GameObject DeployablePrefab => Stats.EggPrefab;
+
+        public GameObject TransformPrefab => Stats.TransformPrefab;
         public List<int> LayerTarget => Stats.LayerTarget;
         
         private float _nextDeployTime;
 
         private CmdDeploy _cmdDeploy;
-        
+
+        private float _transformTime;
         public Collider Collider { get; private set; }
         public Rigidbody Rigidbody { get; private set; }
         public IAutoMove AutoMove { get; private set; }
@@ -45,6 +48,8 @@ namespace Entities
             
             _nextDeployTime = Time.time;
 
+            _transformTime = Time.time + Stats.TransformTime;
+
             _cmdDeploy = new CmdDeploy(this);
         }
 
@@ -65,9 +70,32 @@ namespace Entities
         private void Update()
         {
             AutoMove.Travel();
-            if (!(Time.time > _nextDeployTime)) return;
-            _nextDeployTime += Period;
-            EventQueueManager.instance.AddCommand(_cmdDeploy);
+            if ((Time.time > _nextDeployTime))
+            {
+                _nextDeployTime += Period;
+                Deploy();
+                // EventQueueManager.instance.AddCommand(_cmdDeploy);
+            }
+            
+
+            if (Time.time > _transformTime)
+            {
+                SelfDestroy();
+            }
+        }
+        
+        protected void SelfDestroy()
+        {
+            BeforeDestroy();
+            Destroy(gameObject);
+        }
+
+        private void BeforeDestroy()
+        {
+            var t = transform;
+            var suicideChicken = Instantiate(TransformPrefab, t.position, t.rotation);
+            suicideChicken.name = t.name;
+            suicideChicken.transform.parent = t.parent;
         }
     }
 }

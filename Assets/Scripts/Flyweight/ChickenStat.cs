@@ -14,7 +14,9 @@ namespace Flyweight
         public float Speed => statValues.speed;
         public int Cost => statValues.cost;
         public int Period => statValues.period;
+        public int TransformTime => statValues.transformTime;
         public GameObject EggPrefab => statValues.eggPrefab;
+        public GameObject TransformPrefab => statValues.transformPrefab;
         public List<int> LayerTarget => statValues.layerTarget;
     }
 
@@ -25,7 +27,9 @@ namespace Flyweight
         public float speed;
         public int cost;
         public int period;
+        public int transformTime;
         public GameObject eggPrefab;
+        public GameObject transformPrefab;
         public List<int> layerTarget;
     }
     

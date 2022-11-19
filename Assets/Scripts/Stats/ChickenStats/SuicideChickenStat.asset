@@ -9,14 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df1f81575aaa4be4ae955ad8aabf31b8, type: 3}
-  m_Name: ChickenStat
+  m_Script: {fileID: 11500000, guid: 9ab64ff2b3f3400db5ea0a17f14e0994, type: 3}
+  m_Name: SuicideChickenStat
   m_EditorClassIdentifier: 
   statValues:
-    maxLife: 10
-    speed: 1
-    deployeableType: 0
-    cost: 20
-    period: 5
-    eggPrefab: {fileID: 6023477689653686232, guid: dae571be53e3948e195a0306a92b54d2, type: 3}
-    layerTarget: 0d000000
+    speed: 5
+    damage: 50
+    explosionPrefab: {fileID: 6192724089161036641, guid: e17d9a3f04750764c8c0a7a0461e4c3b, type: 3}
+    layerTarget: 0a000000
