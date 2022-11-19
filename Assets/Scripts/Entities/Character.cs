@@ -15,10 +15,16 @@ namespace Entities
         
         private List<Deployeable> Deployeables => Stats.Deployeables;
         
+        public List<int> LayerTarget => Stats.LayerTarget;
+        
         private MovementController _movementController;
         private CollectorController _collectorController;
+        private Rigidbody _rigidbody;
 
         private int _currentDeployable;
+        private int _currentAttack = 0;
+        private float _nextAttack;
+        private bool _defending = false;
         private Deployeable CurrentDeployeable => Deployeables[_currentDeployable];
 
         [SerializeField] private KeyCode moveForward = KeyCode.W;
@@ -37,6 +43,8 @@ namespace Entities
     
         [SerializeField] private KeyCode setVictory = KeyCode.V;
         [SerializeField] private KeyCode setDefeat = KeyCode.L;
+        [SerializeField] private KeyCode attack = KeyCode.F;
+        [SerializeField] private KeyCode defend = KeyCode.Space;
 
         private CmdMovement _cmdMoveForward; 
         private CmdMovement _cmdMoveBackward;
@@ -45,16 +53,20 @@ namespace Entities
 
         private Transform _deployeablesTransform;
 
+        private Animator _animator;
         private void Awake()
-        {
+        {   
             _movementController = GetComponent<MovementController>();
             _collectorController = GetComponent<CollectorController>();
+            _rigidbody = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
             _deployeablesTransform = GameObject.Find("Deployeables").transform;
         
             _cmdMoveForward     = new CmdMovement(_movementController, Vector3.forward);
             _cmdMoveBackward    = new CmdMovement(_movementController, Vector3.back);
             _cmdMoveRight       = new CmdMovement(_movementController, Vector3.right);
             _cmdMoveLeft        = new CmdMovement(_movementController, Vector3.left);
+            _nextAttack = Time.time;
         }
         
         private void Start()
@@ -83,14 +95,20 @@ namespace Entities
             var mouseX = Input.GetAxis("Mouse X");
             var cmdRotation = new CmdRotation(_movementController, Vector3.up * mouseX);
             EventQueueManager.instance.AddCommand(cmdRotation);
+            if (!_defending)
+            {
+                if (Input.GetKey(moveForward))      EventQueueManager.instance.AddCommand(_cmdMoveForward);
+                if (Input.GetKey(moveBack))         EventQueueManager.instance.AddCommand(_cmdMoveBackward);
+                if (Input.GetKey(moveRight))        EventQueueManager.instance.AddCommand(_cmdMoveRight);
+                if (Input.GetKey(moveLeft))         EventQueueManager.instance.AddCommand(_cmdMoveLeft);
+            }
             
-            if (Input.GetKey(moveForward))      EventQueueManager.instance.AddCommand(_cmdMoveForward);
-            if (Input.GetKey(moveBack))         EventQueueManager.instance.AddCommand(_cmdMoveBackward);
-            if (Input.GetKey(moveRight))        EventQueueManager.instance.AddCommand(_cmdMoveRight);
-            if (Input.GetKey(moveLeft))         EventQueueManager.instance.AddCommand(_cmdMoveLeft);
             
             if (Input.GetKeyDown(setVictory))   EventsManager.instance.EventGameOver(true);
             if (Input.GetKeyDown(setDefeat))    EventsManager.instance.EventGameOver(false);
+            if (Input.GetKeyDown(attack))    attackEnemy();
+            if (Input.GetKeyDown(defend))    defendPose(true);
+            if (Input.GetKeyUp(defend))    defendPose(false);
 
             if (Input.GetKeyDown(deploy)) DeployCurrentInstance();
 
@@ -107,6 +125,43 @@ namespace Entities
                 if (next < 0) next += Deployeables.Count;
                 ChangeDeployeable(next);
             }
+        }
+
+        private void attackEnemy()
+        {
+            if (Time.time < _nextAttack) return;
+            _animator.SetTrigger("Attack " + _currentAttack % 2);
+            _currentAttack++;
+            Collider[] colliders = Physics.OverlapSphere(transform.position, _stats.Radius);
+            foreach (Collider collider in colliders)
+            {   
+                if (LayerTarget.Contains(collider.gameObject.layer)) {
+                    Rigidbody rb = collider.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.AddForce((transform.forward + transform.up) * Stats.Force, ForceMode.Impulse);
+                    }
+                }
+            }
+
+            _nextAttack = Time.time + Stats.AttackCooldown;
+        }
+        
+        
+
+        private void defendPose(bool value)
+        {
+            _defending = value;
+            _animator.SetBool("Defend", _defending);
+            if (_defending)
+            {
+                _rigidbody.mass = Single.MaxValue;
+            }
+            else
+            {
+                _rigidbody.mass = 1;
+            }
+
         }
 
         private void DeployCurrentInstance()

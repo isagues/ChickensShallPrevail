@@ -14,6 +14,10 @@ namespace Flyweight
         public float RotationSpeed => statValues.rotationSpeed;
         public  List<Deployeable> Deployeables => statValues.deployeables;
         public int CollectableLayer => statValues.collectableLayer;
+        public float Radius => statValues.radius;
+        public float Force => statValues.force;
+        public float AttackCooldown => statValues.attackCooldown;
+        public List<int> LayerTarget => statValues.layerTarget;
     }
 
     [System.Serializable]
@@ -21,8 +25,12 @@ namespace Flyweight
     {
         public float speed;
         public float rotationSpeed;
+        public float radius;
+        public float force;
+        public float attackCooldown;
         public List<Deployeable> deployeables;
         public int collectableLayer;
+        public List<int> layerTarget;
     }
     
 }

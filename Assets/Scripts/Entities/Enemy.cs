@@ -17,20 +17,27 @@ namespace Entities
         
         private Rigidbody _rigidBody;
         private Collider _collider;
+        private Animator _animator;
         private IDamageable _damageable;
         private IAutoMove _autoMoveController;
+        private float _attackTimer;
 
         public Rigidbody Rigidbody => _rigidBody;
         public Collider Collider => _collider;
         public IDamageable Damageable => _damageable;
         public IAutoMove AutoMove => _autoMoveController;
 
+        private bool _attacking = false;
+
         private void OnCollisionStay(Collision collision)
         {
             int layer = collision.gameObject.layer;
             if (!DamageableLayerMask.Contains(layer) || layer == TargetLayer) return;
+            _attackTimer = Time.time + Stats.AttackTime;
+            _animator.SetTrigger("Attack");
             var damageable = collision.gameObject.GetComponent<IDamageable>();
             damageable?.TakeDamage(Damage);
+            
         }
 
         private void OnTriggerEnter(Collider other)
@@ -47,8 +54,9 @@ namespace Entities
             _rigidBody = GetComponent<Rigidbody>();
             _collider = GetComponent<Collider>();
             _damageable = GetComponent<IDamageable>();
+            _animator = GetComponent<Animator>();
             _autoMoveController = GetComponent<IAutoMove>();
-
+            _attackTimer = Time.time;
             _rigidBody.useGravity = false;
             // _rigidBody.isKinematic = true;
             _rigidBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
@@ -56,7 +64,10 @@ namespace Entities
     
         private void Update()
         {
-            _autoMoveController.Travel();
+            if (Time.time > _attackTimer)
+            {
+                _autoMoveController.Travel();
+            }
         }
 
         private void OnDestroy()

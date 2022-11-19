@@ -12,6 +12,7 @@ namespace Flyweight
         public float MaxLife => statValues.maxLife;
         public float Speed => statValues.speed;
         public int Damage => statValues.damage;
+        public float AttackTime => statValues.attackTime;
         public List<int> DamageableLayerMask => statValues.damageableLayerMask;
         public int TargetLayer => statValues.targetLayer;
     }
@@ -22,7 +23,8 @@ namespace Flyweight
         public float maxLife;
         public float speed;
         public int damage;
-        public List<int> damageableLayerMask;
+        public float attackTime;
         public int targetLayer;
+        public List<int> damageableLayerMask;
     }
 }
