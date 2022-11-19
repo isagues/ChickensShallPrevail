@@ -16,5 +16,6 @@ MonoBehaviour:
     maxLife: 250
     speed: 3
     damage: 15
-    damageableLayerMask: 0b0000000e000000
+    attackTime: 1.5
     targetLayer: 14
+    damageableLayerMask: 0b0000000e000000
