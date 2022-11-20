@@ -64,6 +64,10 @@ namespace Entities
     
         private void Update()
         {
+            if (AutoMove.isBoosted())
+            {
+                _animator.SetTrigger("Boost");
+            }
             if (Time.time > _attackTimer)
             {
                 _autoMoveController.Travel();

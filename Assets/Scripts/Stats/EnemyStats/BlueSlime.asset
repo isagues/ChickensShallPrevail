@@ -15,7 +15,11 @@ MonoBehaviour:
   statValues:
     maxLife: 250
     speed: 3
+    raycastRange: 30
+    boostedSpeed: 1.5
     damage: 15
     attackTime: 1.5
     targetLayer: 14
     damageableLayerMask: 0b0000000e000000
+    raycastTargets: 0b000000
+    direction: {x: 0, y: 0, z: -1}

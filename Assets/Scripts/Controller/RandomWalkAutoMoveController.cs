@@ -22,6 +22,11 @@ namespace Controller
             transform.Translate(Vector3.forward * (Time.deltaTime * Speed));
         }
 
+        public bool isBoosted()
+        {
+            return false;
+        }
+
         public void TravelToTarget(Vector3 target)
         {
             throw new NotSupportedException();
