@@ -16,7 +16,7 @@ MonoBehaviour:
     speed: 10
     rotationSpeed: 175
     radius: 3
-    force: 500
+    force: 5000
     attackCooldown: 2
     deployeables:
     - {fileID: -3808499245637167671, guid: 78ad06f6a639a1c42b72d8f620a2e7ad, type: 3}

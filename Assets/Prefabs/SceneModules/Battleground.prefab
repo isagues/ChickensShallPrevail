@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7532922279090622202}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Battleground
-  m_TagString: Untagged
+  m_TagString: Generator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7532922279208010072}
   - component: {fileID: 7532922279208010079}
   - component: {fileID: 7532922279208010078}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}

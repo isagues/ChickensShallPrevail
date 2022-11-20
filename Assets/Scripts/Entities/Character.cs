@@ -139,7 +139,7 @@ namespace Entities
                     Rigidbody rb = collider.GetComponent<Rigidbody>();
                     if (rb != null)
                     {
-                        rb.AddForce((transform.forward + transform.up) * Stats.Force, ForceMode.Impulse);
+                        rb.AddForce((transform.forward + transform.up) * Stats.Force, ForceMode.Force);
                     }
                 }
             }

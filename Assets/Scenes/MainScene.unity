@@ -1004,18 +1004,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Battleground
       objectReference: {fileID: 0}
-    - target: {fileID: 7532922279090622206, guid: 673002731c4c9464d84c7272d0b0ffbb, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532922279090622206, guid: 673002731c4c9464d84c7272d0b0ffbb, type: 3}
-      propertyPath: m_TagString
-      value: Generator
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532922279208010076, guid: 673002731c4c9464d84c7272d0b0ffbb, type: 3}
-      propertyPath: m_Layer
-      value: 17
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673002731c4c9464d84c7272d0b0ffbb, type: 3}
 --- !u!1001 &1209465284
@@ -1139,10 +1127,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 944073481, guid: 4bcbdfdeaa8c9324a8077e60c913a392, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6100206035326673554, guid: 4bcbdfdeaa8c9324a8077e60c913a392, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1680,14 +1664,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 44514963655808403, guid: fa7854f89abe847ac8c9b366cbdcf4be, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 44514964657807302, guid: fa7854f89abe847ac8c9b366cbdcf4be, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2351887865999143202, guid: fa7854f89abe847ac8c9b366cbdcf4be, type: 3}
       propertyPath: m_Name
       value: Farm
@@ -2229,18 +2205,6 @@ PrefabInstance:
     - target: {fileID: 292943211588477438, guid: e4b2fcb2d06d44db09bc619e76321374, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3410491792737038803, guid: e4b2fcb2d06d44db09bc619e76321374, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3410491792737038814, guid: e4b2fcb2d06d44db09bc619e76321374, type: 3}
-      propertyPath: attack
-      value: 102
-      objectReference: {fileID: 0}
-    - target: {fileID: 3410491792737038814, guid: e4b2fcb2d06d44db09bc619e76321374, type: 3}
-      propertyPath: defend
-      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 5827972284978220280, guid: e4b2fcb2d06d44db09bc619e76321374, type: 3}
       propertyPath: m_Name
