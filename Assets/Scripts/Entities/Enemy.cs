@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Flyweight;
 using Manager;
@@ -26,8 +27,8 @@ namespace Entities
         public Collider Collider => _collider;
         public IDamageable Damageable => _damageable;
         public IAutoMove AutoMove => _autoMoveController;
-
-        private bool _attacking = false;
+        
+        private Action<bool> _toggleTrail;
 
         private void OnCollisionStay(Collision collision)
         {
@@ -60,6 +61,17 @@ namespace Entities
             _rigidBody.useGravity = false;
             // _rigidBody.isKinematic = true;
             _rigidBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+            
+            var trail = GetComponent<TrailRenderer>();
+            if (trail == null)
+            {
+                _toggleTrail = _ => { };
+            }
+            else
+            {
+                trail.enabled = false;
+                _toggleTrail = b => trail.enabled = b;
+            }
         }
     
         private void Update()
@@ -67,6 +79,7 @@ namespace Entities
             if (AutoMove.isBoosted())
             {
                 _animator.SetTrigger("Boost");
+                _toggleTrail.Invoke(true);
             }
             if (Time.time > _attackTimer)
             {
