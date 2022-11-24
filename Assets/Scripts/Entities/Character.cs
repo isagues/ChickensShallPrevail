@@ -43,8 +43,6 @@ namespace Entities
     
         [SerializeField] private KeyCode setVictory = KeyCode.V;
         [SerializeField] private KeyCode setDefeat = KeyCode.L;
-        [SerializeField] private KeyCode attack = KeyCode.F;
-        [SerializeField] private KeyCode defend = KeyCode.Space;
 
         private CmdMovement _cmdMoveForward; 
         private CmdMovement _cmdMoveBackward;
@@ -103,12 +101,11 @@ namespace Entities
                 if (Input.GetKey(moveLeft))         EventQueueManager.instance.AddCommand(_cmdMoveLeft);
             }
             
-            
             if (Input.GetKeyDown(setVictory))   EventsManager.instance.EventGameOver(true);
             if (Input.GetKeyDown(setDefeat))    EventsManager.instance.EventGameOver(false);
-            if (Input.GetKeyDown(attack))    attackEnemy();
-            if (Input.GetKeyDown(defend))    defendPose(true);
-            if (Input.GetKeyUp(defend))    defendPose(false);
+            if (Input.GetMouseButtonDown(0))    attackEnemy();
+            if (Input.GetMouseButtonDown(1))    defendPose(true);
+            if (Input.GetMouseButtonUp(1))      defendPose(false);
 
             if (Input.GetKeyDown(deploy)) DeployCurrentInstance();
 
