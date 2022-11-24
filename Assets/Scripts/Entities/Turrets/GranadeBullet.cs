@@ -21,7 +21,7 @@ namespace Entities.Turrets
         {
         }
         
-        public void OnTriggerEnter(Collider otherCollider)
+        public new void OnTriggerEnter(Collider otherCollider)
         {
             base.OnTriggerEnter(otherCollider);
             if (GranadeBulletStats.GroundLayer == otherCollider.gameObject.layer)
