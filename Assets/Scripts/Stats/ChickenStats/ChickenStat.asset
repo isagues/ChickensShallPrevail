@@ -17,7 +17,7 @@ MonoBehaviour:
     speed: 1
     cost: 20
     period: 5
-    transformTime: 5
+    transformTime: 15
     eggPrefab: {fileID: 6023477689653686232, guid: dae571be53e3948e195a0306a92b54d2, type: 3}
     transformPrefab: {fileID: 8206729029134444045, guid: f16e13513835fab42a053cc82fa96148, type: 3}
     layerTarget: 0d000000
